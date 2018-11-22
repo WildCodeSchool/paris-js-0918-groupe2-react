@@ -1,18 +1,35 @@
 import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
+import "./debiteurs.css";
 
 class Debiteurs extends Component {
   state = {};
   render() {
     return (
-      <div className="creancier">
-        <div className="title_créancier pl4">
-          <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
-          <h2 className="f4 lh-copy">Liste des débiteurs</h2>
+      <div className="debiteur">
+        <div className="fl w-70">
+          <div className="title_débiteur pl4">
+            <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
+            <h2 className="pt2 f4 lh-copy">Liste des débiteurs</h2>
+          </div>
+        </div>
+        <div className="fl w-30 pt4">
+          <div className="wraparigo">
+            <div className="searcharigo">
+              <input
+                type="text"
+                className="searchTerm"
+                placeholder="trouver un débiteur"
+              />
+              <button type="submit" className="searchButton">
+                <i className="fa fa-search" />
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div className="pa4 ">
+        <div className="fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
@@ -46,15 +63,15 @@ class Debiteurs extends Component {
                 </tr>
               </tbody>
             </table>
+            <div className="buttondebiteur tc pt4">
+              <a
+                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+                href="#0"
+              >
+                Créer un débiteur
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="buttoncreancier tc">
-          <a
-            className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue"
-            href="#0"
-          >
-            Créer un débiteur
-          </a>
         </div>
       </div>
     );

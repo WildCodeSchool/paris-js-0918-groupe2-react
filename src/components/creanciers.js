@@ -11,19 +11,19 @@ class Creanciers extends Component {
         <div className="fl w-70">
           <div className="title_créancier pl4">
             <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
-            <h2 className="f4 lh-copy">Liste des créanciers</h2>
+            <h2 className="pt2 f4 lh-copy">Liste des créanciers</h2>
           </div>
         </div>
         <div className="fl w-30 pt4">
-          <div class="wraparigo">
-            <div class="searcharigo">
+          <div className="wraparigo">
+            <div className="searcharigo">
               <input
                 type="text"
-                class="searchTerm"
-                placeholder="What are you looking for?"
+                className="searchTerm"
+                placeholder="trouver un créancier"
               />
-              <button type="submit" class="searchButton">
-                <i class="fa fa-search" />
+              <button type="submit" className="searchButton">
+                <i className="fa fa-search" />
               </button>
             </div>
           </div>
@@ -62,10 +62,10 @@ class Creanciers extends Component {
                   </td>
                 </tr>
               </tbody>
-            </table>{" "}
-            <div className="buttoncreancier tc pt3">
+            </table>
+            <div className="buttoncreancier tc pt4">
               <a
-                className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue"
+                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
                 href="#0"
               >
                 Créer un créancier

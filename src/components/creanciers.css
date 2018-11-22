@@ -8,7 +8,7 @@
 .searchTerm {
   float: left;
   width: 100%;
-  border: 3px solid #00b4cc;
+  border: 3px solid #6978fc;
   padding: 5px;
   height: 35px;
   border-radius: 5px;
@@ -17,7 +17,7 @@
 }
 
 .searchTerm:focus {
-  color: #00b4cc;
+  color: #6978fc;
 }
 
 .searchButton {
@@ -25,8 +25,8 @@
   right: -50px;
   width: 40px;
   height: 36px;
-  border: 1px solid #00b4cc;
-  background: #00b4cc;
+  border: 1px solid #6978fc;
+  background: #6978fc;
   text-align: center;
   color: #fff;
   border-radius: 5px;
@@ -40,4 +40,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.boutoncouleur {
+  background-color: #6978fc;
 }
