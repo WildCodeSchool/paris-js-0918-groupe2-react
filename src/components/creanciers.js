@@ -62,16 +62,16 @@ class Creanciers extends Component {
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table>{" "}
+            <div className="buttoncreancier tc pt3">
+              <a
+                className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue"
+                href="#0"
+              >
+                Créer un créancier
+              </a>
+            </div>
           </div>
-        </div>
-        <div className="buttoncreancier tc">
-          <a
-            className="f6 grow no-underline br-pill ph3 pv2 mb2 dib white bg-blue"
-            href="#0"
-          >
-            Créer un créancier
-          </a>
         </div>
       </div>
     );
