@@ -36,7 +36,7 @@
 
 /*Resize the wrap to see the search bar change!*/
 .wraparigo {
-  width: 30%;
+  width: 50%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

@@ -9,9 +9,9 @@ import "./Nav.css";
 class Nav extends React.Component {
   render() {
     return (
-      <div className="fl w-25 ba-ns b--transparent allNav white">
+      <div className=" ba-ns b--transparent allNav white">
         <div className="topNav">
-          <h1 className="ml5 mt4 bb b--transparent h3">TABLEAU DE BORD</h1>
+          <h1 className="ml4 mt4 bb b--transparent h3">TABLEAU DE BORD</h1>
         </div>
         <div className="colorNav">
           <nav className="ml4 navPage">

@@ -1,3 +1,8 @@
 .icone {
   width: 1.3em;
 }
+
+.navPlaceholder {
+  background-color: darkred;
+  height: 12vh;
+}

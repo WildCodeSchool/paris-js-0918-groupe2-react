@@ -1,6 +1,6 @@
 import React from "react";
 import "./LoginPage.css";
-import contract from "./contract.jpg";
+import contract from "./images/contract.jpg";
 
 class LoginPage extends React.Component {
   render() {
