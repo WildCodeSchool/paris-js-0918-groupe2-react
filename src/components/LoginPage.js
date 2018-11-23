@@ -1,7 +1,7 @@
 import React from "react";
 import "./LoginPage.css";
 import contract from "./images/contract.jpg";
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 class LoginPage extends React.Component {
   render() {
@@ -28,13 +28,15 @@ class LoginPage extends React.Component {
         </div>
 
         <div className="fl w-100 tc">
-          <NavLink to="/dashboard"><span
-            class="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue"
-            href="#0"
-          >
-            {" "}
-            Se connecter{" "}
-          </span></NavLink>
+          <NavLink to="/dashboard">
+            <span
+              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue"
+              href="#0"
+            >
+              {" "}
+              Se connecter{" "}
+            </span>
+          </NavLink>
         </div>
       </div>
     );
