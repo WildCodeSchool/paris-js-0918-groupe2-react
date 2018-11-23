@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Creanciers from "./creanciers";
-import Debiteurs from "./debiteurs";
-import Formulairecreancier from "./formulairecreancier";
+// import Debiteurs from "./debiteurs";
+// import Formulairecreancier from "./formulairecreancier";
 import Nav from "./Nav";
 
 class dashboard extends Component {
