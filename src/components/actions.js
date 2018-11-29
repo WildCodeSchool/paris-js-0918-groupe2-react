@@ -53,9 +53,10 @@ class Actions extends Component {
             </form>
           </div>
         </div>
-      <div className="fl w-100 pa4 ">
-        <Tabfacture />
-        <Tabavoir />
+        <div className="fl w-100 pa4 ">
+          <Tabfacture />
+          <Tabavoir />
+        </div>
       </div>
     );
   }
