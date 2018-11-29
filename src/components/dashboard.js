@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import Creanciers from "./creanciers";
+
 import Actions from "./actions";
+
+// import Debiteurs from "./debiteurs";
+// import Formulairecreancier from "./formulairecreancier";
+
 import Header from "./Header";
 import Nav from "./Nav";
 
-class dashboard extends Component {
+class Dashboard extends Component {
   state = {};
   render() {
     return (
@@ -24,4 +29,4 @@ class dashboard extends Component {
   }
 }
 
-export default dashboard;
+export default Dashboard;
