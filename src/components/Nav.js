@@ -4,8 +4,8 @@ import icone_creanciers from "./Icones_Arigoni/icone_creanciers.png";
 import icone_debiteurs from "./Icones_Arigoni/icone_debiteurs.png";
 import icone_centre_actions from "./Icones_Arigoni/icone_centre_actions.png";
 import icone_historique from "./Icones_Arigoni/icone_historique.png";
-import "./Nav.css";
 import { NavLink } from "react-router-dom";
+import "./Nav.css";
 
 class Nav extends Component {
   render() {
@@ -52,10 +52,16 @@ class Nav extends Component {
                   Actions
                 </p>
               </NavLink>
-              <p className="f3 b db no-underline hover-white grow">
-                <img src={icone_historique} alt="compte" className="iconeNav" />{" "}
-                Historique
-              </p>
+              <NavLink to="/historique">
+                <p className="f3 b db no-underline hover-white grow">
+                  <img
+                    src={icone_historique}
+                    alt="compte"
+                    className="iconeNav"
+                  />{" "}
+                  Historique
+                </p>
+              </NavLink>
             </nav>
           </div>
         </div>
