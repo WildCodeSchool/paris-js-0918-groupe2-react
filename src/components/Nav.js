@@ -11,6 +11,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div className=" ba-ns b--transparent allNav white">
+      
         <div className="topNav">
           <h1 className="ml4 mt4 bb b--transparent h3">TABLEAU DE BORD</h1>
         </div>
@@ -18,28 +19,28 @@ class Nav extends React.Component {
           <nav className="ml4 navPage">
             <a
               className="f3 b db mb6 mt5 no-underline hover-white grow"
-              href="http://www.google.com"
+              href="#"
             >
               <img src={icone_mon_compte} alt="compte" className="iconeNav" />{" "}
               Mon compte
             </a>
             <a
               className="f3 b db mb6 no-underline hover-white grow"
-              href="http://www.google.com"
+              href="#"
             >
               <img src={icone_creanciers} alt="compte" className="iconeNav" />{" "}
               Créanciers
             </a>
             <a
               className="f3 b db mb6 no-underline hover-white grow"
-              href="http://www.google.com"
+              href="#"
             >
               <img src={icone_debiteurs} alt="compte" className="iconeNav" />{" "}
               Débiteurs
             </a>
             <a
               className="f3 b db mb6 no-underline hover-white grow"
-              href="http://www.google.com"
+              href="#"
             >
               <img
                 src={icone_centre_actions}
@@ -50,7 +51,7 @@ class Nav extends React.Component {
             </a>
             <a
               className="f3 b db no-underline hover-white grow"
-              href="http://www.google.com"
+              href="#"
             >
               <img src={icone_historique} alt="compte" className="iconeNav" />{" "}
               Historique
