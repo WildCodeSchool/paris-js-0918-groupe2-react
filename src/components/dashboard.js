@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Creanciers from "./creanciers";
+/*import creanciers from "./creanciers";*/
 
 import Actions from "./actions";
 
