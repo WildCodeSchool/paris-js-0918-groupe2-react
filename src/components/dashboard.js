@@ -5,7 +5,7 @@ import Creanciers from "./creanciers";
 import Header from "./Header";
 import Nav from "./Nav";
 
-class dashboard extends Component {
+class Dashboard extends Component {
   state = {};
   render() {
     return (
@@ -24,4 +24,4 @@ class dashboard extends Component {
   }
 }
 
-export default dashboard;
+export default Dashboard;
