@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./actions.css";
 import Tabfacture from "./tabfacture";
 import Tabavoir from "./tabavoir";
+import Checkbox from "./Checkbox";
 
 class Actions extends Component {
   state = {};
@@ -56,6 +57,7 @@ class Actions extends Component {
         <div className="fl w-100 pa4 ">
           <Tabfacture />
           <Tabavoir />
+          <Checkbox />
         </div>
       </div>
     );
