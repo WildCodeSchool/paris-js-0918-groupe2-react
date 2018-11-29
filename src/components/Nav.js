@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import icone_mon_compte from "./Icones_Arigoni/icone_mon_compte.png";
 import icone_creanciers from "./Icones_Arigoni/icone_creanciers.png";
 import icone_debiteurs from "./Icones_Arigoni/icone_debiteurs.png";
 import icone_centre_actions from "./Icones_Arigoni/icone_centre_actions.png";
 import icone_historique from "./Icones_Arigoni/icone_historique.png";
 import "./Nav.css";
-// import { Switch, Route } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
-class Nav extends React.Component {
+class Nav extends Component {
   render() {
     return (
       <div className=" ba-ns b--transparent allNav white">
