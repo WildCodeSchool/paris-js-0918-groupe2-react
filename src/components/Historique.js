@@ -35,7 +35,6 @@ class Historique extends React.Component {
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
-                  Action en cours
                   <tr className="stripe-dark">
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
