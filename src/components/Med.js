@@ -8,12 +8,12 @@ class Med extends React.Component {
         <div className="title_débiteur pl4">
           <h1 className="f2 tc lh-copy"> Historique des actions </h1>
         </div>
-        <h2 className="f5 ml3 ">Historique des mises en demeure</h2>
+        <h2 className="f5 ml3 ">Historique des actions</h2>
         <div className="fl w-100 pt4 ">
           <div className="fl w-100 tc">
-            <span className="pr2"> Mise en demeure </span>
+            <span className="pr2"> Actions en cours </span>
             <input type="checkbox" name="MED" value="MED" />
-            <span className="pr2 pl4"> Injonction de payer </span>
+            <span className="pr2 pl4"> Actions cloturées </span>
             <input type="checkbox" name="injonction" value="injonction" />
           </div>
           <div className="fl w-40" />
