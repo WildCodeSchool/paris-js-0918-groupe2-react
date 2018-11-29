@@ -8,6 +8,7 @@ class Tabavoir extends Component {
     return (
       <div>
         <div className="overflow-auto">
+          Tableau des avoirs
           <table className="f6 w-100 center" cellSpacing="0">
             <thead>
               <tr className="stripe-dark">

@@ -44,10 +44,10 @@ class Historique extends React.Component {
 
                     <td className="pa3">
                       <input type="checkbox" name="encours" value="true" />
-                      Action en cours
+                      En cours
                       <br />
                       <input type="checkbox" name="cloturee" value="false" />
-                      Action cloturée
+                      Cloturée
                     </td>
                     <td className="pa3">
                       <img
