@@ -3,7 +3,6 @@
   background-color: #45445d;
 }
 
-
 .topNav {
   background-color: #3e3d54;
   display: flex;
@@ -12,7 +11,6 @@
 .navPage a {
   text-decoration: none;
   color: inherit;
-  
 }
 
 .iconeNav {
@@ -43,8 +41,8 @@
     font-size: 0.9em;
   }
 }
-@media only screen and  (max-width: 1440px){
-  .allNav{
+@media only screen and (max-width: 1440px) {
+  .allNav {
     height: 100%;
     background-color: #45445d;
   }

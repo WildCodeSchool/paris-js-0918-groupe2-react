@@ -4,13 +4,12 @@ import icone_creanciers from "./Icones_Arigoni/icone_creanciers.png";
 import icone_debiteurs from "./Icones_Arigoni/icone_debiteurs.png";
 import icone_centre_actions from "./Icones_Arigoni/icone_centre_actions.png";
 import icone_historique from "./Icones_Arigoni/icone_historique.png";
-import "./Nav.css";
 import { NavLink } from "react-router-dom";
+import "./Nav.css";
 
 class Nav extends Component {
   render() {
     return (
-
       <div>
         <div className=" ba-ns b--transparent allNav white">
           <div className="topNav">
@@ -65,7 +64,6 @@ class Nav extends Component {
               </NavLink>
             </nav>
           </div>
-
         </div>
       </div>
     );

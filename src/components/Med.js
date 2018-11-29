@@ -1,4 +1,5 @@
 import React from "react";
+// import "./Med.css";
 
 class Med extends React.Component {
   render() {
@@ -7,9 +8,9 @@ class Med extends React.Component {
         <div className="title_débiteur pl4">
           <h1 className="f2 tc lh-copy"> Historique des actions </h1>
         </div>
-
+        <h2 className="f5 ml3 ">Historique des mises en demeure</h2>
         <div className="fl w-100 pt4 ">
-          <div className="fl w-60 tc">
+          <div className="fl w-100 tc">
             <span className="pr2"> Mise en demeure </span>
             <input type="checkbox" name="MED" value="MED" />
             <span className="pr2 pl4"> Injonction de payer </span>
@@ -40,17 +41,16 @@ class Med extends React.Component {
                 </tr>
               </tbody>
             </table>
-            <div className="buttondebiteur tc pt4">
+
+            <div className="buttondebiteur tr pt4">
               <a
-                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+                className="bg-red f6 grow no-underline pa3 mb2 dib white "
                 href="#0"
               >
                 Supprimer le document
-              </a>
-            </div>
-            <div className="buttondebiteur tc pt4">
+              </a>{" "}
               <a
-                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+                className="boutoncouleur f6 grow no-underline pa3 mb2 dib white "
                 href="#0"
               >
                 Télécharger le document
