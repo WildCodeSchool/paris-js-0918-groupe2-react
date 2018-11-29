@@ -6,6 +6,7 @@ import Login from "./components/LoginPage";
 import creanciers from "./components/creanciers";
 import debiteurs from "./components/debiteurs";
 import actions from "./components/actions";
+import Historique from "./components/Historique";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
         <Route exact path="/creanciers" component={creanciers} />
         <Route exact path="/debiteurs" component={debiteurs} />
         <Route exact path="/actions" component={actions} />
+        <Route exact path="/historique" component={Historique} />
       </Switch>
     );
   }
