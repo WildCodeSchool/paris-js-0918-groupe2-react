@@ -4,8 +4,8 @@ class Actions extends Component {
   state = {};
   render() {
     return (
-      <div>
-        <p className="fl w-100">pouet</p>
+      <div className="fl w-100">
+        <p> </p>
       </div>
     );
   }
