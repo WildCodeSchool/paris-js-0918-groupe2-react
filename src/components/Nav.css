@@ -1,5 +1,5 @@
 .allNav {
-  height: 100vh;
+  height: 100%;
   background-color: #45445d;
 }
 
@@ -20,9 +20,9 @@
 }
 
 /* Sur tous types d'écran, quand la largeur de la fenêtre est inférieure à 990px */
-@media screen and (max-width: 990px) {
+@media only screen and (max-width: 990px) {
   .allNav {
-    height: 100vh;
+    height: 100%;
   }
 
   .topNav h1 {
@@ -37,6 +37,17 @@
   }
 
   .navPage a {
+    margin-bottom: 3%;
     font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .allNav {
+    height: 100vh;
+    background-color: #45445d;
+  }
+
+  .navPage a {
+    margin-bottom: 35%;
   }
 }
