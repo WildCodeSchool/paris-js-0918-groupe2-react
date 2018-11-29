@@ -52,10 +52,16 @@ class Nav extends Component {
                   Actions
                 </p>
               </NavLink>
-              <p className="f3 b db no-underline hover-white grow">
-                <img src={icone_historique} alt="compte" className="iconeNav" />{" "}
-                Historique
-              </p>
+              <NavLink to="/historique">
+                <p className="f3 b db no-underline hover-white grow">
+                  <img
+                    src={icone_historique}
+                    alt="compte"
+                    className="iconeNav"
+                  />{" "}
+                  Historique
+                </p>
+              </NavLink>
             </nav>
           </div>
         </div>
