@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 class Nav extends Component {
   render() {
     return (
+
       <div>
         <div className=" ba-ns b--transparent allNav white">
           <div className="topNav">
@@ -64,6 +65,7 @@ class Nav extends Component {
               </NavLink>
             </nav>
           </div>
+
         </div>
       </div>
     );
