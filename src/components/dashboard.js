@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Creanciers from "./creanciers";
-
+import Compte from "./compte";
 import Actions from "./actions";
 
 // import Debiteurs from "./debiteurs";
@@ -20,7 +20,8 @@ class Dashboard extends Component {
         <div className="fl w-80">
           <Header />
           {/* <Creanciers /> */}
-          <Actions />
+          {/* <Actions /> */}
+          <Compte />
         </div>
         {/* <Debiteurs /> */}
         {/* <Formulairecreancier /> */}
