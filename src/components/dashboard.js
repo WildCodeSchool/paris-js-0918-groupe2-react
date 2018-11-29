@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 import Creanciers from "./creanciers";
+<<<<<<< HEAD
 // import Debiteurs from "./debiteurs";
 // import Formulairecreancier from "./formulairecreancier";
 import Header from "./Header";
 
+=======
+import Header from "./Header";
+>>>>>>> f94787f7b4606a4bca639e13a749eaf1e483b989
 import Nav from "./Nav";
 
 class dashboard extends Component {
@@ -18,7 +22,6 @@ class dashboard extends Component {
           <Header />
           <Creanciers />
         </div>
-
         {/* <Debiteurs /> */}
         {/* <Formulairecreancier /> */}
       </div>
