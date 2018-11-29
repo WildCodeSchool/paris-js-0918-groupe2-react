@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Tabfacture from "./Tabfacture";
-import Tabavoir from "./Tabavoir";
+import Tabfacture from "./tabfacture";
+import Tabavoir from "./tabavoir";
 
 class Actions extends Component {
   state = {};
