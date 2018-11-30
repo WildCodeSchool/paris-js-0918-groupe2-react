@@ -43,13 +43,13 @@ class Injonction extends React.Component {
             </table>
             <div className="buttondebiteur tr pt4">
               <a
-                className="f6 grow no-underline  pa3 mb2 dib white bg-red "
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-red "
                 href="#0"
               >
                 Supprimer le document
               </a>{" "}
               <a
-                className="boutoncouleur f6 grow no-underline pa3 mb2 dib white "
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 href="#0"
               >
                 Télécharger le document

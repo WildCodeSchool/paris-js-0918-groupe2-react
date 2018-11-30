@@ -5,10 +5,9 @@ class Compte extends Component {
   state = {};
   render() {
     return (
-      <div className="fl w-100">
-        <div className="fl w-60 pt2 pl4">
-          <span className="f2 db">Les informations de mon cabinet</span>
-
+      <div className="fl w-100 pt3">
+        <div className="fl w-60 pl4">
+          <h1 className="f2 db lh-copy">Les informations de mon cabinet</h1>
           <div className="fl w-40">
             <div className="pt3">
               <span className="db pr3 mtInfo nowrap">Titre:</span>
@@ -97,7 +96,7 @@ class Compte extends Component {
               </form>
               <div className="pt4 moveSave">
                 <a
-                  className="boutonSave f6 grow no-underline br-pill pa3 mb2 dib white "
+                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                   href="#0"
                 >
                   Sauvegarder
@@ -106,7 +105,7 @@ class Compte extends Component {
             </div>
           </div>
         </div>
-        <div className="fl w-40 tc">
+        <div className="fl w-40 pt3 tc">
           <span className="f1 b">Cabinet Arigoni</span>
         </div>
       </div>

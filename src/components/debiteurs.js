@@ -8,13 +8,15 @@ class Debiteurs extends Component {
   render() {
     return (
       <div className="debiteur">
-        <div className="fl w-70">
-          <div className="title_débiteur pl4">
-            <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
+        <div className="fl w-60">
+          <div className="pl4">
+            <h1 className="f2 lh-copy nowrap">
+              Informations sur les débiteurs
+            </h1>
             <h2 className="pt2 f4 lh-copy">Liste des débiteurs</h2>
           </div>
         </div>
-        <div className="fl w-30 pt4">
+        <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
               <input
@@ -160,7 +162,7 @@ class Debiteurs extends Component {
             </table>
             <div className="buttondebiteur tc pt4">
               <a
-                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 href="#0"
               >
                 Créer un débiteur
