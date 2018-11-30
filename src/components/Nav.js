@@ -15,6 +15,8 @@ class Nav extends Component {
           <div className="topNav">
             <h1 className="ml4 mt4 bb b--transparent h3">TABLEAU DE BORD</h1>
           </div>
+
+          {/* Navlink partout quand on clique ça affiche le composant qu'on demande*/}
           <div className="colorNav">
             <nav className="ml4 navPage">
               <NavLink

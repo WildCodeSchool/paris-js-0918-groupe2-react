@@ -12,6 +12,7 @@ class Historique extends React.Component {
           </div>
           <h2 className="f5 ml4 ">Historique des actions</h2>
           <div className="fl w-100 pt4 ">
+            {/* checkbox */}
             <div className="fl w-100 tc">
               <span className="pr2"> Actions en cours </span>
               <input type="checkbox" name="MED" value="MED" />
@@ -20,7 +21,7 @@ class Historique extends React.Component {
             </div>
             <div className="fl w-40" />
           </div>
-
+          {/* tableau */}
           <div className="fl w-100 pa4 ">
             <div className="overflow-auto">
               <table className="f6 w-100 center" cellSpacing="0">
@@ -43,7 +44,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button className="button">Cloturée</button>
+                      <button className="button">cloturer</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -67,7 +68,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button className="button">Cloturée</button>
+                      <button className="button">cloturer</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -91,7 +92,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button className="button">Cloturée</button>
+                      <button className="button">cloturer</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -115,7 +116,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button className="button">Cloturée</button>
+                      <button className="button">cloturer</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -139,7 +140,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button className="button">Cloturée</button>
+                      <button className="button">cloturer</button>
                     </td>
                     <td className="pa3">
                       <img
