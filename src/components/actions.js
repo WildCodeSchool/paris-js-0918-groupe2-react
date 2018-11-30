@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./actions.css";
 import Tabfacture from "./tabfacture";
-import Tabavoir from "./tabavoir";
+// import Tabavoir from "./tabavoir";
 import Checkbox from "./Checkbox";
 
 class Actions extends Component {
@@ -56,7 +56,7 @@ class Actions extends Component {
         </div>
         <div className="fl w-100 pa4 ">
           <Tabfacture />
-          <Tabavoir />
+          {/* <Tabavoir /> */}
           <Checkbox />
         </div>
       </div>

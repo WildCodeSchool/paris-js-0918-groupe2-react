@@ -8,13 +8,15 @@ class Debiteurs extends Component {
   render() {
     return (
       <div className="debiteur">
-        <div className="fl w-70">
-          <div className="title_débiteur pl4">
-            <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
+        <div className="fl w-60">
+          <div className="pl4">
+            <h1 className="f2 lh-copy nowrap">
+              Informations sur les débiteurs
+            </h1>
             <h2 className="pt2 f4 lh-copy">Liste des débiteurs</h2>
           </div>
         </div>
-        <div className="fl w-30 pt4">
+        <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
               <input

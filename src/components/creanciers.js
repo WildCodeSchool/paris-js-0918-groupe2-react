@@ -14,7 +14,8 @@ class Creanciers extends Component {
             <h2 className="pt2 f4 lh-copy">Liste des créanciers</h2>
           </div>
         </div>
-        <div className="fl w-40 pt4">
+
+        <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
               <input
