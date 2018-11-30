@@ -1,12 +1,5 @@
 import React, { Component } from "react";
-import Creanciers from "./creanciers";
 import Compte from "./compte";
-
-import Actions from "./actions";
-
-// import Debiteurs from "./debiteurs";
-// import Formulairecreancier from "./formulairecreancier";
-
 import Header from "./Header";
 import Nav from "./Nav";
 

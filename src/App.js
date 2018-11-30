@@ -11,14 +11,16 @@ import Historique from "./components/Historique";
 class App extends Component {
   render() {
     return (
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <Route exact path="/dashboard" component={dashboard} />
-        <Route exact path="/creanciers" component={creanciers} />
-        <Route exact path="/debiteurs" component={debiteurs} />
-        <Route exact path="/actions" component={actions} />
-        <Route exact path="/historique" component={Historique} />
-      </Switch>
+      <div>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/dashboard" component={dashboard} />
+          <Route exact path="/creanciers" component={creanciers} />
+          <Route exact path="/debiteurs" component={debiteurs} />
+          <Route exact path="/actions" component={actions} />
+          <Route exact path="/historique" component={Historique} />
+        </Switch>
+      </div>
     );
   }
 }
