@@ -1,0 +1,12 @@
+.StylishForm{
+    margin-top: 15%;
+    width: 50%;
+    background-color: whitesmoke;
+}
+
+.StylishForm input {
+    width: 100%;
+}
+.bg-fac {
+    background-color: #e6e6e6;
+}

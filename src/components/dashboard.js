@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Creanciers from "./creanciers";
 import Header from "./Header";
 import Nav from "./Nav";
+import Facture from "./Facture";
 
 class dashboard extends Component {
   state = {};
@@ -13,7 +14,8 @@ class dashboard extends Component {
         </div>
         <div className="fl w-80">
           <Header />
-          <Creanciers />
+          {/* <Creanciers /> */}
+          <Facture />
         </div>
         {/* <Debiteurs /> */}
         {/* <Formulairecreancier /> */}
