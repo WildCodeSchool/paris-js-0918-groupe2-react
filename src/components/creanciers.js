@@ -14,7 +14,8 @@ class Creanciers extends Component {
             <h2 className="pt2 f4 lh-copy">Liste des créanciers</h2>
           </div>
         </div>
-        <div className="fl w-40 pt4">
+
+        <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
               <input
@@ -160,7 +161,7 @@ class Creanciers extends Component {
             </table>
             <div className="buttoncreancier tc pt4">
               <a
-                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 href="#0"
               >
                 Créer un créancier

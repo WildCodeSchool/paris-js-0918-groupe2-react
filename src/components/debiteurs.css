@@ -2,7 +2,9 @@
 
 .searcharigo {
   width: 100%;
-  position: relative;
+  position: absolute;
+  padding-top: 6.7em;
+  margin-left: 200%;
 }
 
 .searchTerm {
