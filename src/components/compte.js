@@ -4,12 +4,13 @@ import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 import signature from "./Icones_Arigoni/signature.png";
-
+import Acomptes from "./Acomptes";
 class Compte extends Component {
   state = {};
   render() {
     return (
       <div className="fl w-100 pt3">
+        <Acomptes />
         <div className="fl w-60 pl4">
           <h1 className="f2 db lh-copy">Les informations de mon cabinet</h1>
           <div className="fl w-40">
@@ -144,15 +145,20 @@ class Compte extends Component {
               className="w-33-ns ml3 h3 signature"
               src={signature}
               alt="signature"
-            />{" "} <br />
+            />{" "}
+            <br />
             <div className="mt3">
-            <img className="icone pointer ml3" src={upload} alt="upload" />
-            <img className="icone pointer ml2" src={modifier} alt="modifier" />
-            <img
-              className="icone pointer ml2"
-              src={supprimer}
-              alt="supprimer"
-            />
+              <img className="icone pointer ml3" src={upload} alt="upload" />
+              <img
+                className="icone pointer ml2"
+                src={modifier}
+                alt="modifier"
+              />
+              <img
+                className="icone pointer ml2"
+                src={supprimer}
+                alt="supprimer"
+              />
             </div>
           </div>
         </div>
