@@ -28,13 +28,13 @@ class Checkbox extends Component {
         </div>
         <div className=" fl w-100 tc pt4 mt3 buttonsauvegarder">
           <a
-            className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+            className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
             href="#0"
           >
             Créer une injonction de payer
           </a>
           <a
-            className="boutoncouleur ml4 f6 grow no-underline br-pill pa3 mb2 dib white "
+            className="f6 ml4 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
             href="#0"
           >
             Créer une mise en demeure
