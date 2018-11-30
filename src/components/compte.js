@@ -144,15 +144,20 @@ class Compte extends Component {
               className="w-33-ns ml3 h3 signature"
               src={signature}
               alt="signature"
-            />{" "} <br />
+            />{" "}
+            <br />
             <div className="mt3">
-            <img className="icone pointer ml3" src={upload} alt="upload" />
-            <img className="icone pointer ml2" src={modifier} alt="modifier" />
-            <img
-              className="icone pointer ml2"
-              src={supprimer}
-              alt="supprimer"
-            />
+              <img className="icone pointer ml3" src={upload} alt="upload" />
+              <img
+                className="icone pointer ml2"
+                src={modifier}
+                alt="modifier"
+              />
+              <img
+                className="icone pointer ml2"
+                src={supprimer}
+                alt="supprimer"
+              />
             </div>
           </div>
         </div>
