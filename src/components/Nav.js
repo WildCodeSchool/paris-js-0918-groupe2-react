@@ -17,12 +17,24 @@ class Nav extends Component {
           </div>
           <div className="colorNav">
             <nav className="ml4 navPage">
-              <p className="f3 b db mb6 mt5 no-underline hover-white grow">
-                <img src={icone_mon_compte} alt="compte" className="iconeNav" />{" "}
-                Mon compte
-              </p>
+              <NavLink
+                to="/dashboard/moncompte"
+                onClick={() => this.props.pageChange("moncompte")}
+              >
+                <p className="f3 b db mb6 mt5 no-underline hover-white grow">
+                  <img
+                    src={icone_mon_compte}
+                    alt="compte"
+                    className="iconeNav"
+                  />{" "}
+                  Mon compte
+                </p>
+              </NavLink>
 
-              <NavLink to="/creanciers">
+              <NavLink
+                to="/dashboard/creanciers"
+                onClick={() => this.props.pageChange("creanciers")}
+              >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
                     src={icone_creanciers}
@@ -32,7 +44,10 @@ class Nav extends Component {
                   Créanciers
                 </p>
               </NavLink>
-              <NavLink to="/debiteurs">
+              <NavLink
+                to="/dashboard/debiteurs"
+                onClick={() => this.props.pageChange("debiteurs")}
+              >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
                     src={icone_debiteurs}
@@ -42,7 +57,10 @@ class Nav extends Component {
                   Débiteurs
                 </p>
               </NavLink>
-              <NavLink to="/actions">
+              <NavLink
+                to="/dashboard/actions"
+                onClick={() => this.props.pageChange("actions")}
+              >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
                     src={icone_centre_actions}
@@ -52,7 +70,10 @@ class Nav extends Component {
                   Actions
                 </p>
               </NavLink>
-              <NavLink to="/historique">
+              <NavLink
+                to="/dashboard/historique"
+                onClick={() => this.props.pageChange("historique")}
+              >
                 <p className="f3 b db no-underline hover-white grow">
                   <img
                     src={icone_historique}
