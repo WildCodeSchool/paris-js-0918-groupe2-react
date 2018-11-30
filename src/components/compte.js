@@ -4,13 +4,12 @@ import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 import signature from "./Icones_Arigoni/signature.png";
-import Acomptes from "./Acomptes";
+
 class Compte extends Component {
   state = {};
   render() {
     return (
       <div className="fl w-100 pt3">
-        <Acomptes />
         <div className="fl w-60 pl4">
           <h1 className="f2 db lh-copy">Les informations de mon cabinet</h1>
           <div className="fl w-40">
