@@ -1,26 +1,95 @@
 import React, { Component } from "react";
 import Compte from "./compte";
+import Creanciers from "./creanciers";
+import Debiteurs from "./debiteurs";
+import Historique from "./Historique";
+import Actions from "./actions";
 import Header from "./Header";
 import Nav from "./Nav";
 
 class Dashboard extends Component {
-  state = {};
+  state = {
+    activePage: "moncompte"
+  };
+
+  handlePageChange = activePage => {
+    this.setState({
+      activePage: activePage
+    });
+  };
+
   render() {
-    return (
-      <div>
-        <div className="fl w-20">
-          <Nav />
+    if (this.state.activePage === "moncompte") {
+      return (
+        <div>
+          <div className="fl w-20">
+            <Nav pageChange={this.handlePageChange} />
+          </div>
+          <div className="fl w-80">
+            <Header />
+            <Compte />
+            {/* <button onClick={() => this.handlePageChange()}>
+              Changer vers historique
+            </button>
+            <p>{this.props.match.params.composant}</p> */}
+          </div>
         </div>
-        <div className="fl w-80">
-          <Header />
-          {/* <Creanciers /> */}
-          {/* <Actions /> */}
-          <Compte />
+      );
+    } else if (this.state.activePage === "creanciers") {
+      return (
+        <div>
+          <div className="fl w-20">
+            <Nav pageChange={this.handlePageChange} />
+          </div>
+          <div className="fl w-80">
+            <Header />
+            <Creanciers />
+          </div>
         </div>
-        {/* <Debiteurs /> */}
-        {/* <Formulairecreancier /> */}
-      </div>
-    );
+      );
+    } else if (this.state.activePage === "debiteurs") {
+      return (
+        <div>
+          <div className="fl w-20">
+            <Nav pageChange={this.handlePageChange} />
+          </div>
+          <div className="fl w-80">
+            <Header />
+            <Debiteurs />
+          </div>
+        </div>
+      );
+    } else if (this.state.activePage === "actions") {
+      return (
+        <div>
+          <div className="fl w-20">
+            <Nav pageChange={this.handlePageChange} />
+          </div>
+          <div className="fl w-80">
+            <Header />
+            <Actions />
+          </div>
+        </div>
+      );
+    } else if (this.state.activePage === "historique") {
+      return (
+        <div>
+          <div className="fl w-20">
+            <Nav pageChange={this.handlePageChange} />
+          </div>
+          <div className="fl w-80">
+            <Header />
+            <Historique />
+          </div>
+        </div>
+      );
+    } else if (this.state.activePage === "404") {
+      return (
+        <div>
+          <div className="fl w-20">Ceci est une erreur ! Aaaah !</div>
+        </div>
+      );
+    } else return null;
   }
 }
 

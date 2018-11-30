@@ -28,7 +28,7 @@ class LoginPage extends React.Component {
         </div>
 
         <div className="fl w-100 tc">
-          <NavLink to="/dashboard">
+          <NavLink to="/dashboard/moncompte">
             <span
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue"
               href="#0"
