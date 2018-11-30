@@ -39,6 +39,63 @@ class Tabavoir extends Component {
                   />
                 </td>
               </tr>
+              <tr className="stripe-white">
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={modifier}
+                    alt="modifier"
+                  />
+                </td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={supprimer}
+                    alt="supprimer"
+                  />
+                </td>
+              </tr>
+              <tr className="stripe-dark">
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={modifier}
+                    alt="modifier"
+                  />
+                </td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={supprimer}
+                    alt="supprimer"
+                  />
+                </td>
+              </tr>
+              <tr className="stripe-white">
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">xxxxxx</td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={modifier}
+                    alt="modifier"
+                  />
+                </td>
+                <td className="pa3">
+                  <img
+                    className="icone pointer"
+                    src={supprimer}
+                    alt="supprimer"
+                  />
+                </td>
+              </tr>
             </tbody>
           </table>
           <div className="buttondebiteur tc pt4">

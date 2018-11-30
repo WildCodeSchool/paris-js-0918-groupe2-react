@@ -1,6 +1,7 @@
 import React from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
-import upload from "./Icones_Arigoni/icone_upload.png";
+import download from "./Icones_Arigoni/icone_upload.png";
+import "./Historique.css";
 class Historique extends React.Component {
   render() {
     return (
@@ -42,11 +43,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <input type="checkbox" name="encours" value="true" />
-                      En cours
-                      <br />
-                      <input type="checkbox" name="cloturee" value="false" />
-                      Cloturée
+                      <button>Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -57,9 +54,105 @@ class Historique extends React.Component {
                     </td>
                     <td className="pa3">
                       <img
+                        className="icone download pointer"
+                        src={download}
+                        alt="download"
+                      />
+                    </td>
+                  </tr>
+                  <tr className="stripe-white">
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+
+                    <td className="pa3">
+                      <button>Cloturée</button>
+                    </td>
+                    <td className="pa3">
+                      <img
                         className="icone pointer"
-                        src={upload}
-                        alt="upload"
+                        src={supprimer}
+                        alt="supprimer"
+                      />
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone download pointer"
+                        src={download}
+                        alt="download"
+                      />
+                    </td>
+                  </tr>
+                  <tr className="stripe-dark">
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+
+                    <td className="pa3">
+                      <button>Cloturée</button>
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone pointer"
+                        src={supprimer}
+                        alt="supprimer"
+                      />
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone download pointer"
+                        src={download}
+                        alt="download"
+                      />
+                    </td>
+                  </tr>
+                  <tr className="stripe-dark">
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+
+                    <td className="pa3">
+                      <button>Cloturée</button>
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone pointer"
+                        src={supprimer}
+                        alt="supprimer"
+                      />
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone download pointer"
+                        src={download}
+                        alt="download"
+                      />
+                    </td>
+                  </tr>
+                  <tr className="stripe-dark">
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+                    <td className="pa3">xxxxxx</td>
+
+                    <td className="pa3">
+                      <button>Cloturée</button>
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone pointer"
+                        src={supprimer}
+                        alt="supprimer"
+                      />
+                    </td>
+                    <td className="pa3">
+                      <img
+                        className="icone download pointer"
+                        src={download}
+                        alt="download"
                       />
                     </td>
                   </tr>
