@@ -5,3 +5,28 @@
 .inputdiv {
   margin-bottom: 2%;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.boutoncouleur {
+  background-color: #6978fc;
+}
+
+.moveSave {
+  padding-left: 9em;
+}
+
+.tab {
+  width: 50%;
+}
+
+.buttonSave {
+  margin-left: 60%;
+}
+
+.buttonNewac {
+  margin-left: 35%;
+}
+.titre {
+  margin-left: 28%;
+}
