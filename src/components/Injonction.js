@@ -10,6 +10,7 @@ class Injonction extends React.Component {
         </div>
         <h2 className="f5 ml3">Historique des injonctions</h2>
         <div className="fl w-100 pt4 ">
+          {/* Checkbox */}
           <div className="fl w-100 tc">
             <span className="pr2"> Mise en demeure </span>
             <input type="checkbox" name="MED" value="MED" />
@@ -18,7 +19,7 @@ class Injonction extends React.Component {
           </div>
           <div className="fl w-40" />
         </div>
-
+        {/* tableau */}
         <div className="fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
@@ -41,6 +42,7 @@ class Injonction extends React.Component {
                 </tr>
               </tbody>
             </table>
+            {/* boutons */}
             <div className="buttondebiteur tr pt4">
               <a
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-red "

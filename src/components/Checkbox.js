@@ -4,7 +4,8 @@ class Checkbox extends Component {
   state = {};
   render() {
     return (
-      <div className="">
+      <div>
+        {/* checkbox pour produits */}
         <div className="fl w-60 pt4 tr">
           <div className="fl w-60">
             <span className="pr2">Produits vendus</span>
@@ -14,6 +15,7 @@ class Checkbox extends Component {
           </div>
         </div>
         <br />
+        {/* Input pour honoraires */}
         <div className="fl w-40 pt2">
           <form action="facture">
             {" "}
@@ -26,6 +28,7 @@ class Checkbox extends Component {
             />
           </form>
         </div>
+        {/* Boutons */}
         <div className=" fl w-100 tc pt4 mt3 buttonsauvegarder">
           <a
             className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

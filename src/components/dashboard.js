@@ -8,10 +8,12 @@ import Header from "./Header";
 import Nav from "./Nav";
 
 class Dashboard extends Component {
+  // la page d'origine c'est "moncompte on la défini dans une state"
   state = {
     activePage: "moncompte"
   };
 
+  //on va changer la state pour changer la page active vers la page demandée
   handlePageChange = activePage => {
     this.setState({
       activePage: activePage
@@ -19,6 +21,7 @@ class Dashboard extends Component {
   };
 
   render() {
+    //si la page cliquée c'est moncompte alors return du composant nav,header et compte
     if (this.state.activePage === "moncompte") {
       return (
         <div>
@@ -35,6 +38,7 @@ class Dashboard extends Component {
           </div>
         </div>
       );
+      //si la page cliquée c'est creanciers alors return du composant nav,header et creanciers
     } else if (this.state.activePage === "creanciers") {
       return (
         <div>
@@ -47,6 +51,8 @@ class Dashboard extends Component {
           </div>
         </div>
       );
+
+      //si la page cliquée c'est debiteurs alors return du composant nav,header et debiteurs
     } else if (this.state.activePage === "debiteurs") {
       return (
         <div>
@@ -59,6 +65,7 @@ class Dashboard extends Component {
           </div>
         </div>
       );
+      //si la page cliquée c'est action alors return du composant nav,header et action
     } else if (this.state.activePage === "actions") {
       return (
         <div>
@@ -71,6 +78,7 @@ class Dashboard extends Component {
           </div>
         </div>
       );
+      //si la page cliquée c'est historique alors return du composant nav,header et historique
     } else if (this.state.activePage === "historique") {
       return (
         <div>
@@ -83,13 +91,16 @@ class Dashboard extends Component {
           </div>
         </div>
       );
+      //si la page cliquée c'est nawak alors return erreur
     } else if (this.state.activePage === "404") {
       return (
         <div>
           <div className="fl w-20">Ceci est une erreur ! Aaaah !</div>
         </div>
       );
-    } else return null;
+    }
+    //sinon return rien
+    else return null;
   }
 }
 

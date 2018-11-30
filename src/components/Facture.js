@@ -7,9 +7,11 @@ class Facture extends Component {
   render() {
     return (
       <div className="Factureimpayee ml4 mt4">
+        {/* factures impayées */}
         <div className="fl w-50">
           <h1 className="f4 lh-copy">Facture impayée: compagnie WXY vs AZY</h1>
           <div className="StylishForm">
+            {/* Formulaire en input */}
             <form>
               <div className="inputdiv">
                 <div>
@@ -97,13 +99,15 @@ class Facture extends Component {
                 </div>
               </div>
             </form>
+            <div className="fl w-60 pt4 tr ml4" />
           </div>
         </div>
+        {/* Acomptes */}
         <div className="fl w-40 ml5">
           <div className="Acomptefacture pl4">
             <h1 className="f4 lh-copy">Acomptes liés à cette facture</h1>
           </div>
-
+          {/* tableau acompte */}
           <div className="tab">
             <div className="fl pa4 ">
               <div className="overflow-auto">
@@ -235,6 +239,7 @@ class Facture extends Component {
                   </tbody>
                 </table>
               </div>
+              {/* Bouton +nouvel acompte */}
               <div className="buttonNewac ">
                 <span
                   className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
@@ -247,7 +252,7 @@ class Facture extends Component {
               <p className="titre">
                 Taux de pénalitées de retard applicables :
               </p>
-
+              {/* checkbox */}
               <div className="fl w-60 pt4 tr ml4">
                 <div className="fl w-60 ml6">
                   <span className="pr2 ">BCE +10 points</span>
@@ -256,6 +261,7 @@ class Facture extends Component {
                   <span className="pr2 pl4">BCE +8 points </span>
                   <input type="checkbox" name="servicesF" value="servicesF" />
                 </div>
+                {/* bouton sauvegarder */}
                 <div className="buttonSave ">
                   <span
                     className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"

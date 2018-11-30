@@ -7,6 +7,7 @@ class Tabfacture extends Component {
   render() {
     return (
       <div>
+        {/* tableau */}
         <div className="overflow-auto">
           Tableau des factures
           <table className="f6 w-100 center" cellSpacing="0">
@@ -113,6 +114,7 @@ class Tabfacture extends Component {
               </tr>
             </tbody>
           </table>
+          {/* bouton */}
           <div className="buttondebiteur tc pt4">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

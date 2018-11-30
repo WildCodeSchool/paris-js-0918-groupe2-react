@@ -16,6 +16,7 @@ class Debiteurs extends Component {
             <h2 className="pt2 f4 lh-copy">Liste des débiteurs</h2>
           </div>
         </div>
+        {/* Search bar */}
         <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
@@ -30,7 +31,7 @@ class Debiteurs extends Component {
             </div>
           </div>
         </div>
-
+        {/* tableau des débiteurs */}
         <div className="fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
@@ -160,6 +161,7 @@ class Debiteurs extends Component {
                 </tr>
               </tbody>
             </table>
+            {/* Bouton  */}
             <div className="buttondebiteur tc pt4">
               <a
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

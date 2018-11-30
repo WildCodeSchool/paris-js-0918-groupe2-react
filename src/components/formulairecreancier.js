@@ -12,7 +12,7 @@ class Formulairecreancier extends Component {
             <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
           </div>
         </div>
-
+        {/* Formulaire */}
         <div className="fl w-50">
           <article className="pa4 black-80">
             <form action="submit" method="get" acceptCharset="utf-8">
@@ -63,7 +63,6 @@ class Formulairecreancier extends Component {
             </form>
           </article>
         </div>
-
         <div className="fl w-50 ">
           <article className="pa4 black-80">
             <form action="submit" method="get" acceptCharset="utf-8">
@@ -92,7 +91,7 @@ class Formulairecreancier extends Component {
                   </label>
                   <input className="pa2 input-reset ba bg-transparent w-100 measure" />
                   <p>Civilité</p>
-
+                  {/* checkbox */}
                   <div>
                     <input type="checkbox" name="scales" />
                     <label htmlFor="scales">Mme.</label>
@@ -102,6 +101,7 @@ class Formulairecreancier extends Component {
                     <input type="checkbox" name="horns" />
                     <label htmlFor="horns">M.</label>
                   </div>
+                  {/* input */}
                   <div className="mt3">
                     <label className="db fw4 lh-copy f6" htmlFor="password">
                       Fonction du représentant légal
@@ -112,7 +112,7 @@ class Formulairecreancier extends Component {
               </fieldset>
             </form>
           </article>
-
+          {/* Bouton sauvegarder */}
           <div className="buttonsauvegarder tc pt4">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

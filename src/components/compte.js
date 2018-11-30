@@ -4,6 +4,7 @@ import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 import signature from "./Icones_Arigoni/signature.png";
+// import Facture from "./Facture";
 
 class Compte extends Component {
   state = {};
@@ -28,6 +29,7 @@ class Compte extends Component {
             </div>
           </div>
 
+          {/* Fomulaires avec input */}
           <div className="fl w-60">
             <div className="pt3">
               <form action="infos">
@@ -98,6 +100,8 @@ class Compte extends Component {
                   className="db mt2"
                 />
               </form>
+
+              {/* Bouton sauvegarder */}
               <div className="pt4 moveSave">
                 <a
                   className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
@@ -109,6 +113,8 @@ class Compte extends Component {
             </div>
           </div>
         </div>
+
+        {/* ce que le modèle va donner */}
         <div className="fl w-40 pt3 tc">
           <span className="f1 b">Cabinet Arigoni</span>
           <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder">
