@@ -43,7 +43,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button>Cloturée</button>
+                      <button className="button">Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -67,7 +67,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button>Cloturée</button>
+                      <button className="button">Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -91,7 +91,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button>Cloturée</button>
+                      <button className="button">Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -115,7 +115,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button>Cloturée</button>
+                      <button className="button">Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img
@@ -139,7 +139,7 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
-                      <button>Cloturée</button>
+                      <button className="button">Cloturée</button>
                     </td>
                     <td className="pa3">
                       <img

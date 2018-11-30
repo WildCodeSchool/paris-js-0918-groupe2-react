@@ -115,7 +115,7 @@ class Formulairecreancier extends Component {
 
           <div className="buttonsauvegarder tc pt4">
             <a
-              className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
+              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
               href="#0"
             >
               Sauvegarder
