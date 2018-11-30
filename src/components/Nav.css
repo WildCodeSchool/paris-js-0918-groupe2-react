@@ -1,0 +1,42 @@
+.allNav {
+  height: 100vh;
+  background-color: #45445d;
+}
+
+.topNav {
+  background-color: #3e3d54;
+  display: flex;
+}
+
+.navPage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.iconeNav {
+  width: 5%;
+  height: 5%;
+  margin-right: 2%;
+}
+
+/* Sur tous types d'écran, quand la largeur de la fenêtre est inférieure à 990px */
+@media screen and (max-width: 990px) {
+  .allNav {
+    height: 100vh;
+  }
+
+  .topNav h1 {
+    font-size: 50%;
+    position: relative;
+    padding-top: 8%;
+    right: 20%;
+  }
+
+  .navPage {
+    margin-left: 4%;
+  }
+
+  .navPage a {
+    font-size: 0.9em;
+  }
+}
