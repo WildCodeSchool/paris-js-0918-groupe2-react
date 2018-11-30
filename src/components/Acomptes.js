@@ -10,7 +10,7 @@ class Acomptes extends Component {
             <div className="creancier">
                 <div className="fl w-60">
                     <div className="title_créancier pl4">
-                        <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
+                        <h1 className="f2 lh-copy">Acomptes liés à cette facture</h1>
                     </div>
                 </div>
                 <div className='tab'>
@@ -86,7 +86,7 @@ class Acomptes extends Component {
                                     </tr>
                                     <tr className="stripe-white">
                                         <td className="pa3">XXXX</td>
-                                        <td className="pa3">@XXXX</td>
+                                        <td className="pa3">XXXX</td>
                                         <td className="pa3">XXXX</td>
                                         <td className="pa3">
                                             <img
@@ -144,17 +144,39 @@ class Acomptes extends Component {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="buttoncreancier tc pt4">
-                            <a
-                                className="boutoncouleur f6 grow no-underline br-pill pa3 mb2 dib white "
-                                href="#0"
-                            >
-                                Créer un nouvel acompte
-                          </a>
+                        <div className="buttonNewac ">
+                                    <span
+                                        className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                                        href="#0"
+                                    >
+                                        {" "}
+                                        Creer un nouvel acompte{" "}
+                                    </span>
+                                    </div>
+                                <p className="titre">Taux de pénalitées de retard applicables :</p>
+                            
+                                <div className="fl w-60 pt4 tr ml4">
+                                    <div className="fl w-60 ml6">
+                                        <span className="pr2 ">BCE +10 points</span>
+                                        <input type="checkbox" name="produitsV" value="produitsV" />
+                                        <br />
+                                        <span className="pr2 pl4">BCE +8 points  </span>
+                                        <input type="checkbox" name="servicesF" value="servicesF" />
+                                    </div>
+                                    <div className="buttonSave ">
+                                    <span
+                                        className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                                        href="#0"
+                                    >
+                                        {" "}
+                                        Sauvegarder{" "}
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>    
                         </div>
                     </div>
-                </div>
-            </div>
+              
         );
     }
 }
