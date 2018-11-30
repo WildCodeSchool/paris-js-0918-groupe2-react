@@ -19,7 +19,7 @@ class Nav extends Component {
             <nav className="ml4 navPage">
               <NavLink
                 to="/dashboard/moncompte"
-                onClick={() => this.props.pageChange("moncompte")}
+                onClick={() => this.props.pageChange("Compte")}
               >
                 <p className="f3 b db mb6 mt5 no-underline hover-white grow">
                   <img
@@ -33,7 +33,7 @@ class Nav extends Component {
 
               <NavLink
                 to="/dashboard/creanciers"
-                onClick={() => this.props.pageChange("creanciers")}
+                onClick={() => this.props.pageChange("Creanciers")}
               >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
@@ -46,7 +46,7 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/debiteurs"
-                onClick={() => this.props.pageChange("debiteurs")}
+                onClick={() => this.props.pageChange("Debiteurs")}
               >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
@@ -59,7 +59,7 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/actions"
-                onClick={() => this.props.pageChange("actions")}
+                onClick={() => this.props.pageChange("Actions")}
               >
                 <p className="f3 b db mb6 no-underline hover-white grow">
                   <img
@@ -72,7 +72,7 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/historique"
-                onClick={() => this.props.pageChange("historique")}
+                onClick={() => this.props.pageChange("Historique")}
               >
                 <p className="f3 b db no-underline hover-white grow">
                   <img

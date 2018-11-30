@@ -9,7 +9,7 @@ import Nav from "./Nav";
 
 class Dashboard extends Component {
   state = {
-    activePage: "moncompte"
+    activePage: "Compte"
   };
 
   handlePageChange = activePage => {
@@ -18,8 +18,24 @@ class Dashboard extends Component {
     });
   };
 
+  handleDisplay = () => {
+    if (this.state.activePage === "Compte") {
+      return <Compte />;
+    } else if (this.state.activePage === "Debiteurs") {
+      return <Debiteurs />;
+    } else if (this.state.activePage === "Creanciers") {
+      return <Creanciers />;
+    } else if (this.state.activePage === "Actions") {
+      return <Actions />;
+    } else if (this.state.activePage === "Historique") {
+      return <Historique />;
+    } else {
+      return "Page non existante";
+    }
+  };
+
   render() {
-    if (this.state.activePage === "moncompte") {
+    if (this.state.activePage != null) {
       return (
         <div>
           <div className="fl w-20">
@@ -27,69 +43,11 @@ class Dashboard extends Component {
           </div>
           <div className="fl w-80">
             <Header />
-            <Compte />
-            {/* <button onClick={() => this.handlePageChange()}>
-              Changer vers historique
-            </button>
-            <p>{this.props.match.params.composant}</p> */}
+            {this.handleDisplay()}
           </div>
         </div>
       );
-    } else if (this.state.activePage === "creanciers") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Creanciers />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "debiteurs") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Debiteurs />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "actions") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Actions />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "historique") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Historique />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "404") {
-      return (
-        <div>
-          <div className="fl w-20">Ceci est une erreur ! Aaaah !</div>
-        </div>
-      );
-    } else return null;
+    }
   }
 }
 
