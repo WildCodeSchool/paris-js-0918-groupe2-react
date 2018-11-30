@@ -1,0 +1,13 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.boutoncouleur {
+  background-color: #6978fc;
+}
+
+.moveSave {
+  padding-left: 9em;
+}
+
+.tab {
+    width:50%;
+}
