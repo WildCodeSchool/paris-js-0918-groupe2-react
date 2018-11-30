@@ -6,7 +6,6 @@ import Historique from "./Historique";
 import Actions from "./actions";
 import Header from "./Header";
 import Nav from "./Nav";
-import Acomptes from "./Acomptes"
 
 class Dashboard extends Component {
   state = {
@@ -81,18 +80,6 @@ class Dashboard extends Component {
           <div className="fl w-80">
             <Header />
             <Historique />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "factures") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Acomptes />
           </div>
         </div>
       );

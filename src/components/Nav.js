@@ -83,19 +83,6 @@ class Nav extends Component {
                   Historique
                 </p>
               </NavLink>
-              <NavLink
-                to="/dashboard/actions/factures"
-                onClick={() => this.props.pageChange("factures")}
-              >
-                <p className="f3 b db no-underline hover-white grow">
-                  <img
-                    src={icone_historique}
-                    alt="compte"
-                    className="iconeNav"
-                  />{" "}
-                  Historique
-                </p>
-              </NavLink>
             </nav>
           </div>
         </div>
