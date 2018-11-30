@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import "./creanciers.css";
+//import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
   state = {};
   render() {
     return (
+      //tableau informations des créanciers
       <div className="creancier">
         <div className="fl w-60">
           <div className="title_créancier pl4">
@@ -16,7 +18,7 @@ class Creanciers extends Component {
             <h2 className="pt2 f4 lh-copy">Liste des créanciers</h2>
           </div>
         </div>
-
+        {/* searchbar */}
         <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
@@ -32,6 +34,7 @@ class Creanciers extends Component {
           </div>
         </div>
 
+        {/* tableau */}
         <div className="fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
@@ -161,6 +164,8 @@ class Creanciers extends Component {
                 </tr>
               </tbody>
             </table>
+
+            {/* Button créer un créancier */}
             <div className="buttoncreancier tc pt4">
               <a
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

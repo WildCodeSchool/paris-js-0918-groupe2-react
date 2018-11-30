@@ -10,7 +10,7 @@ class Historique extends React.Component {
           <div className="title_débiteur pl4">
             <h1 className="f2 tc lh-copy"> Historique des actions </h1>
           </div>
-          <h2 className="f5 ml3 ">Historique des actions</h2>
+          <h2 className="f5 ml4 ">Historique des actions</h2>
           <div className="fl w-100 pt4 ">
             <div className="fl w-100 tc">
               <span className="pr2"> Actions en cours </span>
