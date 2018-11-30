@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
+import { NavLink } from "react-router-dom";
 import "./creanciers.css";
 //import formulairedebiteurs et formulairecreacier pour les routes
 
@@ -167,12 +168,13 @@ class Creanciers extends Component {
 
             {/* Button créer un créancier */}
             <div className="buttoncreancier tc pt4">
-              <a
+              <NavLink
+                to="/dashboard/formCreancier"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
+                onClick={() => this.props.pageChangeSub("FormCreancier")}
               >
-                Créer un créancier
-              </a>
+                Créer un débiteur
+              </NavLink>
             </div>
           </div>
         </div>

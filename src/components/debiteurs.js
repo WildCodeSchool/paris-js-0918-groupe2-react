@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import "./debiteurs.css";
+import { NavLink } from "react-router-dom";
 
 class Debiteurs extends Component {
   state = {};
@@ -163,12 +164,13 @@ class Debiteurs extends Component {
             </table>
             {/* Bouton  */}
             <div className="buttondebiteur tc pt4">
-              <a
+              <NavLink
+                to="/dashboard/formDebiteur"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
+                onClick={() => this.props.pageChangeSub("FormDebiteur")}
               >
                 Créer un débiteur
-              </a>
+              </NavLink>
             </div>
           </div>
         </div>
