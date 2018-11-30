@@ -10,7 +10,9 @@ class Creanciers extends Component {
       <div className="creancier">
         <div className="fl w-60">
           <div className="title_créancier pl4">
-            <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
+            <h1 className="f2 lh-copy nowrap">
+              Informations sur les créanciers
+            </h1>
             <h2 className="pt2 f4 lh-copy">Liste des créanciers</h2>
           </div>
         </div>
