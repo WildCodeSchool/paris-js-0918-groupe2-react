@@ -5,3 +5,19 @@
 .boutonSave {
   background-color: #6978fc;
 }
+
+.firstBorder {
+  margin-left: 20%;
+}
+
+.job {
+  margin-left: 40%;
+}
+
+.otherBorder {
+  margin-left: 20%;
+}
+
+.otherBorder .signature {
+  margin-top: -60%;
+}
