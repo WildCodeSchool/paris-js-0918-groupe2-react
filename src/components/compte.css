@@ -21,3 +21,25 @@
 .otherBorder .signature {
   margin-top: -60%;
 }
+
+@media only screen and (max-width: 768px){
+  
+  .title-seysey {
+    font-size: 20px !important;
+  }
+  .stylish-cab {
+    display: inline-block;
+    min-width: 100%;
+  }
+  .size-think {
+    width: 60%;
+    height: 20vh;
+    font-size: 55%;
+  }
+  .enlarge {
+    width: 100%;
+  }
+  .moveSave a{
+    margin-right: -15%;
+  }
+}

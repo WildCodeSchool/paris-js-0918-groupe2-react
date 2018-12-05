@@ -1,5 +1,5 @@
 .allNav {
-  height: 115vh;
+  height: 100%;
   background-color: #45445d;
 }
 
@@ -43,11 +43,42 @@
 }
 @media only screen and (max-width: 1440px) {
   .allNav {
-    height: 100vh;
+    height: 100%;
     background-color: #45445d;
   }
 
   .navPage a {
     margin-bottom: 35%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .allNav {
+    height: 100%;
+  }
+  .nav-css{
+    height: 100%;
+  }
+  .bowl {
+    margin-top: 120%;
+  }
+  .bowln {
+    margin-top: 120%;
+    margin-bottom: 40%;
+  }
+  .mglft {
+    margin-left: 22%;
+  }
+  .topNav {
+    font-size: 155%;
+  }
+  .topNav h1 {
+    margin-left: 40%;
+  }
+  .navPage p{
+    font-size: 100%;
+  }
+  .navPage img {
+    width: 12%;
   }
 }

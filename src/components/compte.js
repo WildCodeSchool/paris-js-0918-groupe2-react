@@ -11,9 +11,10 @@ class Compte extends Component {
   render() {
     return (
       <div className="fl w-100 pt3">
-        <div className="fl w-60 pl4">
-          <h1 className="f2 db lh-copy">Les informations de mon cabinet</h1>
-          <div className="fl w-40">
+        <div className="fl w-60 pl4 enlarge">
+          <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
+            <div className="mglft">
+            <div className="fl w-40">
             <div className="pt3">
               <span className="db pr3 mtInfo nowrap">Titre:</span>
               <span className="db pr3 mtInfo nowrap">Nom:</span>
@@ -100,11 +101,12 @@ class Compte extends Component {
                   className="db mt2"
                 />
               </form>
+            </div>
 
               {/* Bouton sauvegarder */}
               <div className="pt4 moveSave">
                 <a
-                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
                   href="#0"
                 >
                   Sauvegarder
@@ -115,9 +117,9 @@ class Compte extends Component {
         </div>
 
         {/* ce que le modèle va donner */}
-        <div className="fl w-40 pt3 tc">
-          <span className="f1 b">Cabinet Arigoni</span>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder">
+        <div className="fl w-40 pt3 tc stylish-cab">
+          <span className="f1 b title-seysey">Cabinet Arigoni</span>
+          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="b black">
               {" "}
               Maître Arigoni Alexandra <br />
