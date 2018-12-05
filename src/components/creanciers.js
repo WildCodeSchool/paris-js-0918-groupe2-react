@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
-import "./creanciers.css";
+import "./debiteurs";
 //import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
@@ -36,31 +36,31 @@ class Creanciers extends Component {
         </div>
 
         {/* tableau */}
-        <div className="fl w-100 pa4 ">
+        <div className=" tableau fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
                 <tr className="stripe-dark">
-                  <th className="fw6 tl pa3 bg-white">Dénomination sociale</th>
-                  <th className="fw6 tl pa3 bg-white">Forme juridique</th>
-                  <th className="fw6 tl pa3 bg-white">Pays</th>
-                  <th className="fw6 tl pa3 bg-white">Modifier</th>
-                  <th className="fw6 tl pa3 bg-white">Supprimer</th>
+                  <th>Dénomination sociale</th>
+                  <th>Forme juridique</th>
+                  <th>Pays</th>
+                  <th>Modifier</th>
+                  <th>Supprimer</th>
                 </tr>
               </thead>
               <tbody className="lh-copy">
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -69,17 +69,17 @@ class Creanciers extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -88,17 +88,17 @@ class Creanciers extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -107,17 +107,17 @@ class Creanciers extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -126,17 +126,17 @@ class Creanciers extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -145,17 +145,17 @@ class Creanciers extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -173,7 +173,7 @@ class Creanciers extends Component {
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 onClick={() => this.props.pageChangeSub("FormCreancier")}
               >
-                Créer un débiteur
+                Créer un créancier
               </NavLink>
             </div>
           </div>

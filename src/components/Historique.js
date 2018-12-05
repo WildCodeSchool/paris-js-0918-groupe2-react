@@ -10,8 +10,8 @@ class Historique extends React.Component {
           <div className="title_débiteur pl4">
             <h1 className="f2 tc lh-copy"> Historique des actions </h1>
           </div>
-          <h2 className="f5 ml4 ">Historique des actions</h2>
-          <div className="fl w-100 pt4 ">
+
+          <div className="fl w-100 pt2 ">
             {/* checkbox */}
             <div className="fl w-100 tc">
               <span className="pr2"> Actions en cours </span>
@@ -22,7 +22,7 @@ class Historique extends React.Component {
             <div className="fl w-40" />
           </div>
           {/* tableau */}
-          <div className="fl w-100 pa4 ">
+          <div className="fl w-100 pa5 ">
             <div className="overflow-auto">
               <table className="f6 w-100 center" cellSpacing="0">
                 <thead>

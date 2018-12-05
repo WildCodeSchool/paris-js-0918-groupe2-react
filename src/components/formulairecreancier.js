@@ -6,17 +6,16 @@ class Formulairecreancier extends Component {
   render() {
     return (
       <div>
-        <div className="fl w-100">
-          <div className="title_créancier pl4">
-            <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
-            <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
-          </div>
+        <div className="title_créancier pl4">
+          <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
+          <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
         </div>
+
         {/* Formulaire */}
         <div className="fl w-50">
           <article className="pa4 black-80">
             <form action="submit" method="get" acceptCharset="utf-8">
-              <fieldset className="ba b--transparent ph0 mh0 mh7">
+              <fieldset className="ba b--transparent ph0 mh0 mh2">
                 <div className="mt3">
                   <label className="db fw4 lh-copy f6" htmlFor="email-address">
                     Dénomination sociale
@@ -105,6 +104,12 @@ class Formulairecreancier extends Component {
                   <div className="mt3">
                     <label className="db fw4 lh-copy f6" htmlFor="password">
                       Fonction du représentant légal
+                    </label>
+                    <input className="pa2 input-reset ba bg-transparent w-100 measure" />
+                  </div>
+                  <div className="mt3">
+                    <label className="db fw4 lh-copy f6" htmlFor="password">
+                      Capital social
                     </label>
                     <input className="pa2 input-reset ba bg-transparent w-100 measure" />
                   </div>
