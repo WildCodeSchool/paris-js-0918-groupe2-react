@@ -6,3 +6,22 @@
   background-color: darkred;
   height: 12vh;
 }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.ml-20 {
+  margin-left: 20%;
+}

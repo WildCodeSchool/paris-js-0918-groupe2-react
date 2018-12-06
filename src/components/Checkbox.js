@@ -16,7 +16,7 @@ class Checkbox extends Component {
         </div>
         <br />
         {/* Input pour honoraires */}
-        <div className="fl w-40 pt2">
+        <div className="fl w-20 pt2">
           <form action="facture">
             {" "}
             Mes Honoraires:

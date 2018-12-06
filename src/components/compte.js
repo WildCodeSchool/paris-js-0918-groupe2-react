@@ -11,113 +11,115 @@ class Compte extends Component {
   render() {
     return (
       <div className="fl w-100 pt3">
-        <div className="fl w-60 pl4">
-          <h1 className="f2 db lh-copy">Les informations de mon cabinet</h1>
-          <div className="fl w-40">
-            <div className="pt3">
-              <span className="db pr3 mtInfo nowrap">Titre:</span>
-              <span className="db pr3 mtInfo nowrap">Nom:</span>
-              <span className="db pr3 mtInfo nowrap">Prénom:</span>
-              <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
-              <span className="db pr3 mtInfo nowrap">Libellé de rue:</span>
-              <span className="db pr3 mtInfo nowrap">Code postal:</span>
-              <span className="db pr3 mtInfo nowrap">Ville:</span>
-              <span className="db pr3 mtInfo nowrap">Tel:</span>
-              <span className="db pr3 mtInfo nowrap">Fax:</span>
-              <span className="db pr3 mtInfo nowrap">Email:</span>
-              <span className="db pr3 mtInfo nowrap">Numéro de TVA:</span>
+        <div className="fl w-60 pl4 enlarge">
+          <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
+          <div className="mglft">
+            <div className="fl w-40">
+              <div className="pt3">
+                <span className="db pr3 mtInfo nowrap">Titre:</span>
+                <span className="db pr3 mtInfo nowrap">Nom:</span>
+                <span className="db pr3 mtInfo nowrap">Prénom:</span>
+                <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
+                <span className="db pr3 mtInfo nowrap">Libellé de rue:</span>
+                <span className="db pr3 mtInfo nowrap">Code postal:</span>
+                <span className="db pr3 mtInfo nowrap">Ville:</span>
+                <span className="db pr3 mtInfo nowrap">Tel:</span>
+                <span className="db pr3 mtInfo nowrap">Fax:</span>
+                <span className="db pr3 mtInfo nowrap">Email:</span>
+                <span className="db pr3 mtInfo nowrap">Numéro de TVA:</span>
+              </div>
+            </div>
+
+            {/* Fomulaires avec input */}
+            <div className="fl w-60">
+              <div className="pt3 pb3">
+                <form action="infos ">
+                  <input
+                    type="text"
+                    name="titre"
+                    placeholder="Titre"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="nom"
+                    placeholder="Nom"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="prenom"
+                    placeholder="Prénom"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="numrue"
+                    placeholder="Numéro de rue"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="librue"
+                    placeholder="Libellé de rue"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="codepostal"
+                    placeholder="Code postal"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="ville"
+                    placeholder="Ville"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="tel"
+                    placeholder="Tel"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="fax"
+                    placeholder="Fax"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="email"
+                    placeholder="Email"
+                    className="db mt2"
+                  />
+                  <input
+                    type="text"
+                    name="numtva"
+                    placeholder="Numéro de TVA"
+                    className="db mt2"
+                  />
+                </form>
+              </div>
             </div>
           </div>
 
-          {/* Fomulaires avec input */}
-          <div className="fl w-60">
-            <div className="pt3">
-              <form action="infos">
-                <input
-                  type="text"
-                  name="titre"
-                  placeholder="Titre"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="nom"
-                  placeholder="Nom"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="prenom"
-                  placeholder="Prénom"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="numrue"
-                  placeholder="Numéro de rue"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="librue"
-                  placeholder="Libellé de rue"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="codepostal"
-                  placeholder="Code postal"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="ville"
-                  placeholder="Ville"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="tel"
-                  placeholder="Tel"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="fax"
-                  placeholder="Fax"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="email"
-                  placeholder="Email"
-                  className="db mt2"
-                />
-                <input
-                  type="text"
-                  name="numtva"
-                  placeholder="Numéro de TVA"
-                  className="db mt2"
-                />
-              </form>
-
-              {/* Bouton sauvegarder */}
-              <div className="pt4 moveSave">
-                <a
-                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                  href="#0"
-                >
-                  Sauvegarder
-                </a>
-              </div>
-            </div>
+          {/* Bouton sauvegarder */}
+          <div className="pt4 tc sauvegarderbouton">
+            <a
+              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
+              href="#0"
+            >
+              Sauvegarder
+            </a>
           </div>
         </div>
 
         {/* ce que le modèle va donner */}
-        <div className="fl w-40 pt3 tc">
-          <span className="f1 b">Cabinet Arigoni</span>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder">
+        <div className="fl w-40 pt3 tc stylish-cab">
+          <span className="f1 b title-seysey">Cabinet Arigoni</span>
+          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="b black">
               {" "}
               Maître Arigoni Alexandra <br />
@@ -132,7 +134,7 @@ class Compte extends Component {
             <p className="b black tl ml3">
               {" "}
               En-tête:{" "}
-              <span className="athelas navy f4 ml4">Alexandra Arigoni </span>
+              <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
               <br /> <span className="athelas navy f4 job"> AVOCAT</span>
             </p>
 
@@ -160,7 +162,7 @@ class Compte extends Component {
                 alt="modifier"
               />
               <img
-                className="icone pointer ml2"
+                className="icone pointer ml2 "
                 src={supprimer}
                 alt="supprimer"
               />
