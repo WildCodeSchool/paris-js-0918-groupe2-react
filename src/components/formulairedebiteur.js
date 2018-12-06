@@ -7,8 +7,8 @@ class Formulairedebiteur extends Component {
     return (
       <div>
         <div className="title_créancier pl4">
-          <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
-          <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
+          <h1 className="titre1">Informations sur les débiteurs</h1>
+          <h2 className="compagnietitre ">Compagnie XYZ</h2>
         </div>
 
         {/* Formulaire */}
@@ -113,7 +113,7 @@ class Formulairedebiteur extends Component {
             </form>
           </article>
           {/* Bouton */}
-          <div className="buttonsauvegarder tc pt4">
+          <div className="buttonsauvegarder tc pt2">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
               href="#0"

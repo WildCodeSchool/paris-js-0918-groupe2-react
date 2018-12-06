@@ -7,8 +7,8 @@ class Formulairecreancier extends Component {
     return (
       <div>
         <div className="title_créancier pl4">
-          <h1 className="f2 lh-copy">Informations sur les créanciers</h1>
-          <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
+          <h1 className="titre1">Informations sur les créanciers</h1>
+          <h2 className="compagnietitre">Compagnie XYZ</h2>
         </div>
 
         {/* Formulaire */}
@@ -95,7 +95,6 @@ class Formulairecreancier extends Component {
                     <input type="checkbox" name="scales" />
                     <label htmlFor="scales">Mme.</label>
                   </div>
-
                   <div>
                     <input type="checkbox" name="horns" />
                     <label htmlFor="horns">M.</label>
@@ -118,7 +117,7 @@ class Formulairecreancier extends Component {
             </form>
           </article>
           {/* Bouton sauvegarder */}
-          <div className="buttonsauvegarder tc pt4">
+          <div className="buttonsauvegarder tc pt1">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
               href="#0"
