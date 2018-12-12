@@ -46,6 +46,11 @@
   background-color: #6978fc;
 }
 
-.moveSave {
+/* .moveSave {
   padding-left: 9em;
+} */
+@media only screen and (max-width: 768px) {
+  .moveSave {
+    padding-right: -155%;
+  }
 }

@@ -1,6 +1,10 @@
 .allNav {
-  height: 115vh;
   background-color: #45445d;
+  min-height: 100vh;
+}
+
+.fixed {
+  position: fixed;
 }
 
 .topNav {
@@ -21,10 +25,6 @@
 
 /* Sur tous types d'écran, quand la largeur de la fenêtre est inférieure à 990px */
 @media only screen and (max-width: 990px) {
-  .allNav {
-    height: 100%;
-  }
-
   .topNav h1 {
     font-size: 50%;
     position: relative;
@@ -42,12 +42,25 @@
   }
 }
 @media only screen and (max-width: 1440px) {
-  .allNav {
-    height: 100vh;
-    background-color: #45445d;
-  }
-
   .navPage a {
     margin-bottom: 35%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mglft {
+    margin-left: 22%;
+  }
+  .topNav {
+    font-size: 155%;
+  }
+  .topNav h1 {
+    margin-left: 40%;
+  }
+  .navPage p {
+    font-size: 100%;
+  }
+  .navPage img {
+    width: 12%;
   }
 }

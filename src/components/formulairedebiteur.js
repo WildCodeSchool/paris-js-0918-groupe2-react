@@ -6,17 +6,16 @@ class Formulairedebiteur extends Component {
   render() {
     return (
       <div>
-        <div className="fl w-100">
-          <div className="title_créancier pl4">
-            <h1 className="f2 lh-copy">Informations sur les débiteurs</h1>
-            <h2 className="compagnietitre pt2 f2 lh-copy">Compagnie XYZ</h2>
-          </div>
+        <div className="title_créancier pl4">
+          <h1 className="titre1">Informations sur les débiteurs</h1>
+          <h2 className="compagnietitre ">Compagnie XYZ</h2>
         </div>
+
         {/* Formulaire */}
         <div className="fl w-50">
           <article className="pa4 black-80">
             <form action="submit" method="get" acceptCharset="utf-8">
-              <fieldset className="ba b--transparent ph0 mh0 mh7">
+              <fieldset className="ml4 ba b--transparent ph0 mh0 mh2 ">
                 <div className="mt3">
                   <label className="db fw4 lh-copy f6" htmlFor="email-address">
                     Dénomination sociale
@@ -114,7 +113,7 @@ class Formulairedebiteur extends Component {
             </form>
           </article>
           {/* Bouton */}
-          <div className="buttonsauvegarder tc pt4">
+          <div className="buttonsauvegarder tc pt2">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
               href="#0"

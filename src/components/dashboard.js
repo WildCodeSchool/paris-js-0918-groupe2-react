@@ -47,10 +47,10 @@ class Dashboard extends Component {
     if (this.state.activePage != null) {
       return (
         <div>
-          <div className="fl w-20">
+          <div className="fl w-20 fixed">
             <Nav pageChange={this.handlePageChange} />
           </div>
-          <div className="fl w-80">
+          <div className="fl w-80 ml-20">
             <Header />
             {this.handleDisplay()}
           </div>

@@ -33,31 +33,31 @@ class Debiteurs extends Component {
           </div>
         </div>
         {/* tableau des débiteurs */}
-        <div className="fl w-100 pa4 ">
+        <div className="tableau fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
                 <tr className="stripe-dark">
-                  <th className="fw6 tl pa3 bg-white">Dénomination sociale</th>
-                  <th className="fw6 tl pa3 bg-white">Forme juridique</th>
-                  <th className="fw6 tl pa3 bg-white">Pays</th>
-                  <th className="fw6 tl pa3 bg-white">Modifier</th>
-                  <th className="fw6 tl pa3 bg-white">Supprimer</th>
+                  <th>Dénomination sociale</th>
+                  <th>Forme juridique</th>
+                  <th>Pays</th>
+                  <th>Modifier</th>
+                  <th>Supprimer</th>
                 </tr>
               </thead>
               <tbody className="lh-copy">
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -66,17 +66,17 @@ class Debiteurs extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -85,17 +85,17 @@ class Debiteurs extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -104,17 +104,17 @@ class Debiteurs extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -123,17 +123,17 @@ class Debiteurs extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-dark">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
@@ -142,17 +142,17 @@ class Debiteurs extends Component {
                   </td>
                 </tr>
                 <tr className="stripe-white">
-                  <td className="pa3">Hassan Johnson</td>
-                  <td className="pa3">@hassan</td>
-                  <td className="pa3">hassan@companywithalongdomain.co</td>
-                  <td className="pa3">
+                  <td>Hassan Johnson</td>
+                  <td>@hassan</td>
+                  <td>hassan@companywithalongdomain.co</td>
+                  <td>
                     <img
                       className="icone pointer"
                       src={modifier}
                       alt="modifier"
                     />
                   </td>
-                  <td className="pa3">
+                  <td>
                     <img
                       className="icone pointer"
                       src={supprimer}
