@@ -1,13 +1,31 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 import signature from "./Icones_Arigoni/signature.png";
+
 // import Facture from "./Facture";
 
 class Compte extends Component {
-  state = {};
+  state = {
+    data: null
+  };
+
+  componentDidMount() {
+    axios
+      .get("http://www.localhost:4848/api/cabinet")
+      .then(response => {
+        this.setState({
+          data: response.data[0]
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="fl w-100 pt3">
@@ -141,7 +159,7 @@ class Compte extends Component {
             <img className="icone pointer ml3" src={upload} alt="upload" />
             <img className="icone pointer ml2" src={modifier} alt="modifier" />
             <img
-              className="icone pointer ml2"
+              className="icone pointer ml2 "
               src={supprimer}
               alt="supprimer"
             />
@@ -162,7 +180,7 @@ class Compte extends Component {
                 alt="modifier"
               />
               <img
-                className="icone pointer ml2 "
+                className="icone pointer ml2"
                 src={supprimer}
                 alt="supprimer"
               />
