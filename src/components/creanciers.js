@@ -3,11 +3,38 @@ import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
 import "./debiteurs";
+import Axios from "axios";
 //import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
-  state = {};
+  state = {
+    creanciers: [],
+    creanciersFiltered: []
+  };
+
+  handleDelete() {
+    console.log("pouet");
+  }
+
+  componentDidMount() {
+    Axios.get("http://localhost:4848/api/creanciers")
+      .then(response => {
+        this.setState({
+          // returns all creanciers
+          creanciers: response.data,
+          // returns all creanciers whose active status is true
+          creanciersFiltered: response.data.filter(
+            creancier => creancier.active
+          )
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
+    const myCreanciers = this.state.creanciersFiltered;
     return (
       //tableau informations des créanciers
       <div className="creancier">
@@ -49,120 +76,33 @@ class Creanciers extends Component {
                 </tr>
               </thead>
               <tbody className="lh-copy">
-                <tr className="stripe-dark">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
-                <tr className="stripe-white">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
-                <tr className="stripe-dark">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
-                <tr className="stripe-white">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
-                <tr className="stripe-dark">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
-                <tr className="stripe-white">
-                  <td>Hassan Johnson</td>
-                  <td>@hassan</td>
-                  <td>hassan@companywithalongdomain.co</td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={modifier}
-                      alt="modifier"
-                    />
-                  </td>
-                  <td>
-                    <img
-                      className="icone pointer"
-                      src={supprimer}
-                      alt="supprimer"
-                    />
-                  </td>
-                </tr>
+                {myCreanciers.map(creancier => {
+                  return (
+                    <tr
+                      className="stripe-dark"
+                      key={creancier.denomination_sociale}
+                    >
+                      <td>{creancier.denomination_sociale}</td>
+                      <td>{creancier.forme_juridique}</td>
+                      <td>{creancier.pays_siege}</td>
+                      <td>
+                        <img
+                          className="icone pointer"
+                          src={modifier}
+                          alt="modifier"
+                        />
+                      </td>
+                      <td>
+                        <img
+                          className="icone pointer"
+                          src={supprimer}
+                          alt="supprimer"
+                          onClick={this.handleDelete}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
 
