@@ -8,6 +8,7 @@ import Header from "./Header";
 import Nav from "./Nav";
 import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
+import "./dashboard.css";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -52,6 +53,7 @@ class Dashboard extends Component {
           </div>
           <div className="fl w-80 ml-20">
             <Header />
+
             {this.handleDisplay()}
           </div>
         </div>

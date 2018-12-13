@@ -27,7 +27,7 @@ class Creanciers extends Component {
     this.forceUpdate();
   };
 
-  handleDelete = id => {
+  handleDelete = (id, denomination) => {
     const myId = id;
     confirmAlert({
       title: "Merci de confirmer",
@@ -41,7 +41,7 @@ class Creanciers extends Component {
             })
               .then(response => {
                 this.reloadNow(myId);
-                alert("Le créancier a bien été supprimé.");
+                alert(`Le créancier ${denomination} a bien été supprimé.`);
                 console.log(response);
               })
               .catch(error => {
@@ -49,8 +49,8 @@ class Creanciers extends Component {
               })
         },
         {
-          label: "Non",
-          onClick: () => alert("Le créancier n'a pas été supprimé.")
+          label: "Non"
+          // onClick: () => alert("Le créancier n'a pas été supprimé.")
         }
       ]
     });
@@ -141,7 +141,12 @@ class Creanciers extends Component {
                           className="icone pointer"
                           src={supprimer}
                           alt="supprimer"
-                          onClick={() => this.handleDelete(creancier.id)}
+                          onClick={() =>
+                            this.handleDelete(
+                              creancier.id,
+                              creancier.denomination_sociale
+                            )
+                          }
                         />
                       </td>
                     </tr>

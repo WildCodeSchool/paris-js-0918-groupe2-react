@@ -1,21 +1,74 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 import signature from "./Icones_Arigoni/signature.png";
-
-// import Facture from "./Facture";
+import Axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 class Compte extends Component {
   state = {
-    data: null
+    data: [],
+    titre: "",
+    nom: "",
+    prenom: "",
+    num_rue: "",
+    libelle_rue: "",
+    code_postal: "",
+    ville: "",
+    tel: "",
+    fax: "",
+    mail: "",
+    num_TVA: ""
+  };
+
+  reloadNow = id => {
+    // this.setState(previousState => ({
+    //   titre: !this.state.titre ? this.state.titre : this.state.titre
+    // }));
+    // this.forceUpdate();
+    this.props.history.push("/dashboard");
+  };
+
+  handleChange = id => {
+    const myId = id;
+    confirmAlert({
+      title: "Merci de confirmer",
+      message:
+        "Voulez-vous vraiment modifier les informations de votre cabinet d'avocat ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.put(`http://localhost:4848/api/cabinet/${myId}`, this.state)
+              .then(response => {
+                // this.reloadNow(myId);
+                alert(`Vos informations ont bien été modifié.`);
+                this.props.history.push("/dashboard/moncompte");
+                console.log(response);
+              })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non"
+          // onClick: () => alert("Le créancier n'a pas été supprimé.")
+        }
+      ]
+    });
+  };
+
+  handleMyUserInputs = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
 
   componentDidMount() {
-    axios
-      .get("http://www.localhost:4848/api/cabinet")
+    Axios.get("http://www.localhost:4848/api/cabinet")
       .then(response => {
         this.setState({
           data: response.data[0]
@@ -27,6 +80,7 @@ class Compte extends Component {
   }
 
   render() {
+    const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
         <div className="fl w-60 pl4 enlarge">
@@ -57,66 +111,77 @@ class Compte extends Component {
                     name="titre"
                     placeholder="Titre"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="nom"
                     placeholder="Nom"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="prenom"
                     placeholder="Prénom"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
-                    name="numrue"
+                    name="num_rue"
                     placeholder="Numéro de rue"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
-                    name="librue"
+                    name="libelle_rue"
                     placeholder="Libellé de rue"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
-                    name="codepostal"
+                    name="code_postal"
                     placeholder="Code postal"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="ville"
                     placeholder="Ville"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="tel"
                     placeholder="Tel"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="fax"
                     placeholder="Fax"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
-                    name="email"
+                    name="mail"
                     placeholder="Email"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
-                    name="numtva"
+                    name="num_TVA"
                     placeholder="Numéro de TVA"
                     className="db mt2"
+                    onChange={this.handleMyUserInputs}
                   />
                 </form>
               </div>
@@ -128,6 +193,7 @@ class Compte extends Component {
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
               href="#0"
+              onClick={() => this.handleChange(infosCompte.id)}
             >
               Sauvegarder
             </a>
@@ -139,14 +205,16 @@ class Compte extends Component {
           <span className="f1 b title-seysey">Cabinet Arigoni</span>
           <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="b black">
-              {" "}
-              Maître Arigoni Alexandra <br />
-              38 avenue Hoche 75008 Paris <br />
-              +33 (0)1 53 75 79 00 <br />
-              +33 (0)1 53 75 00 15 <br />
-              a.arigoni@arigoni-avocat.com <br />
-              TVA FR 34453740755
+              {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
             </p>
+            <p className="b black">
+              {infosCompte.num_rue} {infosCompte.libelle_rue}
+              {infosCompte.code_postal} {infosCompte.ville}
+            </p>
+            <p className="b black">Tel: {infosCompte.tel}</p>
+            <p className="b black">Fax: {infosCompte.fax}</p>
+            <p className="b black">Email: {infosCompte.mail}</p>
+            <p className="b black">Nº TVA: {infosCompte.num_TVA}</p>
           </div>
           <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
             <p className="b black tl ml3">
