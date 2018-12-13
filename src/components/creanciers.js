@@ -16,16 +16,16 @@ class Creanciers extends Component {
     myReloadCounter: 0
   };
 
-  reloadNow() {
+  reloadNow = id => {
     this.setState(previousState => ({
       creanciers: previousState.creanciers,
       creanciersFiltered: previousState.creanciersFiltered.filter(
-        creancier => creancier.active
+        creancier => creancier.id !== id
       ),
       myReloadCounter: this.state.myReloadCounter + 1
     }));
     this.forceUpdate();
-  }
+  };
 
   handleDelete = id => {
     const myId = id;
