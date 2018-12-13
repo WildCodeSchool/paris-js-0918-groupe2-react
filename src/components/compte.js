@@ -26,10 +26,10 @@ class Compte extends Component {
 
   reloadNow = id => {
     // this.setState(previousState => ({
-    //   titre: !this.state.titre ? this.state.titre : this.state.titre
+    //   titre:
+    //     this.state.titre !== previousState.titre ? this.state.titre : previousState.titre
     // }));
-    // this.forceUpdate();
-    this.props.history.push("/dashboard");
+    this.forceUpdate();
   };
 
   handleChange = id => {
@@ -44,9 +44,8 @@ class Compte extends Component {
           onClick: () =>
             Axios.put(`http://localhost:4848/api/cabinet/${myId}`, this.state)
               .then(response => {
-                // this.reloadNow(myId);
+                this.reloadNow(myId);
                 alert(`Vos informations ont bien été modifié.`);
-                this.props.history.push("/dashboard/moncompte");
                 console.log(response);
               })
               .catch(error => {
@@ -202,13 +201,13 @@ class Compte extends Component {
 
         {/* ce que le modèle va donner */}
         <div className="fl w-40 pt3 tc stylish-cab">
-          <span className="f1 b title-seysey">Cabinet Arigoni</span>
+          <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
           <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="b black">
               {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
             </p>
             <p className="b black">
-              {infosCompte.num_rue} {infosCompte.libelle_rue}
+              {infosCompte.num_rue} {infosCompte.libelle_rue}{" "}
               {infosCompte.code_postal} {infosCompte.ville}
             </p>
             <p className="b black">Tel: {infosCompte.tel}</p>
