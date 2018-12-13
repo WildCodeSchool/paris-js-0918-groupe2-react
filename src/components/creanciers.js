@@ -4,17 +4,57 @@ import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
 import "./debiteurs";
 import Axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
+
 //import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
   state = {
     creanciers: [],
-    creanciersFiltered: []
+    creanciersFiltered: [],
+    myReloadCounter: 0
   };
 
-  handleDelete() {
-    console.log("pouet");
+  reloadNow() {
+    this.setState(previousState => ({
+      creanciers: previousState.creanciers,
+      creanciersFiltered: previousState.creanciersFiltered.filter(
+        creancier => creancier.active
+      ),
+      myReloadCounter: this.state.myReloadCounter + 1
+    }));
+    this.forceUpdate();
   }
+
+  handleDelete = id => {
+    const myId = id;
+    confirmAlert({
+      title: "Merci de confirmer",
+      message: "Voulez-vous vraiment supprimer ce créancier ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.put(`http://localhost:4848/api/creanciers/${myId}`, {
+              active: "false"
+            })
+              .then(response => {
+                this.reloadNow(myId);
+                alert("Le créancier a bien été supprimé.");
+                console.log(response);
+              })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non",
+          onClick: () => alert("Le créancier n'a pas été supprimé.")
+        }
+      ]
+    });
+  };
 
   componentDidMount() {
     Axios.get("http://localhost:4848/api/creanciers")
@@ -35,6 +75,7 @@ class Creanciers extends Component {
 
   render() {
     const myCreanciers = this.state.creanciersFiltered;
+    const myReloadCounter = this.state.myReloadCounter;
     return (
       //tableau informations des créanciers
       <div className="creancier">
@@ -80,7 +121,9 @@ class Creanciers extends Component {
                   return (
                     <tr
                       className="stripe-dark"
-                      key={creancier.denomination_sociale}
+                      key={`${myReloadCounter}-${
+                        creancier.denomination_sociale
+                      }`}
                     >
                       <td>{creancier.denomination_sociale}</td>
                       <td>{creancier.forme_juridique}</td>
@@ -90,6 +133,7 @@ class Creanciers extends Component {
                           className="icone pointer"
                           src={modifier}
                           alt="modifier"
+                          // onClick={this.handleModification}
                         />
                       </td>
                       <td>
@@ -97,7 +141,7 @@ class Creanciers extends Component {
                           className="icone pointer"
                           src={supprimer}
                           alt="supprimer"
-                          onClick={this.handleDelete}
+                          onClick={() => this.handleDelete(creancier.id)}
                         />
                       </td>
                     </tr>
