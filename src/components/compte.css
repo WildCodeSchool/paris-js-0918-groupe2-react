@@ -1,0 +1,41 @@
+.mtInfo {
+  margin-top: 0.87em;
+}
+
+.boutonSave {
+  background-color: #6978fc;
+}
+
+.firstBorder {
+  margin-left: 20%;
+}
+
+.job {
+  margin-left: 40%;
+}
+
+.otherBorder {
+  margin-left: 20%;
+}
+
+.otherBorder .signature {
+  margin-top: -60%;
+}
+
+@media only screen and (max-width: 768px) {
+  .title-seysey {
+    font-size: 20px !important;
+  }
+  .stylish-cab {
+    display: inline-block;
+    min-width: 100%;
+  }
+  .size-think {
+    width: 60%;
+    height: 20vh;
+    font-size: 55%;
+  }
+  .enlarge {
+    width: 100%;
+  }
+}
