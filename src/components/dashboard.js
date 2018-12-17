@@ -6,90 +6,61 @@ import Historique from "./Historique";
 import Actions from "./actions";
 import Header from "./Header";
 import Nav from "./Nav";
+import Formulairecreancier from "./formulairecreancier";
+import Formulairedebiteur from "./formulairedebiteur";
+import "./dashboard.css";
 
 class Dashboard extends Component {
+  // la page d'origine c'est "Compte" on la défini dans une state
   state = {
-    activePage: "moncompte"
+    activePage: "Compte",
+    creancierId: undefined
   };
 
-  handlePageChange = activePage => {
+  //on va changer la state pour changer la page active vers la page demandée
+  handlePageChange = (activePage, creancierId) => {
     this.setState({
-      activePage: activePage
+      activePage: activePage,
+      creancierId: creancierId
     });
   };
 
+  // Cette fonction sert charger le bon composant selon ce qu'il y a dans le state
+  handleDisplay = () => {
+    if (this.state.activePage === "Compte") {
+      return <Compte pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Debiteurs") {
+      return <Debiteurs pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Creanciers") {
+      return <Creanciers pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Actions") {
+      return <Actions pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Historique") {
+      return <Historique pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "FormCreancier") {
+      return <Formulairecreancier creancierId={this.state.creancierId} />;
+    } else if (this.state.activePage === "FormDebiteur") {
+      return <Formulairedebiteur />;
+    } else {
+      return "Page non existante";
+    }
+  };
+
   render() {
-    if (this.state.activePage === "moncompte") {
+    if (this.state.activePage != null) {
       return (
         <div>
-          <div className="fl w-20">
+          <div className="fl w-20 fixed">
             <Nav pageChange={this.handlePageChange} />
           </div>
-          <div className="fl w-80">
+          <div className="fl w-80 ml-20">
             <Header />
-            <Compte />
-            {/* <button onClick={() => this.handlePageChange()}>
-              Changer vers historique
-            </button>
-            <p>{this.props.match.params.composant}</p> */}
+
+            {this.handleDisplay()}
           </div>
         </div>
       );
-    } else if (this.state.activePage === "creanciers") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Creanciers />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "debiteurs") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Debiteurs />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "actions") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Actions />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "historique") {
-      return (
-        <div>
-          <div className="fl w-20">
-            <Nav pageChange={this.handlePageChange} />
-          </div>
-          <div className="fl w-80">
-            <Header />
-            <Historique />
-          </div>
-        </div>
-      );
-    } else if (this.state.activePage === "404") {
-      return (
-        <div>
-          <div className="fl w-20">Ceci est une erreur ! Aaaah !</div>
-        </div>
-      );
-    } else return null;
+    }
   }
 }
 

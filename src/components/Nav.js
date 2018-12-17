@@ -10,18 +10,20 @@ import "./Nav.css";
 class Nav extends Component {
   render() {
     return (
-      <div>
+      <div className="nav-css">
         <div className=" ba-ns b--transparent allNav white">
           <div className="topNav">
             <h1 className="ml4 mt4 bb b--transparent h3">TABLEAU DE BORD</h1>
           </div>
+
+          {/* Navlink partout quand on clique ça affiche le composant qu'on demande*/}
           <div className="colorNav">
             <nav className="ml4 navPage">
               <NavLink
                 to="/dashboard/moncompte"
-                onClick={() => this.props.pageChange("moncompte")}
+                onClick={() => this.props.pageChange("Compte")}
               >
-                <p className="f3 b db mb6 mt5 no-underline hover-white grow">
+                <p className="f3 b db  no-underline hover-white grow bowl">
                   <img
                     src={icone_mon_compte}
                     alt="compte"
@@ -33,9 +35,9 @@ class Nav extends Component {
 
               <NavLink
                 to="/dashboard/creanciers"
-                onClick={() => this.props.pageChange("creanciers")}
+                onClick={() => this.props.pageChange("Creanciers")}
               >
-                <p className="f3 b db mb6 no-underline hover-white grow">
+                <p className="f3 b db  no-underline hover-white grow bowl">
                   <img
                     src={icone_creanciers}
                     alt="compte"
@@ -46,9 +48,9 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/debiteurs"
-                onClick={() => this.props.pageChange("debiteurs")}
+                onClick={() => this.props.pageChange("Debiteurs")}
               >
-                <p className="f3 b db mb6 no-underline hover-white grow">
+                <p className="f3 b db no-underline hover-white grow bowl">
                   <img
                     src={icone_debiteurs}
                     alt="compte"
@@ -59,9 +61,9 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/actions"
-                onClick={() => this.props.pageChange("actions")}
+                onClick={() => this.props.pageChange("Actions")}
               >
-                <p className="f3 b db mb6 no-underline hover-white grow">
+                <p className="f3 b db no-underline hover-white grow bowl">
                   <img
                     src={icone_centre_actions}
                     alt="compte"
@@ -72,9 +74,9 @@ class Nav extends Component {
               </NavLink>
               <NavLink
                 to="/dashboard/historique"
-                onClick={() => this.props.pageChange("historique")}
+                onClick={() => this.props.pageChange("Historique")}
               >
-                <p className="f3 b db no-underline hover-white grow">
+                <p className="f3 b db no-underline hover-white grow bowln">
                   <img
                     src={icone_historique}
                     alt="compte"
