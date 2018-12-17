@@ -2,17 +2,16 @@ import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
-import "./debiteurs";
+import "./debiteurs.css";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-
-//import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
   state = {
     creanciers: [],
     creanciersFiltered: [],
+    creanciersSearch: "",
     myReloadCounter: 0
   };
 
@@ -56,6 +55,35 @@ class Creanciers extends Component {
     });
   };
 
+  mySearch = () => {
+    this.setState({
+      creanciersFiltered: this.state.creanciersFiltered.filter(creancier =>
+        creancier.denomination_sociale
+          .toLowerCase()
+          .includes(this.state.creanciersSearch.toLowerCase())
+      )
+    });
+  };
+
+  handleSearch = e => {
+    this.setState(
+      {
+        creanciersSearch: e.target.value
+      },
+      () => {
+        if (this.state.creanciersSearch.length > 0) {
+          this.mySearch();
+        } else {
+          this.setState({
+            creanciersFiltered: this.state.creanciers.filter(
+              creancier => creancier.active
+            )
+          });
+        }
+      }
+    );
+  };
+
   componentDidMount() {
     Axios.get("http://localhost:4848/api/creanciers")
       .then(response => {
@@ -95,6 +123,7 @@ class Creanciers extends Component {
                 type="text"
                 className="searchTerm"
                 placeholder="trouver un créancier"
+                onChange={this.handleSearch}
               />
               <button type="submit" className="searchButton">
                 <i className="fa fa-search" />
@@ -117,49 +146,52 @@ class Creanciers extends Component {
                 </tr>
               </thead>
               <tbody className="lh-copy">
-                {myCreanciers.map(creancier => {
-                  return (
-                    <tr
-                      className="stripe-dark"
-                      key={`${myReloadCounter}-${
-                        creancier.denomination_sociale
-                      }`}
-                    >
-                      <td>{creancier.denomination_sociale}</td>
-                      <td>{creancier.forme_juridique}</td>
-                      <td>{creancier.pays_siege}</td>
-                      <td>
-                        <NavLink to="/dashboard/formCreancier">
+                {myCreanciers
+                  .sort((a, b) => b.id - a.id)
+                  .slice(0, 10)
+                  .map(creancier => {
+                    return (
+                      <tr
+                        className="stripe-dark"
+                        key={`${myReloadCounter}-${
+                          creancier.denomination_sociale
+                        }`}
+                      >
+                        <td>{creancier.denomination_sociale}</td>
+                        <td>{creancier.forme_juridique}</td>
+                        <td>{creancier.pays_siege}</td>
+                        <td>
+                          <NavLink to="/dashboard/formCreancier">
+                            <img
+                              className="icone pointer"
+                              src={modifier}
+                              alt="modifier"
+                              onClick={() =>
+                                this.props.pageChangeSub(
+                                  "FormCreancier",
+                                  `${creancier.id}`
+                                )
+                              }
+                              // onClick={this.handleModification}
+                            />
+                          </NavLink>
+                        </td>
+                        <td>
                           <img
                             className="icone pointer"
-                            src={modifier}
-                            alt="modifier"
+                            src={supprimer}
+                            alt="supprimer"
                             onClick={() =>
-                              this.props.pageChangeSub(
-                                "FormCreancier",
-                                `${creancier.id}`
+                              this.handleDelete(
+                                creancier.id,
+                                creancier.denomination_sociale
                               )
                             }
-                            // onClick={this.handleModification}
                           />
-                        </NavLink>
-                      </td>
-                      <td>
-                        <img
-                          className="icone pointer"
-                          src={supprimer}
-                          alt="supprimer"
-                          onClick={() =>
-                            this.handleDelete(
-                              creancier.id,
-                              creancier.denomination_sociale
-                            )
-                          }
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
 
