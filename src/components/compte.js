@@ -219,7 +219,9 @@ class Compte extends Component {
             <p className="b black tl ml3">
               {" "}
               En-tête:{" "}
-              <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
+              <span className="athelas navy f4 ml2">
+                {infosCompte.nom} {infosCompte.prenom}
+              </span>
               <br /> <span className="athelas navy f4 job"> AVOCAT</span>
             </p>
 

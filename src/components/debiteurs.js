@@ -25,6 +25,48 @@ class Debiteurs extends Component {
     this.forceUpdate();
   };
 
+  handleUpdate = (id, denomination) => {
+    const myId = id;
+    confirmAlert({
+      title: "Merci de confirmer",
+      message: "Voulez-vous vraiment modifier ce débiteur ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.update(`http://localhost:4848/api/creanciers/${myId}`, {
+              denomination_sociale: this.state.denomination_sociale,
+              forme_juridique: this.state.denomination_sociale,
+              nationalite_societe: this.state.denomination_sociale,
+              code_postal_siege: this.state.denomination_sociale,
+              ville_siege: this.state.denomination_sociale,
+              pays_siege: this.state.denomination_sociale,
+              ville_rcs: this.state.denomination_sociale,
+              num_rcs: this.state.denomination_sociale,
+              nom: this.state.denomination_sociale,
+              prenom: this.state.denomination_sociale,
+              civilite: this.state.denomination_sociale,
+              fonction: this.state.denomination_sociale,
+              active: "true"
+            })
+
+              // .then(response => {
+              //   this.reloadNow(myId);
+              //   alert(`Le créancier ${denomination} a bien été supprimé.`);
+              //   console.log(response);
+              // })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non"
+          // onClick: () => alert("Le créancier n'a pas été supprimé.")
+        }
+      ]
+    });
+  };
+
   handleDelete = (id, denomination) => {
     const myId = id;
     confirmAlert({
@@ -118,6 +160,9 @@ class Debiteurs extends Component {
                           className="icone pointer"
                           src={modifier}
                           alt="modifier"
+                          onClick={() =>
+                            this.handleUpdate(deb.id, deb.denomination_sociale)
+                          }
                         />
                       </td>
                       <td>

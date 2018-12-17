@@ -19,7 +19,7 @@ class Actions extends Component {
               <input
                 type="text"
                 name="creancierlookup"
-                placeholder="Tapper le nom du créancier"
+                placeholder="Taper le nom du créancier"
               />
             </form>
           </div>
@@ -32,7 +32,7 @@ class Actions extends Component {
               <input
                 type="text"
                 name="debiteurlookup"
-                placeholder="Tapper le nom du débiteur"
+                placeholder="Taper le nom du débiteur"
               />
             </form>
           </div>
