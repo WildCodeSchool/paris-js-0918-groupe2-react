@@ -12,7 +12,7 @@ class Formulairecreancier extends Component {
     forme_juridique: "",
     nationalite_societe: "",
     adresse_siege: "",
-    code_postal_siege: "0",
+    code_postal_siege: "",
     ville_siege: "",
     pays_siege: "",
     ville_rcs: "",
