@@ -134,7 +134,7 @@ class Formulairecreancier extends Component {
       return (
         <div>
           <div className="title_créancier pl4">
-            <h1 className="titre1">Informations sur les créanciers</h1>
+            <h1 className="titre1">Créer un nouveau créancier</h1>
             <h2 className="compagnietitre">
               Compagnie {this.state.denomination_sociale}
             </h2>

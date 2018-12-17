@@ -18,10 +18,11 @@ class Dashboard extends Component {
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = (activePage, creancierId) => {
+  handlePageChange = (activePage, creancierId, debiteurId) => {
     this.setState({
       activePage: activePage,
-      creancierId: creancierId
+      creancierId: creancierId,
+      debiteurId: debiteurId
     });
   };
 
@@ -40,7 +41,7 @@ class Dashboard extends Component {
     } else if (this.state.activePage === "FormCreancier") {
       return <Formulairecreancier creancierId={this.state.creancierId} />;
     } else if (this.state.activePage === "FormDebiteur") {
-      return <Formulairedebiteur />;
+      return <Formulairedebiteur debiteurId={this.state.debiteurId} />;
     } else {
       return "Page non existante";
     }
