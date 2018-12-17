@@ -129,12 +129,20 @@ class Creanciers extends Component {
                       <td>{creancier.forme_juridique}</td>
                       <td>{creancier.pays_siege}</td>
                       <td>
-                        <img
-                          className="icone pointer"
-                          src={modifier}
-                          alt="modifier"
-                          // onClick={this.handleModification}
-                        />
+                        <NavLink to="/dashboard/formCreancier">
+                          <img
+                            className="icone pointer"
+                            src={modifier}
+                            alt="modifier"
+                            onClick={() =>
+                              this.props.pageChangeSub(
+                                "FormCreancier",
+                                `${creancier.id}`
+                              )
+                            }
+                            // onClick={this.handleModification}
+                          />
+                        </NavLink>
                       </td>
                       <td>
                         <img

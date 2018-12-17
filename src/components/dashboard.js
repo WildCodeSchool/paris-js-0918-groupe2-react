@@ -13,13 +13,15 @@ import "./dashboard.css";
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
   state = {
-    activePage: "Compte"
+    activePage: "Compte",
+    creancierId: undefined
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = activePage => {
+  handlePageChange = (activePage, creancierId) => {
     this.setState({
-      activePage: activePage
+      activePage: activePage,
+      creancierId: creancierId
     });
   };
 
@@ -36,7 +38,7 @@ class Dashboard extends Component {
     } else if (this.state.activePage === "Historique") {
       return <Historique pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "FormCreancier") {
-      return <Formulairecreancier />;
+      return <Formulairecreancier creancierId={this.state.creancierId} />;
     } else if (this.state.activePage === "FormDebiteur") {
       return <Formulairedebiteur />;
     } else {

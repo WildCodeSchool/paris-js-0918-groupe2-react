@@ -24,12 +24,16 @@ class Compte extends Component {
     num_TVA: ""
   };
 
-  reloadNow = id => {
-    // this.setState(previousState => ({
-    //   titre:
-    //     this.state.titre !== previousState.titre ? this.state.titre : previousState.titre
-    // }));
-    this.forceUpdate();
+  reloadNow = () => {
+    Axios.get("http://www.localhost:4848/api/cabinet")
+      .then(response => {
+        this.setState({
+          data: response.data[0]
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   handleChange = id => {
