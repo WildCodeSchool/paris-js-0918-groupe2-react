@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
-import upload from "./Icones_Arigoni/icone_upload.png";
-import signature from "./Icones_Arigoni/signature.png";
+// import upload from "./Icones_Arigoni/icone_upload.png";
+// import signature from "./Icones_Arigoni/signature.png";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -21,7 +21,8 @@ class Compte extends Component {
     tel: "",
     fax: "",
     mail: "",
-    num_TVA: ""
+    num_TVA: "",
+    file: null
   };
 
   reloadNow = () => {
@@ -81,6 +82,10 @@ class Compte extends Component {
         console.log(error);
       });
   }
+
+  send = () => {
+    Axios.post("");
+  };
 
   render() {
     const infosCompte = this.state.data;
@@ -226,10 +231,16 @@ class Compte extends Component {
               <span className="athelas navy f4 ml2">
                 {infosCompte.nom} {infosCompte.prenom}
               </span>
-              <br /> <span className="athelas navy f4 job"> AVOCAT</span>
+              {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
             </p>
+            <form
+              method="POST"
+              enctype="multipart/form-data"
+              action="/dashboard/moncompte"
+            >
+              <input type="file" name="entete" />
+            </form>
 
-            <img className="icone pointer ml3" src={upload} alt="upload" />
             <img className="icone pointer ml2" src={modifier} alt="modifier" />
             <img
               className="icone pointer ml2 "
@@ -239,14 +250,16 @@ class Compte extends Component {
           </div>
           <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
             <p className="b black tl ml3"> Signature: </p>
-            <img
-              className="w-33-ns ml3 h3 signature"
-              src={signature}
-              alt="signature"
-            />{" "}
+            <form
+              method="POST"
+              enctype="multipart/form-data"
+              action="/dashboard/moncompte"
+            >
+              <input type="file" name="signature" />
+            </form>
+
             <br />
             <div className="mt3">
-              <img className="icone pointer ml3" src={upload} alt="upload" />
               <img
                 className="icone pointer ml2"
                 src={modifier}
