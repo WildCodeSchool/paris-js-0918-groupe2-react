@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
-// import upload from "./Icones_Arigoni/icone_upload.png";
+import upload from "./Icones_Arigoni/icone_upload.png";
 // import signature from "./Icones_Arigoni/signature.png";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
@@ -117,18 +117,18 @@ class Compte extends Component {
           <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
           <div className="mglft">
             <div className="fl w-40">
-              <div className="div_inputleft">
-                <span className="db inputleft pr3 nowrap">Titre:</span>
-                <span className="db inputleft pr3 nowrap">Nom:</span>
-                <span className="db inputleft pr3 nowrap">Prénom:</span>
-                <span className="db inputleft pr3 nowrap">Numéro de rue:</span>
-                <span className="db inputleft pr3 nowrap">Libellé de rue:</span>
-                <span className="db inputleft pr3 nowrap">Code postal:</span>
-                <span className="db inputleft pr3 nowrap">Ville:</span>
-                <span className="db inputleft pr3 nowrap">Tel:</span>
-                <span className="db inputleft pr3 nowrap">Fax:</span>
-                <span className="db inputleft pr3 nowrap">Email:</span>
-                <span className="db inputleft pr3 nowrap">Numéro de TVA:</span>
+              <div className="pt3">
+                <span className="db pr3 mtInfo2 nowrap">Titre:</span>
+                <span className="db pr3 mtInfo nowrap">Nom:</span>
+                <span className="db pr3 mtInfo nowrap">Prénom:</span>
+                <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
+                <span className="db pr3 mtInfo nowrap">Libellé de rue:</span>
+                <span className="db pr3 mtInfo nowrap">Code postal:</span>
+                <span className="db pr3 mtInfo nowrap">Ville:</span>
+                <span className="db pr3 mtInfo nowrap">Tel:</span>
+                <span className="db pr3 mtInfo nowrap">Fax:</span>
+                <span className="db pr3 mtInfo nowrap">Email:</span>
+                <span className="db pr3 mtInfo nowrap">Numéro de TVA:</span>
               </div>
             </div>
 
@@ -219,7 +219,7 @@ class Compte extends Component {
           </div>
 
           {/* Bouton sauvegarder */}
-          <div className="pt4 tc sauvegarderbouton">
+          <div className="pt4 sauvegarderbouton">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
               href="#0"
@@ -246,19 +246,28 @@ class Compte extends Component {
             <p className="b black">Email: {infosCompte.mail}</p>
             <p className="b black">Nº TVA: {infosCompte.num_TVA}</p>
           </div>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
-            <p className="b black tl ml3">
-              {" "}
-              En-tête:{" "}
-              <span className="athelas navy f4 ml2">
-                {infosCompte.nom} {infosCompte.prenom}
-              </span>
-              {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
-            </p>
-            <form onSubmit={this.onFormSubmit}>
-              <input type="file" name="signature" onChange={this.onChange} />
 
+          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
+            <p className="tc b black">
+              En-tête: <br />
+              <span className="athelas navy f4 ml2">
+                {/* {infosCompte.nom} {infosCompte.prenom} */}
+              </span>
               <img
+                className="entete"
+                src={this.state.otherFile}
+                alt="en-tête"
+              />
+              {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
+              <form onSubmit={this.onFormSubmit}>
+                <input
+                  className="input-file"
+                  type="file"
+                  name="signature"
+                  onChange={this.onChange}
+                />
+
+                {/* <img
                 className="icone pointer ml2"
                 src={modifier}
                 alt="modifier"
@@ -267,31 +276,38 @@ class Compte extends Component {
                 className="icone pointer ml2 "
                 src={supprimer}
                 alt="supprimer"
-              />
+              /> */}
 
-              <p className="b black tl ml3"> Signature: </p>
-
-              <input
-                type="file"
-                name="signature"
-                onChange={this.onChangeSignature}
-              />
-              <button> upload </button>
-            </form>
+                <p className="tc b black"> Signature: </p>
+                <img
+                  className="signature"
+                  src={this.state.File}
+                  alt="signature"
+                />
+                <input
+                  className="input-file"
+                  type="file"
+                  name="signature"
+                  onChange={this.onChangeSignature}
+                />
+                <button className="ml2 button_border mt2">
+                  <img
+                    className="icone pointer"
+                    src={upload}
+                    alt="upload signature"
+                  />
+                </button>
+                <img className="icone pointer " src={modifier} alt="modifier" />
+                <img
+                  className="icone pointer ml2"
+                  src={supprimer}
+                  alt="supprimer"
+                />
+              </form>
+            </p>
 
             <br />
-            <div className="mt3">
-              <img
-                className="icone pointer ml2"
-                src={modifier}
-                alt="modifier"
-              />
-              <img
-                className="icone pointer ml2"
-                src={supprimer}
-                alt="supprimer"
-              />
-            </div>
+            <div />
           </div>
         </div>
       </div>
