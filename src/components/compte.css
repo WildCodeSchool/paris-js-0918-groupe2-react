@@ -1,9 +1,19 @@
 .mtInfo {
-  margin-top: 0.87em;
+  /* margin-top: 0.87em; */
+  margin-top: 1.62em;
+}
+
+.mtInfo2 {
+  /* margin-top: 0.87em; */
+  margin-top: 1.2em;
 }
 
 .boutonSave {
   background-color: #6978fc;
+}
+
+.sauvegarderbouton {
+  padding-left: 62%;
 }
 
 .firstBorder {

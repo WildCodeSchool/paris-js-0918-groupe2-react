@@ -91,7 +91,7 @@ class Compte extends Component {
           <div className="mglft">
             <div className="fl w-40">
               <div className="pt3">
-                <span className="db pr3 mtInfo nowrap">Titre:</span>
+                <span className="db pr3 mtInfo2 nowrap">Titre:</span>
                 <span className="db pr3 mtInfo nowrap">Nom:</span>
                 <span className="db pr3 mtInfo nowrap">Prénom:</span>
                 <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
@@ -192,7 +192,7 @@ class Compte extends Component {
           </div>
 
           {/* Bouton sauvegarder */}
-          <div className="pt4 tc sauvegarderbouton">
+          <div className="pt4 sauvegarderbouton">
             <a
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
               href="#0"
