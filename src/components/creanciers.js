@@ -2,12 +2,10 @@ import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
-import "./debiteurs";
+import "./debiteurs.css";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-
-//import formulairedebiteurs et formulairecreacier pour les routes
 
 class Creanciers extends Component {
   state = {

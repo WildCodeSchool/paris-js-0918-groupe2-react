@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
-import "./debiteurs.css";
 import { NavLink } from "react-router-dom";
+import "./debiteurs.css";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -11,6 +11,7 @@ class Debiteurs extends Component {
   state = {
     debiteurs: [],
     debiteursFiltered: [],
+    debiteursSearch: "",
     myReloadCounter: 0
   };
 
@@ -53,29 +54,65 @@ class Debiteurs extends Component {
     });
   };
 
-  componentDidMount = () => {
-    Axios.get("http://localhost:4848/api/debiteurs").then(response => {
-      this.setState({
-        debiteurs: response.data,
-        debiteursFiltered: response.data.filter(res => res.active)
-        // res.active forcement true pas besoin de mettre ===true
-      });
+  mySearch = () => {
+    this.setState({
+      debiteursFiltered: this.state.debiteursFiltered.filter(debiteur =>
+        debiteur.denomination_sociale
+          .toLowerCase()
+          .includes(this.state.debiteursSearch.toLowerCase())
+      )
     });
   };
+
+  handleSearch = e => {
+    this.setState(
+      {
+        debiteursSearch: e.target.value
+      },
+      () => {
+        if (this.state.debiteursSearch.length > 0) {
+          this.mySearch();
+        } else {
+          this.setState({
+            debiteursFiltered: this.state.debiteurs.filter(
+              debiteur => debiteur.active
+            )
+          });
+        }
+      }
+    );
+  };
+
+  componentDidMount() {
+    Axios.get("http://localhost:4848/api/debiteurs")
+      .then(response => {
+        this.setState({
+          // returns all debiteurs
+          debiteurs: response.data,
+          // returns all debiteurs whose active status is true
+          debiteursFiltered: response.data.filter(debiteur => debiteur.active)
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
-    const mesDebiteurs = this.state.debiteursFiltered;
+    const myDebiteurs = this.state.debiteursFiltered;
     const myReloadCounter = this.state.myReloadCounter;
     return (
-      <div className="debiteur">
+      //tableau informations des debiteurs
+      <div className="creancier">
         <div className="fl w-60">
-          <div className="pl4">
+          <div className="title_créancier pl4">
             <h1 className="f2 lh-copy nowrap">
               Informations sur les débiteurs
             </h1>
             <h2 className="pt2 f4 lh-copy">Liste des débiteurs</h2>
           </div>
         </div>
-        {/* Search bar */}
+        {/* searchbar */}
         <div className="fl w-40">
           <div className="wraparigo">
             <div className="searcharigo">
@@ -83,6 +120,7 @@ class Debiteurs extends Component {
                 type="text"
                 className="searchTerm"
                 placeholder="trouver un débiteur"
+                onChange={this.handleSearch}
               />
               <button type="submit" className="searchButton">
                 <i className="fa fa-search" />
@@ -90,8 +128,9 @@ class Debiteurs extends Component {
             </div>
           </div>
         </div>
-        {/* tableau des débiteurs */}
-        <div className="tableau fl w-100 pa4 ">
+
+        {/* tableau */}
+        <div className=" tableau fl w-100 pa4 ">
           <div className="overflow-auto">
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
@@ -104,39 +143,57 @@ class Debiteurs extends Component {
                 </tr>
               </thead>
               <tbody className="lh-copy">
-                {mesDebiteurs.map(deb => {
-                  return (
-                    <tr
-                      key={`${myReloadCounter}-${deb.denomination_sociale}`}
-                      className="stripe-dark"
-                    >
-                      <td>{deb.denomination_sociale}</td>
-                      <td>{deb.forme_juridique}</td>
-                      <td>{deb.pays_siege}</td>
-                      <td>
-                        <img
-                          className="icone pointer"
-                          src={modifier}
-                          alt="modifier"
-                        />
-                      </td>
-                      <td>
-                        <img
-                          className="icone pointer"
-                          src={supprimer}
-                          alt="supprimer"
-                          onClick={() =>
-                            this.handleDelete(deb.id, deb.denomination_sociale)
-                          }
-                        />
-                      </td>
-                    </tr>
-                  );
-                })}
+                {myDebiteurs
+                  .sort((a, b) => b.id - a.id)
+                  .slice(0, 10)
+                  .map(debiteur => {
+                    return (
+                      <tr
+                        className="stripe-dark"
+                        key={`${myReloadCounter}-${
+                          debiteur.denomination_sociale
+                        }`}
+                      >
+                        <td>{debiteur.denomination_sociale}</td>
+                        <td>{debiteur.forme_juridique}</td>
+                        <td>{debiteur.pays_siege}</td>
+                        <td>
+                          <NavLink to="/dashboard/formDebiteur">
+                            <img
+                              className="icone pointer"
+                              src={modifier}
+                              alt="modifier"
+                              onClick={() =>
+                                this.props.pageChangeSub(
+                                  "FormDebiteur",
+                                  0,
+                                  `${debiteur.id}`
+                                )
+                              }
+                            />
+                          </NavLink>
+                        </td>
+                        <td>
+                          <img
+                            className="icone pointer"
+                            src={supprimer}
+                            alt="supprimer"
+                            onClick={() =>
+                              this.handleDelete(
+                                debiteur.id,
+                                debiteur.denomination_sociale
+                              )
+                            }
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
-            {/* Bouton  */}
-            <div className="buttondebiteur tc pt4">
+
+            {/* Button créer un debiteurs */}
+            <div className="buttoncreancier tc pt4">
               <NavLink
                 to="/dashboard/formDebiteur"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "

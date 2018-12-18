@@ -1,11 +1,57 @@
 import React, { Component } from "react";
 import "./actions.css";
 import Tabfacture from "./tabfacture";
-// import Tabavoir from "./tabavoir";
 import Checkbox from "./Checkbox";
+import Axios from "axios";
+import Autocomplete from "./autocomplete";
 
 class Actions extends Component {
-  state = {};
+  state = {
+    creanciers: [],
+    creanciersFiltered: [],
+    debiteurs: [],
+    debiteursFiltered: [],
+    creancierSelected: "",
+    debiteurSelected: "",
+    creanciersNames: [],
+    debiteursNames: []
+  };
+
+  componentDidMount() {
+    Axios.get("http://localhost:4848/api/creanciers")
+      .then(response => {
+        this.setState({
+          // returns all creanciers
+          creanciers: response.data,
+          // returns all creanciers whose active status is true
+          creanciersFiltered: response.data.filter(
+            creancier => creancier.active
+          ),
+          creanciersNames: response.data
+            .filter(creancier => creancier.denomination_sociale !== null)
+            .map(creancier => creancier.denomination_sociale)
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    Axios.get("http://localhost:4848/api/debiteurs")
+      .then(response => {
+        this.setState({
+          // returns all debiteurs
+          debiteurs: response.data,
+          // returns all debiteurs whose active status is true
+          debiteursFiltered: response.data.filter(debiteur => debiteur.active),
+          debiteursNames: response.data
+            .filter(debiteur => debiteur.denomination_sociale !== null)
+            .map(debiteur => debiteur.denomination_sociale)
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="fl w-100">
@@ -16,11 +62,9 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un créancier</p>
             <form action="creancier">
-              <input
-                type="text"
-                name="creancierlookup"
-                placeholder="Tapper le nom du créancier"
-              />
+              {/* <input type="text" placeholder="Entrer le nom d'un creancier" />
+               */}
+              <Autocomplete suggestions={this.state.creanciersNames} />
             </form>
           </div>
           <div className="fl w-20 ">
@@ -29,20 +73,20 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un débiteur</p>
             <form action="debiteur">
-              <input
-                type="text"
-                name="debiteurlookup"
-                placeholder="Tapper le nom du débiteur"
-              />
+              <Autocomplete suggestions={this.state.debiteursNames} />
             </form>
           </div>
         </div>
-        <div className="fl w-100 pt4">
-          <div className="fl w-60 tc">
-            <span className="pr2">Gérer les factures</span>
-            <input type="checkbox" name="factures" value="factures" />
-            <span className="pr2 pl4">Gérer les avoirs</span>
-            <input type="checkbox" name="avoirs" value="avoirs" />
+        <div className="fl w-100 pt4 tc">
+          <div className="fl w-60">
+            <span className="tc">
+              Gérer les factures
+              <input type="checkbox" name="factures" value="factures" />
+            </span>
+            <span className="tc">
+              Gérer les avoirs
+              <input type="checkbox" name="avoirs" value="avoirs" />
+            </span>
           </div>
           <div className="fl w-40">
             <form action="facture">
