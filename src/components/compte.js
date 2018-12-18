@@ -22,7 +22,33 @@ class Compte extends Component {
     fax: "",
     mail: "",
     num_TVA: "",
-    file: null
+    file: null,
+    otherFile: null
+  };
+
+  onFormSubmit = e => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("signature", this.state.file);
+    formData.append("signature", this.state.otherFile);
+    console.log(formData);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data"
+      }
+    };
+    Axios.post("http://localhost:4848/dashboard/moncompte", formData, config)
+      .then(response => {
+        alert("The file is successfully uploaded");
+      })
+      .catch(error => {});
+  };
+  onChange = e => {
+    this.setState({ file: e.target.files[0] });
+  };
+
+  onChangeSignature = e => {
+    this.setState({ otherFile: e.target.files[0] });
   };
 
   reloadNow = () => {
@@ -50,7 +76,7 @@ class Compte extends Component {
             Axios.put(`http://localhost:4848/api/cabinet/${myId}`, this.state)
               .then(response => {
                 this.reloadNow(myId);
-                alert(`Vos informations ont bien été modifié.`);
+                alert(`Vos informations ont bien été modifiées.`);
                 console.log(response);
               })
               .catch(error => {
@@ -83,10 +109,6 @@ class Compte extends Component {
       });
   }
 
-  send = () => {
-    Axios.post("");
-  };
-
   render() {
     const infosCompte = this.state.data;
     return (
@@ -95,18 +117,18 @@ class Compte extends Component {
           <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
           <div className="mglft">
             <div className="fl w-40">
-              <div className="pt3">
-                <span className="db pr3 mtInfo nowrap">Titre:</span>
-                <span className="db pr3 mtInfo nowrap">Nom:</span>
-                <span className="db pr3 mtInfo nowrap">Prénom:</span>
-                <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
-                <span className="db pr3 mtInfo nowrap">Libellé de rue:</span>
-                <span className="db pr3 mtInfo nowrap">Code postal:</span>
-                <span className="db pr3 mtInfo nowrap">Ville:</span>
-                <span className="db pr3 mtInfo nowrap">Tel:</span>
-                <span className="db pr3 mtInfo nowrap">Fax:</span>
-                <span className="db pr3 mtInfo nowrap">Email:</span>
-                <span className="db pr3 mtInfo nowrap">Numéro de TVA:</span>
+              <div className="div_inputleft">
+                <span className="db inputleft pr3 nowrap">Titre:</span>
+                <span className="db inputleft pr3 nowrap">Nom:</span>
+                <span className="db inputleft pr3 nowrap">Prénom:</span>
+                <span className="db inputleft pr3 nowrap">Numéro de rue:</span>
+                <span className="db inputleft pr3 nowrap">Libellé de rue:</span>
+                <span className="db inputleft pr3 nowrap">Code postal:</span>
+                <span className="db inputleft pr3 nowrap">Ville:</span>
+                <span className="db inputleft pr3 nowrap">Tel:</span>
+                <span className="db inputleft pr3 nowrap">Fax:</span>
+                <span className="db inputleft pr3 nowrap">Email:</span>
+                <span className="db inputleft pr3 nowrap">Numéro de TVA:</span>
               </div>
             </div>
 
@@ -118,77 +140,77 @@ class Compte extends Component {
                     type="text"
                     name="titre"
                     placeholder="Titre"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="nom"
                     placeholder="Nom"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="prenom"
                     placeholder="Prénom"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="num_rue"
                     placeholder="Numéro de rue"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="libelle_rue"
                     placeholder="Libellé de rue"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="code_postal"
                     placeholder="Code postal"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="ville"
                     placeholder="Ville"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="tel"
                     placeholder="Tel"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="fax"
                     placeholder="Fax"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="mail"
                     placeholder="Email"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                   <input
                     type="text"
                     name="num_TVA"
                     placeholder="Numéro de TVA"
-                    className="db mt2"
+                    className="db mt3"
                     onChange={this.handleMyUserInputs}
                   />
                 </form>
@@ -233,29 +255,28 @@ class Compte extends Component {
               </span>
               {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
             </p>
-            <form
-              method="POST"
-              enctype="multipart/form-data"
-              action="/dashboard/moncompte"
-            >
-              <input type="file" name="entete" />
-            </form>
+            <form onSubmit={this.onFormSubmit}>
+              <input type="file" name="signature" onChange={this.onChange} />
 
-            <img className="icone pointer ml2" src={modifier} alt="modifier" />
-            <img
-              className="icone pointer ml2 "
-              src={supprimer}
-              alt="supprimer"
-            />
-          </div>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
-            <p className="b black tl ml3"> Signature: </p>
-            <form
-              method="POST"
-              enctype="multipart/form-data"
-              action="/dashboard/moncompte"
-            >
-              <input type="file" name="signature" />
+              <img
+                className="icone pointer ml2"
+                src={modifier}
+                alt="modifier"
+              />
+              <img
+                className="icone pointer ml2 "
+                src={supprimer}
+                alt="supprimer"
+              />
+
+              <p className="b black tl ml3"> Signature: </p>
+
+              <input
+                type="file"
+                name="signature"
+                onChange={this.onChangeSignature}
+              />
+              <button> upload </button>
             </form>
 
             <br />
