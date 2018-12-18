@@ -1,0 +1,105 @@
+.checkbox-wrap {
+  background: #ffffff;
+  border: 1px solid #eeeeee;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 10px;
+  padding: 12px 15px;
+}
+
+.checkbox-wrap label {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.checkbox-wrap.custom {
+  position: relative;
+}
+
+.checkbox-wrap.custom input[type="checkbox"] {
+  bottom: 0;
+  cursor: pointer;
+  height: 100%;
+  left: 0;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+
+.checkbox-wrap.custom input[type="checkbox"] + label {
+  cursor: pointer;
+  padding-left: 50px;
+  position: relative;
+}
+
+.checkbox-wrap.custom input[type="checkbox"] + label:before {
+  background: #9bb4c8;
+  border-radius: 100px;
+  content: "";
+  height: 12px;
+  left: 0;
+  position: absolute;
+  top: 4px;
+  width: 40px;
+
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.checkbox-wrap.custom input[type="checkbox"] + label:after {
+  background: #364763;
+  border-radius: 100%;
+  content: "";
+  height: 20px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 20px;
+
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.checkbox-wrap.custom input[type="checkbox"]:checked + label:before {
+  background: #aedeb1;
+}
+
+.checkbox-wrap.custom input[type="checkbox"]:checked + label:after {
+  background: #4caf50;
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  -o-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+/***** STYLE-2 *****/
+
+.checkbox-wrap.custom.style-2 input[type="checkbox"] + label:before {
+  background: #47465d;
+  height: 20px;
+  top: 0;
+}
+
+.checkbox-wrap.custom.style-2 input[type="checkbox"] + label:after {
+  background: #ffffff;
+  height: 16px;
+  left: 2px;
+  top: 2px;
+  width: 16px;
+}
+
+.checkbox-wrap.custom.style-2 input[type="checkbox"]:checked + label:before {
+  background: #4caf50;
+}
+
+.checkbox-wrap.custom.style-2 input[type="checkbox"]:checked + label:after {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  -o-transform: translateX(20px);
+  transform: translateX(20px);
+}
