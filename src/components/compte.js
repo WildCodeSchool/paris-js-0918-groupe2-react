@@ -3,7 +3,7 @@ import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
-// import signature from "./Icones_Arigoni/signature.png";
+import signature from "./Icones_Arigoni/signature.png";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
@@ -26,30 +26,30 @@ class Compte extends Component {
     otherFile: null
   };
 
-  onFormSubmit = e => {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("signature", this.state.file);
-    formData.append("signature", this.state.otherFile);
-    console.log(formData);
-    const config = {
-      headers: {
-        "content-type": "multipart/form-data"
-      }
-    };
-    Axios.post("http://localhost:4848/dashboard/moncompte", formData, config)
-      .then(response => {
-        alert("The file is successfully uploaded");
-      })
-      .catch(error => {});
-  };
-  onChange = e => {
-    this.setState({ file: e.target.files[0] });
-  };
+  // onFormSubmit = e => {
+  //   e.preventDefault();
+  //   const formData = new FormData();
+  //   formData.append("signature", this.state.file);
+  //   formData.append("signature", this.state.otherFile);
+  //   console.log(formData);
+  //   const config = {
+  //     headers: {
+  //       "content-type": "multipart/form-data"
+  //     }
+  //   };
+  //   Axios.post("http://localhost:4848/dashboard/moncompte", formData, config)
+  //     .then(response => {
+  //       alert("The file is successfully uploaded");
+  //     })
+  //     .catch(error => {});
+  // };
+  // onChange = e => {
+  //   this.setState({ file: e.target.files[0] });
+  // };
 
-  onChangeSignature = e => {
-    this.setState({ otherFile: e.target.files[0] });
-  };
+  // onChangeSignature = e => {
+  //   this.setState({ otherFile: e.target.files[0] });
+  // };
 
   reloadNow = () => {
     Axios.get("http://www.localhost:4848/api/cabinet")
@@ -247,19 +247,58 @@ class Compte extends Component {
             <p className="b black">Nº TVA: {infosCompte.num_TVA}</p>
           </div>
 
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
+          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+            <p className="b black tl ml3">
+              {" "}
+              En-tête:{" "}
+              <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
+              <br /> <span className="athelas navy f4 job"> AVOCAT</span>
+            </p>
+
+            <img className="icone pointer ml3" src={upload} alt="upload" />
+            <img className="icone pointer ml2" src={modifier} alt="modifier" />
+            <img
+              className="icone pointer ml2 "
+              src={supprimer}
+              alt="supprimer"
+            />
+          </div>
+          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+            <p className="b black tl ml3"> Signature: </p>
+            <img
+              className="w-33-ns ml3 h3 signature"
+              src={signature}
+              alt="signature"
+            />{" "}
+            <br />
+            <div className="mt3">
+              <img className="icone pointer ml3" src={upload} alt="upload" />
+              <img
+                className="icone pointer ml2"
+                src={modifier}
+                alt="modifier"
+              />
+              <img
+                className="icone pointer ml2"
+                src={supprimer}
+                alt="supprimer"
+              />
+            </div>
+          </div>
+
+          {/* <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="tc b black">
               En-tête: <br />
               <span className="athelas navy f4 ml2">
-                {/* {infosCompte.nom} {infosCompte.prenom} */}
+                
               </span>
               <img
                 className="entete"
                 src={this.state.otherFile}
                 alt="en-tête"
-              />
-              {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
-              <form onSubmit={this.onFormSubmit}>
+              /> */}
+          {/* <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
+          {/* <form onSubmit={this.onFormSubmit}>
                 <input
                   className="input-file"
                   type="file"
@@ -267,16 +306,7 @@ class Compte extends Component {
                   onChange={this.onChange}
                 />
 
-                {/* <img
-                className="icone pointer ml2"
-                src={modifier}
-                alt="modifier"
-              />
-              <img
-                className="icone pointer ml2 "
-                src={supprimer}
-                alt="supprimer"
-              /> */}
+         
 
                 <p className="tc b black"> Signature: </p>
                 <img
@@ -303,12 +333,8 @@ class Compte extends Component {
                   src={supprimer}
                   alt="supprimer"
                 />
-              </form>
-            </p>
-
-            <br />
-            <div />
-          </div>
+              </form> */}
+          {/* </p> */}
         </div>
       </div>
     );
