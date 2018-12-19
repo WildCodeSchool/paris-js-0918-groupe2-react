@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./actions.css";
 import Tabfacture from "./tabfacture";
-import Checkbox from "./Checkbox";
+import Tabavoir from "./tabavoir";
 import Axios from "axios";
 import Autocomplete from "./autocomplete";
 
@@ -14,7 +14,8 @@ class Actions extends Component {
     creancierSelected: "",
     debiteurSelected: "",
     creanciersNames: [],
-    debiteursNames: []
+    debiteursNames: [],
+    checkboxFacture: true
   };
 
   componentDidMount() {
@@ -52,6 +53,20 @@ class Actions extends Component {
       });
   }
 
+  handleTabSwitch() {
+    return this.state.checkboxFacture ? <Tabfacture /> : <Tabavoir />;
+  }
+
+  handleCheckbox() {
+    this.setState({
+      checkboxFacture: !this.state.checkboxFacture
+    });
+  }
+
+  handleCheckboxDisplay() {
+    return this.state.checkboxFacture ? "factures" : "avoirs";
+  }
+
   render() {
     return (
       <div className="fl w-100">
@@ -78,30 +93,72 @@ class Actions extends Component {
           </div>
         </div>
         <div className="fl w-100 pt4 tc">
-          <div className="fl w-60">
-            <span className="tc">
-              Gérer les factures
-              <input type="checkbox" name="factures" value="factures" />
-            </span>
-            <span className="tc">
-              Gérer les avoirs
-              <input type="checkbox" name="avoirs" value="avoirs" />
-            </span>
-          </div>
-          <div className="fl w-40">
-            <form action="facture">
-              <input
-                type="text"
-                name="facturelookup"
-                placeholder="Chercher une facture"
-              />
-            </form>
+          <div class="checkbox-wrap custom style-2">
+            <input
+              type="checkbox"
+              id="custom-checkbox-2"
+              onClick={() => this.handleCheckbox()}
+            />
+            <label for="custom-checkbox-2">
+              Gérer les {this.handleCheckboxDisplay()}
+            </label>
           </div>
         </div>
-        <div className="fl w-100 pa4 ">
-          <Tabfacture />
-          {/* <Tabavoir /> */}
-          <Checkbox />
+        <div className="fl w-100 pt4 pr4 pl4">{this.handleTabSwitch()}</div>
+        <div>
+          {/* checkbox pour produits */}
+
+          <div className="fl w-40 pt2 pl4 tc">
+            <p className="">
+              Produits vendus :
+              <input
+                type="checkbox"
+                name="produitsV"
+                value="produitsV"
+                // className="pr3 mr3"
+              />
+            </p>
+
+            <p className="">
+              Services fournis :
+              <input
+                type="checkbox"
+                name="servicesF"
+                value="servicesF"
+                // className="pr3 mr3"
+              />
+            </p>
+          </div>
+          <br />
+          {/* Input pour honoraires */}
+          <div className="fl w-60 pt4 tc">
+            <form action="facture">
+              <span>Honoraires:</span>
+              <input
+                className="ml2"
+                type="text"
+                name="honos"
+                placeholder="Honoraires"
+              />
+              <span className="pl1">€</span>
+            </form>
+          </div>
+
+          {/* Boutons */}
+          <div className=" fl w-100 tc pt4 mt3 buttonsauvegarder">
+            <a
+              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+              href="#0"
+            >
+              Créer une injonction de payer
+            </a>
+            <a
+              className="f6 ml4 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+              href="#0"
+            >
+              Créer une mise en demeure
+            </a>
+          </div>
         </div>
       </div>
     );

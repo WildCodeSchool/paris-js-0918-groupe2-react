@@ -49,3 +49,25 @@
     width: 100%;
   }
 }
+
+.inputleft {
+  padding: 1.6%;
+  margin-top: 8.8%;
+}
+
+.div_inputleft {
+  padding-top: 2.2%;
+}
+
+.input-file {
+  border: none;
+}
+
+.icone pointer {
+  border: none;
+}
+
+.button_border {
+  border: none;
+  background-color: transparent;
+}
