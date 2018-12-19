@@ -22,8 +22,8 @@ class Compte extends Component {
     fax: "",
     mail: "",
     num_TVA: "",
-    file: null,
-    otherFile: null
+    file: "",
+    otherFile: ""
   };
 
   onFormSubmit = e => {
@@ -31,7 +31,7 @@ class Compte extends Component {
     const formData = new FormData();
     formData.append("signature", this.state.file);
     formData.append("signature", this.state.otherFile);
-    console.log(formData);
+    console.log(this.state.file.name);
     const config = {
       headers: {
         "content-type": "multipart/form-data"
@@ -117,18 +117,26 @@ class Compte extends Component {
           <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
           <div className="mglft">
             <div className="fl w-40">
-              <div className="pt3">
-                <span className="db pr3 mtInfo2 nowrap">Titre:</span>
-                <span className="db pr3 mtInfo nowrap">Nom:</span>
-                <span className="db pr3 mtInfo nowrap">Prénom:</span>
-                <span className="db pr3 mtInfo nowrap">Numéro de rue:</span>
-                <span className="db pr3 mtInfo nowrap">Libellé de rue:</span>
-                <span className="db pr3 mtInfo nowrap">Code postal:</span>
-                <span className="db pr3 mtInfo nowrap">Ville:</span>
-                <span className="db pr3 mtInfo nowrap">Tel:</span>
-                <span className="db pr3 mtInfo nowrap">Fax:</span>
-                <span className="db pr3 mtInfo nowrap">Email:</span>
-                <span className="db pr3 mtInfo nowrap">Numéro de TVA:</span>
+              <div className="pt3 div_inputleft">
+                <span className="db pr3 inputleft mtInfo nowrap">Titre:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">Nom:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">Prénom:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">
+                  Numéro de rue:
+                </span>
+                <span className="db pr3 inputleft mtInfo nowrap">
+                  Libellé de rue:
+                </span>
+                <span className="db pr3 inputleft mtInfo nowrap">
+                  Code postal:
+                </span>
+                <span className="db pr3 inputleft mtInfo nowrap">Ville:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">Tel:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">Fax:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">Email:</span>
+                <span className="db pr3 inputleft mtInfo nowrap">
+                  Numéro de TVA:
+                </span>
               </div>
             </div>
 
@@ -281,7 +289,7 @@ class Compte extends Component {
                 <p className="tc b black"> Signature: </p>
                 <img
                   className="signature"
-                  src={this.state.File}
+                  src={this.state.file.name}
                   alt="signature"
                 />
                 <input
