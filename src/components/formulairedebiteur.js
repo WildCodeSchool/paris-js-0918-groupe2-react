@@ -134,7 +134,7 @@ class Formulairedebiteur extends Component {
               to="/dashboard/debiteurs"
               onClick={() => this.props.pageChangeSub("Debiteurs")}
             >
-              <img src={previous} alt="previous" />
+              <img className="previousbutton" src={previous} alt="previous" />
             </NavLink>
             <h1 className="titre1">Créer un nouveau débiteur</h1>
             <h2 className="compagnietitre">

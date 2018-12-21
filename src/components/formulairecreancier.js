@@ -140,7 +140,7 @@ class Formulairecreancier extends Component {
               to="/dashboard/creanciers"
               onClick={() => this.props.pageChangeSub("Creanciers")}
             >
-              <img src={previous} alt="previous" />
+              <img className="previousbutton" src={previous} alt="previous" />
             </NavLink>
             <h1 className="titre1">Créer un nouveau créancier</h1>
             <h2 className="compagnietitre">

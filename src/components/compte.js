@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
-import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import upload from "./Icones_Arigoni/icone_upload.png";
 // import signature from "./Icones_Arigoni/signature.png";
 import Axios from "axios";
@@ -9,6 +8,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 // import Formulairecompte from "./formulairecompte";
 import { NavLink } from "react-router-dom";
+import valider from "./Icones_Arigoni/valider.svg";
 
 class Compte extends Component {
   state = {
@@ -272,7 +272,7 @@ class Compte extends Component {
         {/* ce que le modèle va donner */}
         <div className="fl w-100 pt3 tc stylish-cab">
           <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
+          <div className="ba br4 mt4 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
             <p className="b black">
               {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
             </p>
@@ -289,38 +289,36 @@ class Compte extends Component {
               onClick={() => this.props.pageChangeSub("formulairecompte")}
             >
               <img
-                className="icone pointer ml2"
+                className="icone pointer ml2 mb2"
                 src={modifier}
                 alt="modifier"
               />
             </NavLink>
           </div>
 
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+          <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
             <p className="b black tl ml3">
               {" "}
               En-tête:{" "}
-              <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
-              <br /> <span className="athelas navy f4 job"> AVOCAT</span>
-            </p>
-
-            <img className="icone pointer ml3" src={upload} alt="upload" />
-            <img className="icone pointer ml2" src={modifier} alt="modifier" />
+              {/* <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
+              <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
+            </p>{" "}
+            <img className="icone pointer ml3" src={upload} alt="upload" />{" "}
             <img
-              className="icone pointer ml2 "
-              src={supprimer}
-              alt="supprimer"
+              className="valider icone pointer ml3"
+              src={valider}
+              alt="valider"
             />
           </div>
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+          <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
             <p className="b black tl ml3"> Signature: </p>
             <form onSubmit={this.onFormSubmitSignature}>
-              <img
+              {/* <img
                 className="w-33-ns ml3 h3 signature"
                 src="http://localhost:4848/public/images/signature.jpeg"
                 alt="signature"
               />{" "}
-              <br />
+              <br /> */}
               <div className="mt3">
                 <input
                   type="file"
@@ -330,63 +328,19 @@ class Compte extends Component {
                   onChange={this.onChange}
                 />
                 <label htmlFor="file">
-                  {/* <input type="submit" /> */}
                   <img
-                    className="icone pointer ml2"
-                    src={modifier}
-                    alt="modifier"
+                    className="icone pointer ml3"
+                    src={upload}
+                    alt="upload"
                   />
                 </label>
-                <img className="icone pointer ml3" src={upload} alt="upload" />
+                <img
+                  className="icone pointer ml3"
+                  src={valider}
+                  alt="valider"
+                />
               </div>
             </form>
-          </div>
-
-          <div className="ba mt3 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
-            <p className="tc b black">
-              En-tête: <br />
-              <span className="athelas navy f4 ml2" />
-              <img
-                className="entete"
-                src="http://localhost:4848/public/images/entete.png"
-                alt="en-tête"
-              />
-              <br /> <span className="athelas navy f4 job"> AVOCAT</span>
-              {/* <form onSubmit={this.onFormSubmit}>
-                <input
-                  className="input-file"
-                  type="file"
-                  name="signature"
-                  onChange={this.onChange}
-                />
-
-                <p className="tc b black"> Signature: </p>
-                <img
-                  className="signature"
-                  src="http://localhost:4848/public/images/signature.jpeg"
-                  alt="signature"
-                />
-                <input
-                  className="input-file"
-                  type="file"
-                  name="signature"
-                  onChange={this.onChangeSignature}
-                />
-                <button className="ml2 button_border mt2">
-                  <img
-                    className="icone pointer"
-                    src={upload}
-                    alt="upload signature"
-                  />
-                </button>
-                <img className="icone pointer " src={modifier} alt="modifier" />
-                <img
-                  className="icone pointer ml2"
-                  src={supprimer}
-                  alt="supprimer"
-                />
-              </form> */}
-            </p>
           </div>
         </div>
       </div>

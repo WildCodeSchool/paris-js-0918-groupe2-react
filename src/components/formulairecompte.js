@@ -4,6 +4,8 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import previous from "./Icones_Arigoni/previous.svg";
 import { NavLink } from "react-router-dom";
+import "./formulairecompte.css";
+
 class Formulairecompte extends Component {
   state = {
     data: [],
@@ -126,14 +128,15 @@ class Formulairecompte extends Component {
     const infosCompte = this.state.data;
     return (
       <div>
+        {" "}
+        <NavLink
+          to="/dashboard/moncompte"
+          onClick={() => this.props.pageChangeSub("Compte")}
+        >
+          <img className="previousbutton ml4" src={previous} alt="previous" />
+        </NavLink>
         <div className="fl w-100 pt3">
           <div className="fl w-60 pl4 enlarge">
-            <NavLink
-              to="/dashboard/moncompte"
-              onClick={() => this.props.pageChangeSub("Compte")}
-            >
-              <img className="f2" src={previous} alt="previous" />
-            </NavLink>
             <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
             <div className="mglft">
               <div className="fl w-40">

@@ -98,8 +98,6 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un créancier</p>
             <form action="creancier">
-              {/* <input type="text" placeholder="Entrer le nom d'un creancier" />
-               */}
               <Autocomplete suggestions={this.state.creanciersNames} />
             </form>
           </div>
