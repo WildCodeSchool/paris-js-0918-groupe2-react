@@ -98,8 +98,6 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un créancier</p>
             <form action="creancier">
-              {/* <input type="text" placeholder="Entrer le nom d'un creancier" />
-               */}
               <Autocomplete suggestions={this.state.creanciersNames} />
             </form>
           </div>
@@ -114,13 +112,13 @@ class Actions extends Component {
           </div>
         </div>
         <div className="fl w-100 pt4 tc">
-          <div class="checkbox-wrap custom style-2">
+          <div className="checkbox-wrap custom style-2">
             <input
               type="checkbox"
               id="custom-checkbox-2"
               onClick={() => this.handleCheckbox()}
             />
-            <label for="custom-checkbox-2">
+            <label htmlFor="custom-checkbox-2">
               Gérer les {this.handleCheckboxDisplay()}
             </label>
           </div>

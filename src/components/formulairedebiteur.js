@@ -3,6 +3,8 @@ import "./formulairecreancier.css";
 import axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { NavLink } from "react-router-dom";
+import previous from "./Icones_Arigoni/previous.svg";
 
 class Formulairedebiteur extends Component {
   state = {
@@ -128,6 +130,12 @@ class Formulairedebiteur extends Component {
       return (
         <div>
           <div className="title_créancier pl4">
+            <NavLink
+              to="/dashboard/debiteurs"
+              onClick={() => this.props.pageChangeSub("Debiteurs")}
+            >
+              <img className="previousbutton" src={previous} alt="previous" />
+            </NavLink>
             <h1 className="titre1">Créer un nouveau débiteur</h1>
             <h2 className="compagnietitre">
               Compagnie {this.state.denomination_sociale}
@@ -271,13 +279,18 @@ class Formulairedebiteur extends Component {
             </article>
             {/* Bouton sauvegarder */}
             <div className="buttonsauvegarder tc pt1">
-              <a
-                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
-                onClick={this.handleSubmit}
+              <NavLink
+                to="/dashboard/debiteurs"
+                onClick={() => this.props.pageChangeSub("Debiteurs")}
               >
-                Sauvegarder
-              </a>
+                <a
+                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                  href="#0"
+                  onClick={this.handleSubmit}
+                >
+                  Sauvegarder
+                </a>
+              </NavLink>
             </div>
           </div>
         </div>
@@ -474,13 +487,18 @@ class Formulairedebiteur extends Component {
             </article>
             {/* Bouton sauvegarder */}
             <div className="buttonsauvegarder tc pt1">
-              <a
-                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
-                onClick={this.handleSubmitChange}
+              <NavLink
+                to="/dashboard/debiteurs"
+                onClick={() => this.props.pageChangeSub("Debiteurs")}
               >
-                Sauvegarder
-              </a>
+                <a
+                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                  href="#0"
+                  onClick={this.handleSubmitChange}
+                >
+                  Sauvegarder
+                </a>
+              </NavLink>
             </div>
           </div>
         </div>
