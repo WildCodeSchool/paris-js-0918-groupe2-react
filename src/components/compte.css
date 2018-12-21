@@ -1,11 +1,11 @@
 .mtInfo {
   /* margin-top: 0.87em; */
-  margin-top: 1.62em;
+  margin-top: 2.14em;
 }
 
 .mtInfo2 {
   /* margin-top: 0.87em; */
-  margin-top: 1.2em;
+  margin-top: 1.4em;
 }
 
 .boutonSave {
@@ -69,4 +69,28 @@
 .button_border {
   border: none;
   background-color: transparent;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  background-color: black;
+  display: inline-block;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: red;
+}
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
 }

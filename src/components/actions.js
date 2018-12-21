@@ -15,7 +15,10 @@ class Actions extends Component {
     debiteurSelected: "",
     creanciersNames: [],
     debiteursNames: [],
-    checkboxFacture: true
+    checkboxFacture: true,
+    checkboxProduits: false,
+    checkboxServices: false,
+    honoraires: ""
   };
 
   componentDidMount() {
@@ -67,6 +70,24 @@ class Actions extends Component {
     return this.state.checkboxFacture ? "factures" : "avoirs";
   }
 
+  handleProduits() {
+    this.setState({
+      checkboxProduits: !this.state.checkboxProduits
+    });
+  }
+
+  handleServices() {
+    this.setState({
+      checkboxServices: !this.state.checkboxServices
+    });
+  }
+
+  handleHonoraires = e => {
+    this.setState({
+      honoraires: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className="fl w-100">
@@ -93,13 +114,13 @@ class Actions extends Component {
           </div>
         </div>
         <div className="fl w-100 pt4 tc">
-          <div class="checkbox-wrap custom style-2">
+          <div className="checkbox-wrap custom style-2">
             <input
               type="checkbox"
               id="custom-checkbox-2"
               onClick={() => this.handleCheckbox()}
             />
-            <label for="custom-checkbox-2">
+            <label htmlFor="custom-checkbox-2">
               Gérer les {this.handleCheckboxDisplay()}
             </label>
           </div>
@@ -116,6 +137,7 @@ class Actions extends Component {
                 name="produitsV"
                 value="produitsV"
                 // className="pr3 mr3"
+                onClick={() => this.handleProduits()}
               />
             </p>
 
@@ -126,6 +148,7 @@ class Actions extends Component {
                 name="servicesF"
                 value="servicesF"
                 // className="pr3 mr3"
+                onClick={() => this.handleServices()}
               />
             </p>
           </div>
@@ -139,6 +162,7 @@ class Actions extends Component {
                 type="text"
                 name="honos"
                 placeholder="Honoraires"
+                onChange={this.handleHonoraires}
               />
               <span className="pl1">€</span>
             </form>
