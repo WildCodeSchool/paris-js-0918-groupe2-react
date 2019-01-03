@@ -124,6 +124,7 @@ class Tabfacture extends Component {
             <button
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
               href="#0"
+              onClick={() => this.props.pageChangeSub("Factures")}
             >
               Créer une facture
             </button>

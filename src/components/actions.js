@@ -57,7 +57,11 @@ class Actions extends Component {
   }
 
   handleTabSwitch() {
-    return this.state.checkboxFacture ? <Tabfacture /> : <Tabavoir />;
+    return this.state.checkboxFacture ? (
+      <Tabfacture pageChangeSub={this.props.pageChangeSub} />
+    ) : (
+      <Tabavoir pageChangeSub={this.props.pageChangeSub} />
+    );
   }
 
   handleCheckbox() {
