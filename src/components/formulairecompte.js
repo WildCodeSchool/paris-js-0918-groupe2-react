@@ -67,17 +67,17 @@ class Formulairecompte extends Component {
     // setTimeout(this.onFormSubmitSignature(), 5000);
   };
 
-  reloadNow = () => {
-    Axios.get("http://www.localhost:4848/api/cabinet")
-      .then(response => {
-        this.setState({
-          data: response.data[0]
-        });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
+  // reloadNow = () => {
+  //   Axios.get("http://www.localhost:4848/api/cabinet")
+  //     .then(response => {
+  //       this.setState({
+  //         data: response.data[0]
+  //       });
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // };
 
   handleChange = id => {
     const myId = id;
@@ -91,7 +91,9 @@ class Formulairecompte extends Component {
           onClick: () =>
             Axios.put(`http://localhost:4848/api/cabinet/${myId}`, this.state)
               .then(response => {
-                this.reloadNow(myId);
+                // this.reloadNow(myId);
+                this.props.pageChangeSub("Compte");
+                // this.props.history.push("/dashboard/moncompte");
                 alert(`Vos informations ont bien été modifiées.`);
                 console.log(response);
               })
@@ -174,6 +176,7 @@ class Formulairecompte extends Component {
                       name="titre"
                       placeholder="Titre"
                       className="db mt3"
+                      value={this.state.titre || infosCompte.titre}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -181,6 +184,7 @@ class Formulairecompte extends Component {
                       name="nom"
                       placeholder="Nom"
                       className="db mt3"
+                      value={this.state.nom || infosCompte.nom}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -188,6 +192,7 @@ class Formulairecompte extends Component {
                       name="prenom"
                       placeholder="Prénom"
                       className="db mt3"
+                      value={this.state.prenom || infosCompte.prenom}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -195,6 +200,7 @@ class Formulairecompte extends Component {
                       name="num_rue"
                       placeholder="Numéro de rue"
                       className="db mt3"
+                      value={this.state.num_rue || infosCompte.num_rue}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -202,6 +208,7 @@ class Formulairecompte extends Component {
                       name="libelle_rue"
                       placeholder="Libellé de rue"
                       className="db mt3"
+                      value={this.state.libelle_rue || infosCompte.libelle_rue}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -209,6 +216,7 @@ class Formulairecompte extends Component {
                       name="code_postal"
                       placeholder="Code postal"
                       className="db mt3"
+                      value={this.state.code_postal || infosCompte.code_postal}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -216,6 +224,7 @@ class Formulairecompte extends Component {
                       name="ville"
                       placeholder="Ville"
                       className="db mt3"
+                      value={this.state.ville || infosCompte.ville}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -223,6 +232,7 @@ class Formulairecompte extends Component {
                       name="tel"
                       placeholder="Tel"
                       className="db mt3"
+                      value={this.state.tel || infosCompte.tel}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -230,6 +240,7 @@ class Formulairecompte extends Component {
                       name="fax"
                       placeholder="Fax"
                       className="db mt3"
+                      value={this.state.fax || infosCompte.fax}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -237,6 +248,7 @@ class Formulairecompte extends Component {
                       name="mail"
                       placeholder="Email"
                       className="db mt3"
+                      value={this.state.mail || infosCompte.mail}
                       onChange={this.handleMyUserInputs}
                     />
                     <input
@@ -244,6 +256,7 @@ class Formulairecompte extends Component {
                       name="num_TVA"
                       placeholder="Numéro de TVA"
                       className="db mt3"
+                      value={this.state.num_TVA || infosCompte.num_TVA}
                       onChange={this.handleMyUserInputs}
                     />
                   </form>
@@ -253,18 +266,13 @@ class Formulairecompte extends Component {
 
             {/* Bouton sauvegarder */}
             <div className="pt4 sauvegarderbouton">
-              <NavLink
-                to="/dashboard/moncompte"
-                onClick={() => this.props.pageChangeSub("Compte")}
+              <a
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
+                href="#0"
+                onClick={() => this.handleChange(infosCompte.id)}
               >
-                <a
-                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue btn-save"
-                  href="#0"
-                  onClick={() => this.handleChange(infosCompte.id)}
-                >
-                  Sauvegarder
-                </a>
-              </NavLink>
+                Sauvegarder
+              </a>
             </div>
           </div>
         </div>

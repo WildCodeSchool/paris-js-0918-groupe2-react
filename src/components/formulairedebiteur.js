@@ -49,6 +49,8 @@ class Formulairedebiteur extends Component {
             axios
               .post("http://localhost:4848/api/debiteurs", this.state)
               .then(response => {
+                this.props.pageChangeSub("Debiteurs");
+                this.props.history.push("/dashboard/debiteurs");
                 console.log(response);
               })
               .catch(error => {
@@ -76,6 +78,8 @@ class Formulairedebiteur extends Component {
             axios
               .put(`http://localhost:4848/api/debiteurs/${id}`, this.state)
               .then(response => {
+                this.props.pageChangeSub("Debiteurs");
+                this.props.history.push("/dashboard/debiteurs");
                 console.log(response);
               })
               .catch(error => {
@@ -279,18 +283,13 @@ class Formulairedebiteur extends Component {
             </article>
             {/* Bouton sauvegarder */}
             <div className="buttonsauvegarder tc pt1">
-              <NavLink
-                to="/dashboard/debiteurs"
-                onClick={() => this.props.pageChangeSub("Debiteurs")}
+              <a
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                href="#0"
+                onClick={this.handleSubmit}
               >
-                <a
-                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                  href="#0"
-                  onClick={this.handleSubmit}
-                >
-                  Sauvegarder
-                </a>
-              </NavLink>
+                Sauvegarder
+              </a>
             </div>
           </div>
         </div>
@@ -487,18 +486,13 @@ class Formulairedebiteur extends Component {
             </article>
             {/* Bouton sauvegarder */}
             <div className="buttonsauvegarder tc pt1">
-              <NavLink
-                to="/dashboard/debiteurs"
-                onClick={() => this.props.pageChangeSub("Debiteurs")}
+              <a
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                href="#0"
+                onClick={this.handleSubmitChange}
               >
-                <a
-                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                  href="#0"
-                  onClick={this.handleSubmitChange}
-                >
-                  Sauvegarder
-                </a>
-              </NavLink>
+                Sauvegarder
+              </a>
             </div>
           </div>
         </div>
