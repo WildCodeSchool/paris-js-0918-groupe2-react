@@ -10,10 +10,8 @@ import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
 import Formulairecompte from "./formulairecompte";
-import Facture from "./EditAction";
-import FormulaireAvoirs from "./formulaireavoir";
-import Formulaireacompte from "./formulaireacompte";
 import EditAction from "./EditAction";
+import Formulaireacompte from "./formulaireacompte";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -68,6 +66,8 @@ class Dashboard extends Component {
           pageChangeSub={this.handlePageChange}
         />
       );
+    } else if (this.state.activePage === "EditAction") {
+      return <EditAction />;
     } else {
       return "Page non existante";
     }
