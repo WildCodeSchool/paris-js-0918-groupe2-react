@@ -70,7 +70,8 @@ class Actions extends Component {
   componentDidUpdate() {
     if (
       this.state.idCreancierSelected !== 0 &&
-      this.state.idDebiteurSelected !== 0
+      this.state.idDebiteurSelected !== 0 &&
+      this.state.isLoaded === false
     ) {
       Axios.get("http://localhost:4848/api/actions")
         .then(response => {
@@ -135,9 +136,9 @@ class Actions extends Component {
   };
 
   handleSubmit = () => {
-    const nomAction = this.state.nomNouvelleAction;
-    const idCreancier = this.state.idCreancierSelected;
-    const idDebiteur = this.state.iDebiteurSelected;
+    const nom_action = this.state.nomNouvelleAction;
+    const creancierId = this.state.idCreancierSelected;
+    const debiteurId = this.state.idDebiteurSelected;
     confirmAlert({
       title: "Merci de confirmer",
       message: `Voulez-vous vraiment créer une action nommée ${
@@ -148,9 +149,9 @@ class Actions extends Component {
           label: "Oui",
           onClick: () =>
             Axios.post("http://localhost:4848/api/actions", {
-              nomAction,
-              idCreancier,
-              idDebiteur
+              nom_action,
+              creancierId,
+              debiteurId
             })
               .then(response => {
                 this.props.pageChangeSub("EditAction");
@@ -175,7 +176,8 @@ class Actions extends Component {
     if (myCreancier[0].id !== undefined) {
       this.setState({
         idCreancierSelected: myCreancier[0].id,
-        nomCreancierSelected: myCreancier[0].denomination_sociale
+        nomCreancierSelected: myCreancier[0].denomination_sociale,
+        isLoaded: false
       });
     }
   };
@@ -187,7 +189,8 @@ class Actions extends Component {
     if (myDebiteur[0].id !== undefined) {
       this.setState({
         idDebiteurSelected: myDebiteur[0].id,
-        nomDebiteurSelected: myDebiteur[0].denomination_sociale
+        nomDebiteurSelected: myDebiteur[0].denomination_sociale,
+        isLoaded: false
       });
     }
   };
@@ -285,7 +288,7 @@ class Actions extends Component {
                         <tr className="stripe-dark" key={`${action.id}`}>
                           <td>{this.state.nomCreancierSelected}</td>
                           <td>{this.state.nomDebiteurSelected}</td>
-                          <td>Pouet</td>
+                          <td>{action.nom_action}</td>
                           <td>{action.createdAt}</td>
                           <td>
                             <img
