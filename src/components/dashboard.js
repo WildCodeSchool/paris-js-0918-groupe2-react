@@ -6,6 +6,7 @@ import Historique from "./Historique";
 import Actions from "./actions";
 import Header from "./Header";
 import Nav from "./Nav";
+import Acomptes from "./acompte";
 import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
@@ -18,7 +19,8 @@ class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
   state = {
     activePage: "Compte",
-    creancierId: undefined
+    creancierId: undefined,
+    acompteId: undefined
   };
 
   //on va changer la state pour changer la page active vers la page demandée
@@ -27,7 +29,7 @@ class Dashboard extends Component {
       activePage: activePage,
       creancierId: creancierId,
       debiteurId: debiteurId,
-      acompteId
+      acompteId: acompteId
     });
   };
 
@@ -47,6 +49,8 @@ class Dashboard extends Component {
       return <EditAction pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Historique") {
       return <Historique pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Acomptes") {
+      return <Acomptes pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "FormAcompte") {
       return (
         <Formulaireacompte

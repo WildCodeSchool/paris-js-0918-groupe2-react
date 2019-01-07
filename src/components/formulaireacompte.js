@@ -34,10 +34,10 @@ class Formulaireacompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.post("http://localhost:4848/api/acompte", this.state)
+            Axios.post("http://localhost:4848/api/acomptes", this.state)
               .then(response => {
-                this.props.pageChangeSub("acompte");
-                this.props.history.push("/dashboard/acompte");
+                this.props.pageChangeSub("Acomptes");
+                this.props.history.push("/dashboard/acomptes");
                 console.log(response);
               })
               .catch(error => {
@@ -64,7 +64,7 @@ class Formulaireacompte extends Component {
           onClick: () =>
             Axios.put(`http://localhost:4848/api/acomptes/${id}`, this.state)
               .then(response => {
-                this.props.pageChangeSub("acomptes");
+                this.props.pageChangeSub("Acomptes");
                 this.props.history.push("/dashboard/acomptes");
                 console.log(response);
               })
@@ -86,7 +86,7 @@ class Formulaireacompte extends Component {
         this.setState({
           // returns target acompte
           targetacompte: response.data.filter(
-            acomptes => acomptes.id === parseInt(acompteId)
+            acompte => acompte.id === parseInt(acompteId)
           ),
           loaded: true
         });
@@ -147,7 +147,7 @@ class Formulaireacompte extends Component {
               <a
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 href="#0"
-                onClick={this.handleSubmit}
+                onClick={this.handleSubmitChange}
               >
                 Sauvegarder
               </a>

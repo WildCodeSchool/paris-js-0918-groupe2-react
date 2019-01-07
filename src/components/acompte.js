@@ -110,14 +110,14 @@ class Acomptes extends Component {
                         <td>{acompte.montant_ht}</td>
                         <td>{acompte.montant_ttc}</td>
                         <td>
-                          <NavLink to="/dashboard/formacompte">
+                          <NavLink to="/dashboard/formAcompte">
                             <img
                               className="icone pointer"
                               src={modifier}
                               alt="modifier"
                               onClick={() =>
                                 this.props.pageChangeSub(
-                                  "Formacompte",
+                                  "FormAcompte",
                                   `${acompte.id}`
                                 )
                               }
@@ -141,7 +141,7 @@ class Acomptes extends Component {
             {/* Button créer un créancier */}
             <div className="buttonacompte tc pt4">
               <NavLink
-                to="/dashboard/FormAcompte"
+                to="/dashboard/formAcompte"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 onClick={() => this.props.pageChangeSub("FormAcompte")}
               >

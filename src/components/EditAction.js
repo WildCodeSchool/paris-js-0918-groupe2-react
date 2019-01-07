@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import previous from "./Icones_Arigoni/previous.svg";
 import "./Facture.css";
 import Axios from "axios";
-import Acompte from "./acompte";
+import Acomptes from "./acompte";
 import Avoirs from "./avoirs";
 class EditAction extends Component {
   state = {
@@ -169,7 +169,7 @@ class EditAction extends Component {
           </div>
         </div>
         <div className="fl w-100">
-          <Acompte />
+          <Acomptes />
         </div>
         <div className="fl w-100">
           <Avoirs />
