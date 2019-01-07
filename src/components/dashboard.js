@@ -12,6 +12,7 @@ import "./dashboard.css";
 import Formulairecompte from "./formulairecompte";
 import EditAction from "./EditAction";
 import Formulaireacompte from "./formulaireacompte";
+import FormulaireAvoirs from "./formulaireavoir";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -21,11 +22,12 @@ class Dashboard extends Component {
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = (activePage, creancierId, debiteurId) => {
+  handlePageChange = (activePage, creancierId, debiteurId, acompteId) => {
     this.setState({
       activePage: activePage,
       creancierId: creancierId,
-      debiteurId: debiteurId
+      debiteurId: debiteurId,
+      acompteId
     });
   };
 
@@ -49,6 +51,13 @@ class Dashboard extends Component {
       return (
         <Formulaireacompte
           acompteId={this.state.acompteId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
+    } else if (this.state.activePage === "FormAvoir") {
+      return (
+        <FormulaireAvoirs
+          avoirId={this.state.avoirId}
           pageChangeSub={this.handlePageChange}
         />
       );
