@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
+import { NavLink } from "react-router-dom";
 
 class Tabavoir extends Component {
   state = {};
@@ -12,7 +13,7 @@ class Tabavoir extends Component {
           <table className="f6 w-100 center" cellSpacing="0">
             <thead>
               <tr className="stripe-dark">
-                <th className="fw6 tl pa3 bg-white">Numero avoir</th>
+                <th className="fw6 tl pa3 bg-white">N° avoir</th>
                 <th className="fw6 tl pa3 bg-white">Date</th>
                 <th className="fw6 tl pa3 bg-white">Montant HT</th>
                 <th className="fw6 tl pa3 bg-white">Modifier</th>
@@ -100,12 +101,13 @@ class Tabavoir extends Component {
           </table>
           {/* bouton */}
           <div className="buttondebiteur tc pt4">
-            <a
+            <NavLink
+              to="/dashboard/Avoirs"
               className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-              href="#0"
+              onClick={() => this.props.pageChangeSub("Avoirs")}
             >
               Créer un avoir
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>

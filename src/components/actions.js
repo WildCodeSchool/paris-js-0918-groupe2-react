@@ -7,7 +7,6 @@ import Autocomplete from "./autocomplete";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import { NavLink } from "react-router-dom";
-import { throws } from "assert";
 // import { throws } from "assert";
 
 class Actions extends Component {
