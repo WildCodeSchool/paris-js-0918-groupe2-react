@@ -99,6 +99,12 @@ class FormulaireAvoirs extends Component {
     if (this.props.AvoirsId === undefined) {
       return (
         <div>
+          <NavLink
+            to="/dashboard/actions"
+            onClick={() => this.props.pageChangeSub("Actions")}
+          >
+            <img className="previousbutton" src={previous} alt="previous" />
+          </NavLink>
           <h2>Nouvel avoir</h2>
           {/* Formulaire */}
           <div className="fl w-100">
