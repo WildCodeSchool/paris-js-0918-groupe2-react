@@ -5,6 +5,9 @@ import "./Facture.css";
 import Axios from "axios";
 import Acompte from "./acompte";
 import Avoirs from "./avoirs";
+import Formulairefacture from "./formulairefacture";
+import Facture from "./Facture";
+import Factures from "./Facture";
 class EditAction extends Component {
   state = {
     factures: [],
@@ -52,98 +55,12 @@ class EditAction extends Component {
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>
         </div>
+        <Factures />
         {/* factures impayées */}
         <div className="fl w-60">
-          <h1 className="f4 lh-copy">Facture impayée: compagnie WXY vs AZY</h1>
           <div className="StylishForm">
             {/* Formulaire en input */}
-            <form>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">N° de commande</div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">
-                    N° de confirmation de commande
-                  </div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">
-                    N° document de transport
-                  </div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">N° facture</div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">Date facture</div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">
-                    Montant HT de la facture
-                  </div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-              <div className="inputdiv">
-                <div>
-                  <div className="stripe-dark pa2 b">
-                    Echeance de la facture
-                  </div>
-                  <input
-                    className="white-dark pa1"
-                    type="text"
-                    name="facture"
-                    placeholder=""
-                  />
-                </div>
-              </div>
-            </form>
+
             {/* checkbox */}
 
             <div className="fl w-100">
