@@ -1,5 +1,5 @@
 import React from "react";
-import supprimer from "./Icones_Arigoni/icone_supprimer.png";
+// import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import download from "./Icones_Arigoni/icone_upload.png";
 import "./Historique.css";
 class Historique extends React.Component {
@@ -28,12 +28,10 @@ class Historique extends React.Component {
                 <thead>
                   <tr className="stripe-dark">
                     <th className="fw6 tl pa3 bg-white">Date</th>
-                    <th className="fw6 tl pa3 bg-white">xxxxxx</th>
-                    <th className="fw6 tl pa3 bg-white">xxxxxx</th>
-                    <th className="fw6 tl pa3 bg-white">xxxxxx</th>
+                    <th className="fw6 tl pa3 bg-white">Créditeur</th>
+                    <th className="fw6 tl pa3 bg-white">Débiteur</th>
                     <th className="fw6 tl pa3 bg-white">Avancée de l'action</th>
-                    <th className="fw6 tl pa3 bg-white">xxxxxx</th>
-                    <th className="fw6 tl pa3 bg-white">xxxxxx</th>
+                    <th className="fw6 tl pa3 bg-white">Télécharger</th>
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
@@ -41,18 +39,10 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-
                     <td className="pa3">
                       <button className="button">cloturer</button>
                     </td>
-                    <td className="pa3">
-                      <img
-                        className="icone pointer"
-                        src={supprimer}
-                        alt="supprimer"
-                      />
-                    </td>
+
                     <td className="pa3">
                       <img
                         className="icone download pointer"
@@ -65,18 +55,11 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
                       <button className="button">cloturer</button>
                     </td>
-                    <td className="pa3">
-                      <img
-                        className="icone pointer"
-                        src={supprimer}
-                        alt="supprimer"
-                      />
-                    </td>
+
                     <td className="pa3">
                       <img
                         className="icone download pointer"
@@ -89,18 +72,11 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
                       <button className="button">cloturer</button>
                     </td>
-                    <td className="pa3">
-                      <img
-                        className="icone pointer"
-                        src={supprimer}
-                        alt="supprimer"
-                      />
-                    </td>
+
                     <td className="pa3">
                       <img
                         className="icone download pointer"
@@ -113,18 +89,11 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
                       <button className="button">cloturer</button>
                     </td>
-                    <td className="pa3">
-                      <img
-                        className="icone pointer"
-                        src={supprimer}
-                        alt="supprimer"
-                      />
-                    </td>
+
                     <td className="pa3">
                       <img
                         className="icone download pointer"
@@ -137,18 +106,11 @@ class Historique extends React.Component {
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
                     <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
 
                     <td className="pa3">
                       <button className="button">cloturer</button>
                     </td>
-                    <td className="pa3">
-                      <img
-                        className="icone pointer"
-                        src={supprimer}
-                        alt="supprimer"
-                      />
-                    </td>
+
                     <td className="pa3">
                       <img
                         className="icone download pointer"

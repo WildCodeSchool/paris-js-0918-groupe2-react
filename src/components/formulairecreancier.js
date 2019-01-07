@@ -3,6 +3,8 @@ import "./formulairecreancier.css";
 import axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { NavLink } from "react-router-dom";
+import previous from "./Icones_Arigoni/previous.svg";
 
 class Formulairecreancier extends Component {
   state = {
@@ -25,6 +27,7 @@ class Formulairecreancier extends Component {
     prenom: "",
     civilite: "M.",
     fonction: "",
+    cabinetId: 1,
     active: true
   };
 
@@ -51,6 +54,8 @@ class Formulairecreancier extends Component {
             axios
               .post("http://localhost:4848/api/creanciers", this.state)
               .then(response => {
+                this.props.pageChangeSub("Creanciers");
+                this.props.history.push("/dashboard/creanciers");
                 console.log(response);
               })
               .catch(error => {
@@ -79,6 +84,8 @@ class Formulairecreancier extends Component {
             axios
               .put(`http://localhost:4848/api/creanciers/${id}`, this.state)
               .then(response => {
+                this.props.pageChangeSub("Creanciers");
+                this.props.history.push("/dashboard/creanciers");
                 console.log(response);
               })
               .catch(error => {
@@ -134,6 +141,12 @@ class Formulairecreancier extends Component {
       return (
         <div>
           <div className="title_créancier pl4">
+            <NavLink
+              to="/dashboard/creanciers"
+              onClick={() => this.props.pageChangeSub("Creanciers")}
+            >
+              <img className="previousbutton" src={previous} alt="previous" />
+            </NavLink>
             <h1 className="titre1">Créer un nouveau créancier</h1>
             <h2 className="compagnietitre">
               Compagnie {this.state.denomination_sociale}

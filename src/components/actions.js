@@ -4,6 +4,7 @@ import Tabfacture from "./tabfacture";
 import Tabavoir from "./tabavoir";
 import Axios from "axios";
 import Autocomplete from "./autocomplete";
+import { throws } from "assert";
 
 class Actions extends Component {
   state = {
@@ -11,8 +12,8 @@ class Actions extends Component {
     creanciersFiltered: [],
     debiteurs: [],
     debiteursFiltered: [],
-    creancierSelected: "",
-    debiteurSelected: "",
+    idCreancierSelected: 0,
+    idDebiteurSelected: 0,
     creanciersNames: [],
     debiteursNames: [],
     checkboxFacture: true,
@@ -57,7 +58,11 @@ class Actions extends Component {
   }
 
   handleTabSwitch() {
-    return this.state.checkboxFacture ? <Tabfacture /> : <Tabavoir />;
+    return this.state.checkboxFacture ? (
+      <Tabfacture pageChangeSub={this.props.pageChangeSub} />
+    ) : (
+      <Tabavoir pageChangeSub={this.props.pageChangeSub} />
+    );
   }
 
   handleCheckbox() {
@@ -88,6 +93,36 @@ class Actions extends Component {
     });
   };
 
+  handleName = name => {
+    let myCreancier = this.state.creanciersFiltered.filter(c =>
+      c.denomination_sociale.includes(name)
+    );
+    let myDebiteur = this.state.debiteursFiltered.filter(c =>
+      c.denomination_sociale.includes(name)
+    );
+
+    console.log(myCreancier);
+    console.log(myDebiteur);
+
+    if (myCreancier === true) {
+      let myCreancier = this.state.creanciersFiltered.filter(c =>
+        c.denomination_sociale.includes(name)
+      );
+
+      this.setState({
+        idCreancierSelected: myCreancier[0].id
+      });
+    } else if (myDebiteur === true) {
+      let myDebiteur = this.state.debiteursFiltered.filter(c =>
+        c.denomination_sociale.includes(name)
+      );
+
+      this.setState({
+        idDebiteurSelected: myDebiteur[0].id
+      });
+    }
+  };
+
   render() {
     return (
       <div className="fl w-100">
@@ -98,9 +133,10 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un créancier</p>
             <form action="creancier">
-              {/* <input type="text" placeholder="Entrer le nom d'un creancier" />
-               */}
-              <Autocomplete suggestions={this.state.creanciersNames} />
+              <Autocomplete
+                suggestions={this.state.creanciersNames}
+                name={this.handleName}
+              />
             </form>
           </div>
           <div className="fl w-20 ">
@@ -109,81 +145,77 @@ class Actions extends Component {
           <div className="fl w-40">
             <p className="f3">Sélectionner un débiteur</p>
             <form action="debiteur">
-              <Autocomplete suggestions={this.state.debiteursNames} />
+              <Autocomplete
+                suggestions={this.state.debiteursNames}
+                name={this.handleName}
+              />
             </form>
           </div>
         </div>
-        <div className="fl w-100 pt4 tc">
-          <div class="checkbox-wrap custom style-2">
-            <input
-              type="checkbox"
-              id="custom-checkbox-2"
-              onClick={() => this.handleCheckbox()}
-            />
-            <label for="custom-checkbox-2">
-              Gérer les {this.handleCheckboxDisplay()}
-            </label>
-          </div>
-        </div>
-        <div className="fl w-100 pt4 pr4 pl4">{this.handleTabSwitch()}</div>
-        <div>
-          {/* checkbox pour produits */}
 
-          <div className="fl w-40 pt2 pl4 tc">
-            <p className="">
-              Produits vendus :
-              <input
-                type="checkbox"
-                name="produitsV"
-                value="produitsV"
-                // className="pr3 mr3"
-                onClick={() => this.handleProduits()}
-              />
-            </p>
-
-            <p className="">
-              Services fournis :
-              <input
-                type="checkbox"
-                name="servicesF"
-                value="servicesF"
-                // className="pr3 mr3"
-                onClick={() => this.handleServices()}
-              />
-            </p>
+        {/* <div className=" tableau fl w-100 pa4 ">
+          <div className="overflow-auto">
+            <table className="f6 w-100 center" cellSpacing="0">
+              <thead>
+                <tr className="stripe-dark">
+                  <th>Créancier</th>
+                  <th>Débiteur</th>
+                  <th>Action</th>
+                  <th>Créée le</th>
+                  <th>Sélection</th>
+                </tr>
+              </thead>
+              <tbody className="lh-copy">
+                {myDebiteurs
+                  .sort((a, b) => b.id - a.id)
+                  .slice(0, 10)
+                  .map(debiteur => {
+                    return (
+                      <tr
+                        className="stripe-dark"
+                        key={`${myReloadCounter}-${
+                          debiteur.denomination_sociale
+                        }`}
+                      >
+                        <td>{debiteur.denomination_sociale}</td>
+                        <td>{debiteur.forme_juridique}</td>
+                        <td>{debiteur.pays_siege}</td>
+                        <td>
+                          <NavLink to="/dashboard/formDebiteur">
+                            <img
+                              className="icone pointer"
+                              src={modifier}
+                              alt="modifier"
+                              onClick={() =>
+                                this.props.pageChangeSub(
+                                  "FormDebiteur",
+                                  0,
+                                  `${debiteur.id}`
+                                )
+                              }
+                            />
+                          </NavLink>
+                        </td>
+                        <td>
+                          <img
+                            className="icone pointer"
+                            src={supprimer}
+                            alt="supprimer"
+                            onClick={() =>
+                              this.handleDelete(
+                                debiteur.id,
+                                debiteur.denomination_sociale
+                              )
+                            }
+                          />
+                        </td>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
           </div>
-          <br />
-          {/* Input pour honoraires */}
-          <div className="fl w-60 pt4 tc">
-            <form action="facture">
-              <span>Honoraires:</span>
-              <input
-                className="ml2"
-                type="text"
-                name="honos"
-                placeholder="Honoraires"
-                onChange={this.handleHonoraires}
-              />
-              <span className="pl1">€</span>
-            </form>
-          </div>
-
-          {/* Boutons */}
-          <div className=" fl w-100 tc pt4 mt3 buttonsauvegarder">
-            <a
-              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-              href="#0"
-            >
-              Créer une injonction de payer
-            </a>
-            <a
-              className="f6 ml4 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-              href="#0"
-            >
-              Créer une mise en demeure
-            </a>
-          </div>
-        </div>
+        </div> */}
       </div>
     );
   }

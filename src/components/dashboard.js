@@ -9,6 +9,8 @@ import Nav from "./Nav";
 import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
+import Formulairecompte from "./formulairecompte";
+import Facture from "./Facture";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -30,18 +32,32 @@ class Dashboard extends Component {
   handleDisplay = () => {
     if (this.state.activePage === "Compte") {
       return <Compte pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "formulairecompte") {
+      return <Formulairecompte pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Debiteurs") {
       return <Debiteurs pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Creanciers") {
       return <Creanciers pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Actions") {
       return <Actions pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Factures") {
+      return <Facture pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Historique") {
       return <Historique pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "FormCreancier") {
-      return <Formulairecreancier creancierId={this.state.creancierId} />;
+      return (
+        <Formulairecreancier
+          creancierId={this.state.creancierId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
     } else if (this.state.activePage === "FormDebiteur") {
-      return <Formulairedebiteur debiteurId={this.state.debiteurId} />;
+      return (
+        <Formulairedebiteur
+          debiteurId={this.state.debiteurId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
     } else {
       return "Page non existante";
     }
