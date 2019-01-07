@@ -27,6 +27,7 @@ class Formulairecreancier extends Component {
     prenom: "",
     civilite: "M.",
     fonction: "",
+    cabinetId: 1,
     active: true
   };
 

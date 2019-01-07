@@ -6,7 +6,26 @@ import axios from "axios";
 import Acompte from "./acompte";
 import FormulaireAvoirs from "./formulaireavoir";
 class Facture extends Component {
-  state = {};
+  state = {
+    num_commande: "",
+    num_confirmation_commande: "",
+    num_document_transport: "",
+    num_facture: "",
+    date_facture: "",
+    montant_ht: "",
+    montant_ttc: "",
+    echeance_facture: "",
+    taux_applicable: "",
+    intérets_capitalises: "",
+    active: true
+  };
+
+  handleMyUserInputs = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  };
+
   render() {
     return (
       <div className="Factureimpayee ml4 mt4">
