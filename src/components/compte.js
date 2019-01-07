@@ -10,7 +10,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { NavLink } from "react-router-dom";
 import valider from "./Icones_Arigoni/valider.svg";
 
-// import EditAction from "./EditAction";
+import EditAction from "./EditAction";
 
 class Compte extends Component {
   state = {
@@ -146,7 +146,7 @@ class Compte extends Component {
     const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
-        {/* <EditAction /> */}
+        <EditAction />
         {/* <div className="fl w-60 pl4 enlarge">
           <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
           <div className="mglft">

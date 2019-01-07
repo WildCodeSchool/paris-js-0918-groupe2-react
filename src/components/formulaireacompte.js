@@ -62,10 +62,10 @@ class Formulaireacompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/acompte/${id}`, this.state)
+            Axios.put(`http://localhost:4848/api/acomptes/${id}`, this.state)
               .then(response => {
-                this.props.pageChangeSub("acompte");
-                this.props.history.push("/dashboard/acompte");
+                this.props.pageChangeSub("acomptes");
+                this.props.history.push("/dashboard/acomptes");
                 console.log(response);
               })
               .catch(error => {
@@ -81,12 +81,12 @@ class Formulaireacompte extends Component {
 
   componentDidMount() {
     const acompteId = this.props.acompteId;
-    Axios.get("http://localhost:4848/api/acompte")
+    Axios.get("http://localhost:4848/api/acomptes")
       .then(response => {
         this.setState({
           // returns target acompte
           targetacompte: response.data.filter(
-            acompte => acompte.id === parseInt(acompteId)
+            acomptes => acomptes.id === parseInt(acompteId)
           ),
           loaded: true
         });
