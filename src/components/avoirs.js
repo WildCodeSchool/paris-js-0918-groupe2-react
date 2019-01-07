@@ -7,19 +7,19 @@ import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-class Acomptes extends Component {
+class Avoirs extends Component {
   state = {
-    acomptes: [],
-    acomptesFiltered: [],
-    acomptesSearch: "",
+    avoirs: [],
+    avoirsFiltered: [],
+    avoirsSearch: "",
     myReloadCounter: 0
   };
 
   reloadNow = id => {
     this.setState(previousState => ({
-      acomptes: previousState.acomptes,
-      acomptesFiltered: previousState.acomptesFiltered.filter(
-        acompte => acompte.id !== id
+      avoirs: previousState.avoirs,
+      avoirsFiltered: previousState.avoirsFiltered.filter(
+        avoir => avoir.id !== id
       ),
       myReloadCounter: this.state.myReloadCounter + 1
     }));
@@ -30,17 +30,17 @@ class Acomptes extends Component {
     const myId = id;
     confirmAlert({
       title: "Merci de confirmer",
-      message: "Voulez-vous vraiment supprimer cet acompte ?",
+      message: "Voulez-vous vraiment supprimer cet avoir ?",
       buttons: [
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/acomptes/${myId}`, {
+            Axios.put(`http://localhost:4848/api/avoirs/${myId}`, {
               active: "false"
             })
               .then(response => {
                 this.reloadNow(myId);
-                alert(`L'acompte' a bien été supprimé.`);
+                alert(`L'avoir a bien été supprimé.`);
                 console.log(response);
               })
               .catch(error => {
@@ -55,13 +55,13 @@ class Acomptes extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/acomptes")
+    Axios.get("http://localhost:4848/api/avoirs")
       .then(response => {
         this.setState({
-          // returns all acomptes
-          acomptes: response.data,
-          // returns all acomptes whose active status is true
-          acomptesFiltered: response.data.filter(acompte => acompte.active)
+          // returns all avoirs
+          avoirs: response.data,
+          // returns all avoirs whose active status is true
+          avoirsFiltered: response.data.filter(avoir => avoir.active)
         });
       })
       .catch(error => {
@@ -70,14 +70,14 @@ class Acomptes extends Component {
   }
 
   render() {
-    const myacomptes = this.state.acomptesFiltered;
+    const myavoirs = this.state.avoirsFiltered;
     const myReloadCounter = this.state.myReloadCounter;
     return (
       //tableau informations des créanciers
-      <div className="acompte">
+      <div className="avoir">
         <div className="fl w-60">
           <div className="title_créancier pl4">
-            <h2 className="pt2 f4 lh-copy">Liste des acomptes</h2>
+            <h2 className="pt2 f4 lh-copy">Liste des avoirs</h2>
           </div>
         </div>
 
@@ -87,7 +87,7 @@ class Acomptes extends Component {
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
                 <tr className="stripe-dark">
-                  <th>N° acompte</th>
+                  <th>N° avoir</th>
                   <th>Date</th>
                   <th>montant HT</th>
                   <th>montant TTC</th>
@@ -96,29 +96,29 @@ class Acomptes extends Component {
                 </tr>
               </thead>
               <tbody className="lh-copy">
-                {myacomptes
+                {myavoirs
                   .sort((a, b) => b.id - a.id)
                   .slice(0, 10)
-                  .map(acompte => {
+                  .map(avoir => {
                     return (
                       <tr
                         className="stripe-dark"
-                        key={`${myReloadCounter}-${acompte.num_acompte}`}
+                        key={`${myReloadCounter}-${avoir.num_avoir}`}
                       >
-                        <td>{acompte.num_acompte}</td>
-                        <td>{acompte.date_acompte}</td>
-                        <td>{acompte.montant_ht}</td>
-                        <td>{acompte.montant_ttc}</td>
+                        <td>{avoir.num_avoir}</td>
+                        <td>{avoir.date_avoir}</td>
+                        <td>{avoir.montant_ht}</td>
+                        <td>{avoir.montant_ttc}</td>
                         <td>
-                          <NavLink to="/dashboard/formacompte">
+                          <NavLink to="/dashboard/formavoir">
                             <img
                               className="icone pointer"
                               src={modifier}
                               alt="modifier"
                               onClick={() =>
                                 this.props.pageChangeSub(
-                                  "Formacompte",
-                                  `${acompte.id}`
+                                  "Formavoir",
+                                  `${avoir.id}`
                                 )
                               }
                             />
@@ -129,7 +129,7 @@ class Acomptes extends Component {
                             className="icone pointer"
                             src={supprimer}
                             alt="supprimer"
-                            onClick={() => this.handleDelete(acompte.id)}
+                            onClick={() => this.handleDelete(avoir.id)}
                           />
                         </td>
                       </tr>
@@ -139,13 +139,13 @@ class Acomptes extends Component {
             </table>
 
             {/* Button créer un créancier */}
-            <div className="buttonacompte tc pt4">
+            <div className="buttonavoir tc pt4">
               <NavLink
-                to="/dashboard/FormAcompte"
+                to="/dashboard/FormAvoir"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                onClick={() => this.props.pageChangeSub("FormAcompte")}
+                onClick={() => this.props.pageChangeSub("FormAvoir")}
               >
-                Créer un acompte
+                Créer un avoir
               </NavLink>
             </div>
           </div>
@@ -155,4 +155,4 @@ class Acomptes extends Component {
   }
 }
 
-export default Acomptes;
+export default Avoirs;

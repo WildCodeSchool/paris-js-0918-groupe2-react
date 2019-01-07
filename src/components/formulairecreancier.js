@@ -581,19 +581,6 @@ class Formulairecreancier extends Component {
               </fieldset>
               {/* search */}
             </article>
-            <div className="wraparigo">
-              <div className="searcharigo">
-                <input
-                  type="text"
-                  className="searchTerm"
-                  placeholder="trouver un créancier"
-                  onChange={this.handleSearch}
-                />
-                <button type="submit" className="searchButton">
-                  <i className="fa fa-search" />
-                </button>
-              </div>
-            </div>
             {/* Bouton sauvegarder */}
             <div className="buttonsauvegarder tc pt1">
               <a
