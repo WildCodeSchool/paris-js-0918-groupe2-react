@@ -146,7 +146,7 @@ class Compte extends Component {
     const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
-        <EditAction />
+        {/* <EditAction /> */}
         {/* <div className="fl w-60 pl4 enlarge">
           <h1 className="f2 db lh-copy ">Les informations de mon cabinet</h1>
           <div className="mglft">
