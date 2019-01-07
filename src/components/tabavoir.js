@@ -13,7 +13,7 @@ class Tabavoir extends Component {
           <table className="f6 w-100 center" cellSpacing="0">
             <thead>
               <tr className="stripe-dark">
-                <th className="fw6 tl pa3 bg-white">Numero avoir</th>
+                <th className="fw6 tl pa3 bg-white">N° avoir</th>
                 <th className="fw6 tl pa3 bg-white">Date</th>
                 <th className="fw6 tl pa3 bg-white">Montant HT</th>
                 <th className="fw6 tl pa3 bg-white">Modifier</th>

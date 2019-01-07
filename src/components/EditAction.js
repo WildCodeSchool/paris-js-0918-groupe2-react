@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import previous from "./Icones_Arigoni/previous.svg";
 import "./Facture.css";
-import axios from "axios";
+
 import Acompte from "./acompte";
 import FormulaireAvoirs from "./formulaireavoir";
-class Facture extends Component {
+class EditAction extends Component {
   state = {
     num_commande: "",
     num_confirmation_commande: "",
@@ -165,4 +165,4 @@ class Facture extends Component {
   }
 }
 
-export default Facture;
+export default EditAction;

@@ -5,15 +5,15 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { NavLink } from "react-router-dom";
 import previous from "./Icones_Arigoni/previous.svg";
 
-class FormulaireAvoirs extends Component {
+class Formulaireacompte extends Component {
   state = {
-    targetavoirs: [],
-    avoirs: [],
-    avoirsFiltered: [],
-    avoirsSearch: "",
+    targetacompte: [],
+    acompte: [],
+    acompteFiltered: [],
+    acompteSearch: "",
     loaded: false,
-    num_avoir: "",
-    date_avoir: "",
+    num_acompte: "",
+    date_acompte: "",
     montant_ht: "",
     montant_ttc: "",
     factureId: "",
@@ -29,15 +29,15 @@ class FormulaireAvoirs extends Component {
   handleSubmit = () => {
     confirmAlert({
       title: "Merci de confirmer",
-      message: "Voulez-vous vraiment enregistrer cet avoir ?",
+      message: "Voulez-vous vraiment enregistrer cet acompte ?",
       buttons: [
         {
           label: "Oui",
           onClick: () =>
-            Axios.post("http://localhost:4848/api/Avoirs", this.state)
+            Axios.post("http://localhost:4848/api/acompte", this.state)
               .then(response => {
-                this.props.pageChangeSub("Avoirs");
-                this.props.history.push("/dashboard/Avoirs");
+                this.props.pageChangeSub("acompte");
+                this.props.history.push("/dashboard/acompte");
                 console.log(response);
               })
               .catch(error => {
@@ -52,19 +52,20 @@ class FormulaireAvoirs extends Component {
   };
 
   handleSubmitChange = () => {
-    const id = this.state.targetavoirs[0].id;
+    const id = this.state.targetacompte[0].id;
 
     confirmAlert({
       title: "Merci de confirmer",
-      message: "Voulez-vous vraiment modifier les informations de cet avoir ?",
+      message:
+        "Voulez-vous vraiment modifier les informations de cet acompte ?",
       buttons: [
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/Avoirs/${id}`, this.state)
+            Axios.put(`http://localhost:4848/api/acompte/${id}`, this.state)
               .then(response => {
-                this.props.pageChangeSub("Avoirs");
-                this.props.history.push("/dashboard/Avoirs");
+                this.props.pageChangeSub("acompte");
+                this.props.history.push("/dashboard/acompte");
                 console.log(response);
               })
               .catch(error => {
@@ -79,13 +80,13 @@ class FormulaireAvoirs extends Component {
   };
 
   componentDidMount() {
-    const AvoirsId = this.props.AvoirsId;
-    Axios.get("http://localhost:4848/api/Avoirs")
+    const acompteId = this.props.acompteId;
+    Axios.get("http://localhost:4848/api/acompte")
       .then(response => {
         this.setState({
-          // returns target Avoirs
-          targetAvoirs: response.data.filter(
-            Avoirs => Avoirs.id === parseInt(AvoirsId)
+          // returns target acompte
+          targetacompte: response.data.filter(
+            acompte => acompte.id === parseInt(acompteId)
           ),
           loaded: true
         });
@@ -96,28 +97,28 @@ class FormulaireAvoirs extends Component {
   }
 
   render() {
-    if (this.props.AvoirsId === undefined) {
+    if (this.props.acompteId === undefined) {
       return (
         <div>
-          <h2>Nouvel avoir</h2>
+          <p>Nouvel acompte</p>
           {/* Formulaire */}
           <div className="fl w-100">
             <article className="pa4 black-80">
               <form action="submit" method="post" acceptCharset="utf-8">
                 <fieldset className="ba b--transparent ph0 mh0 mh2">
                   <div className="mt3">
-                    <label className="db fw4 lh-copy f6">Numéro avoir</label>
+                    <label className="db fw4 lh-copy f6">N° acompte</label>
                     <input
                       className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="num_avoir"
+                      name="num_acompte"
                       onChange={this.handleMyUserInputs}
                     />
                   </div>
                   <div className="mt3">
-                    <label className="db fw4 lh-copy f6">Date avoir</label>
+                    <label className="db fw4 lh-copy f6">Date acompte</label>
                     <input
                       className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="date_avoir"
+                      name="date_acompte"
                       onChange={this.handleMyUserInputs}
                     />
                   </div>
@@ -158,4 +159,4 @@ class FormulaireAvoirs extends Component {
   }
 }
 
-export default FormulaireAvoirs;
+export default Formulaireacompte;

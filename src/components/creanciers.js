@@ -198,9 +198,9 @@ class Creanciers extends Component {
             {/* Button créer un créancier */}
             <div className="buttoncreancier tc pt4">
               <NavLink
-                to="/dashboard/formCreancier"
+                to="/dashboard/formAvoir"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                onClick={() => this.props.pageChangeSub("FormCreancier")}
+                onClick={() => this.props.pageChangeSub("Formulaireavoir")}
               >
                 Créer un créancier
               </NavLink>

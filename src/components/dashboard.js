@@ -10,8 +10,10 @@ import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
 import Formulairecompte from "./formulairecompte";
-import Facture from "./Facture";
+import Facture from "./EditAction";
 import FormulaireAvoirs from "./formulaireavoir";
+import Formulaireacompte from "./formulaireacompte";
+import EditAction from "./EditAction";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -41,12 +43,17 @@ class Dashboard extends Component {
       return <Creanciers pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Actions") {
       return <Actions pageChangeSub={this.handlePageChange} />;
-    } else if (this.state.activePage === "Avoirs") {
-      return <FormulaireAvoirs pageChangeSub={this.handlePageChange} />;
-    } else if (this.state.activePage === "Factures") {
-      return <Facture pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "editaction") {
+      return <EditAction pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Historique") {
       return <Historique pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "FormAcompte") {
+      return (
+        <Formulaireacompte
+          acompteId={this.state.acompteId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
     } else if (this.state.activePage === "FormCreancier") {
       return (
         <Formulairecreancier

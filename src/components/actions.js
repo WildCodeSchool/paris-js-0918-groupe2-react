@@ -4,7 +4,6 @@ import Tabfacture from "./tabfacture";
 import Tabavoir from "./tabavoir";
 import Axios from "axios";
 import Autocomplete from "./autocomplete";
-import { throws } from "assert";
 
 class Actions extends Component {
   state = {
