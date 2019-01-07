@@ -6,7 +6,9 @@ import Axios from "axios";
 import Autocomplete from "./autocomplete";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 // import { throws } from "assert";
 
 class Actions extends Component {
@@ -68,7 +70,8 @@ class Actions extends Component {
   componentDidUpdate() {
     if (
       this.state.idCreancierSelected !== 0 &&
-      this.state.idDebiteurSelected !== 0
+      this.state.idDebiteurSelected !== 0 &&
+      this.state.isLoaded === false
     ) {
       Axios.get("http://localhost:4848/api/actions")
         .then(response => {
@@ -79,7 +82,8 @@ class Actions extends Component {
             actionsFiltered: response.data.filter(
               action =>
                 action.creancierId === this.state.idCreancierSelected &&
-                action.debiteurId === this.state.idDebiteurSelected
+                action.debiteurId === this.state.idDebiteurSelected &&
+                action.active === true
             ),
             isLoaded: true
           });
@@ -126,6 +130,46 @@ class Actions extends Component {
   //   });
   // };
 
+  handleNomAction = e => {
+    this.setState({
+      nomNouvelleAction: e.target.value
+    });
+  };
+
+  handleSubmit = () => {
+    const nom_action = this.state.nomNouvelleAction;
+    const creancierId = this.state.idCreancierSelected;
+    const debiteurId = this.state.idDebiteurSelected;
+    confirmAlert({
+      title: "Merci de confirmer",
+      message: `Voulez-vous vraiment créer une action nommée ${
+        this.state.nomNouvelleAction
+      } ?`,
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.post("http://localhost:4848/api/actions", {
+              nom_action,
+              creancierId,
+              debiteurId
+            })
+              .then(response => {
+                this.props.pageChangeSub("EditAction");
+                this.props.history.push("/dashboard/EditAction");
+                console.log(response);
+              })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non"
+        }
+      ]
+    });
+  };
+
   handleNameCreancier = name => {
     let myCreancier = this.state.creanciersFiltered.filter(c =>
       c.denomination_sociale.includes(name)
@@ -133,7 +177,8 @@ class Actions extends Component {
     if (myCreancier[0].id !== undefined) {
       this.setState({
         idCreancierSelected: myCreancier[0].id,
-        nomCreancierSelected: myCreancier[0].denomination_sociale
+        nomCreancierSelected: myCreancier[0].denomination_sociale,
+        isLoaded: false
       });
     }
   };
@@ -145,7 +190,8 @@ class Actions extends Component {
     if (myDebiteur[0].id !== undefined) {
       this.setState({
         idDebiteurSelected: myDebiteur[0].id,
-        nomDebiteurSelected: myDebiteur[0].denomination_sociale
+        nomDebiteurSelected: myDebiteur[0].denomination_sociale,
+        isLoaded: false
       });
     }
   };
@@ -178,6 +224,12 @@ class Actions extends Component {
                   name={this.handleNameDebiteur}
                 />
               </form>
+            </div>
+            <div className="fl w-100 tc pt3">
+              <p className="f3">
+                Pour créer une nouvelle action ou suivre une action en cours,
+                veuillez sélectionner un créancier et un débiteur.
+              </p>
             </div>
           </div>
         </div>
@@ -237,7 +289,7 @@ class Actions extends Component {
                         <tr className="stripe-dark" key={`${action.id}`}>
                           <td>{this.state.nomCreancierSelected}</td>
                           <td>{this.state.nomDebiteurSelected}</td>
-                          <td>Pouet</td>
+                          <td>{action.nom_action}</td>
                           <td>{action.createdAt}</td>
                           <td>
                             <img
@@ -273,14 +325,26 @@ class Actions extends Component {
               </table>
             </div>
           </div>
-          <div className="buttoncreancier tc pt4">
-            <NavLink
-              to="/dashboard/editAction"
-              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-              onClick={() => this.props.pageChangeSub("EditAction")}
-            >
-              Créer une nouvelle action
-            </NavLink>
+          <div className="fl w-100 tc">
+            <div className="dib pt3">
+              <input
+                type="text"
+                className=""
+                placeholder="Nom de la nouvelle action"
+                onChange={this.handleNomAction}
+              />
+            </div>
+            <div className="dib pt3 pl2">
+              <div className="buttonsauvegarder tc pt1">
+                <a
+                  className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                  href="#0"
+                  onClick={this.handleSubmit}
+                >
+                  Créer une nouvelle action
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       );
