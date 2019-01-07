@@ -11,6 +11,7 @@ import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
 import Formulairecompte from "./formulairecompte";
 import Facture from "./Facture";
+import FormulaireAvoirs from "./formulaireavoir";
 
 class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
@@ -40,6 +41,8 @@ class Dashboard extends Component {
       return <Creanciers pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Actions") {
       return <Actions pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "Avoirs") {
+      return <FormulaireAvoirs pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Factures") {
       return <Facture pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Historique") {
