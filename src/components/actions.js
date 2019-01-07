@@ -82,7 +82,8 @@ class Actions extends Component {
             actionsFiltered: response.data.filter(
               action =>
                 action.creancierId === this.state.idCreancierSelected &&
-                action.debiteurId === this.state.idDebiteurSelected
+                action.debiteurId === this.state.idDebiteurSelected &&
+                action.active === true
             ),
             isLoaded: true
           });
