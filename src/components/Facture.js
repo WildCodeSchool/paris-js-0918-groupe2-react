@@ -7,19 +7,19 @@ import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
-class Acomptes extends Component {
+class Factures extends Component {
   state = {
-    acomptes: [],
-    acomptesFiltered: [],
-    acomptesSearch: "",
+    factures: [],
+    facturesFiltered: [],
+    facturesSearch: "",
     myReloadCounter: 0
   };
 
   reloadNow = id => {
     this.setState(previousState => ({
-      acomptes: previousState.acomptes,
-      acomptesFiltered: previousState.acomptesFiltered.filter(
-        acompte => acompte.id !== id
+      factures: previousState.factures,
+      facturesFiltered: previousState.facturesFiltered.filter(
+        facture => facture.id !== id
       ),
       myReloadCounter: this.state.myReloadCounter + 1
     }));
@@ -30,17 +30,17 @@ class Acomptes extends Component {
     const myId = id;
     confirmAlert({
       title: "Merci de confirmer",
-      message: "Voulez-vous vraiment supprimer cet acompte ?",
+      message: "Voulez-vous vraiment supprimer cette facture ?",
       buttons: [
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/acomptes/${myId}`, {
+            Axios.put(`http://localhost:4848/api/factures/${myId}`, {
               active: "false"
             })
               .then(response => {
                 this.reloadNow(myId);
-                alert(`L'acompte' a bien été supprimé.`);
+                alert(`La facture a bien été supprimée.`);
                 console.log(response);
               })
               .catch(error => {
@@ -55,13 +55,13 @@ class Acomptes extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/acomptes")
+    Axios.get("http://localhost:4848/api/factures")
       .then(response => {
         this.setState({
-          // returns all acomptes
-          acomptes: response.data,
-          // returns all acomptes whose active status is true
-          acomptesFiltered: response.data.filter(acompte => acompte.active)
+          // returns all factures
+          factures: response.data,
+          // returns all factures whose active status is true
+          facturesFiltered: response.data.filter(facture => facture.active)
         });
       })
       .catch(error => {
@@ -70,13 +70,13 @@ class Acomptes extends Component {
   }
 
   render() {
-    const myacomptes = this.state.acomptesFiltered;
+    const myfactures = this.state.facturesFiltered;
     const myReloadCounter = this.state.myReloadCounter;
     return (
-      <div className="acompte">
+      <div className="facture">
         <div className="fl w-60">
           <div className="title_créancier pl4">
-            <h2 className="pt2 f4 lh-copy">Liste des acomptes</h2>
+            <h2 className="pt2 f4 lh-copy">Liste des factures</h2>
           </div>
         </div>
 
@@ -86,38 +86,42 @@ class Acomptes extends Component {
             <table className="f6 w-100 center" cellSpacing="0">
               <thead>
                 <tr className="stripe-dark">
-                  <th>N° acompte</th>
-                  <th>Date</th>
-                  <th>montant HT</th>
-                  <th>montant TTC</th>
+                  <th>N° facture </th>
+                  <th>Date de facture </th>
+
+                  <th>Montant TTC </th>
+                  <th>Echéance facture </th>
+
                   <th>Modifier</th>
                   <th>Supprimer</th>
                 </tr>
               </thead>
               <tbody className="lh-copy">
-                {myacomptes
+                {myfactures
                   .sort((a, b) => b.id - a.id)
                   .slice(0, 10)
-                  .map(acompte => {
+                  .map(facture => {
                     return (
                       <tr
                         className="stripe-dark"
-                        key={`${myReloadCounter}-${acompte.num_acompte}`}
+                        key={`${myReloadCounter}-${facture.num_facture}`}
                       >
-                        <td>{acompte.num_acompte}</td>
-                        <td>{acompte.date_acompte}</td>
-                        <td>{acompte.montant_ht}</td>
-                        <td>{acompte.montant_ttc}</td>
+                        <td>{facture.num_facture}</td>
+                        <td>{facture.date_facture}</td>
+
+                        <td>{facture.montant_ttc}</td>
+                        <td>{facture.echeance_facture}</td>
+
                         <td>
-                          <NavLink to="/dashboard/formacompte">
+                          <NavLink to="/dashboard/formfacture">
                             <img
                               className="icone pointer"
                               src={modifier}
                               alt="modifier"
                               onClick={() =>
                                 this.props.pageChangeSub(
-                                  "Formacompte",
-                                  `${acompte.id}`
+                                  "Formfacture",
+                                  `${facture.id}`
                                 )
                               }
                             />
@@ -128,7 +132,7 @@ class Acomptes extends Component {
                             className="icone pointer"
                             src={supprimer}
                             alt="supprimer"
-                            onClick={() => this.handleDelete(acompte.id)}
+                            onClick={() => this.handleDelete(facture.id)}
                           />
                         </td>
                       </tr>
@@ -137,13 +141,13 @@ class Acomptes extends Component {
               </tbody>
             </table>
 
-            <div className="buttonacompte tc pt4">
+            <div className="buttonfacture tc pt4">
               <NavLink
-                to="/dashboard/FormAcompte"
+                to="/dashboard/Formfacture"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                onClick={() => this.props.pageChangeSub("FormAcompte")}
+                onClick={() => this.props.pageChangeSub("Formfacture")}
               >
-                Créer un acompte
+                Créer une facture
               </NavLink>
             </div>
           </div>
@@ -153,4 +157,4 @@ class Acomptes extends Component {
   }
 }
 
-export default Acomptes;
+export default Factures;
