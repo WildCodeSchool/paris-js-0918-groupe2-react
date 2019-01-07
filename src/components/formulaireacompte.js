@@ -100,6 +100,12 @@ class Formulaireacompte extends Component {
     if (this.props.acompteId === undefined) {
       return (
         <div>
+          <NavLink
+            to="/dashboard/actions"
+            onClick={() => this.props.pageChangeSub("Actions")}
+          >
+            <img className="previousbutton" src={previous} alt="previous" />
+          </NavLink>
           <p>Nouvel acompte</p>
           {/* Formulaire */}
           <div className="fl w-100">

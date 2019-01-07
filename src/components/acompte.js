@@ -26,7 +26,7 @@ class Acomptes extends Component {
     this.forceUpdate();
   };
 
-  handleDelete = (id, denomination) => {
+  handleDelete = id => {
     const myId = id;
     confirmAlert({
       title: "Merci de confirmer",
@@ -73,7 +73,6 @@ class Acomptes extends Component {
     const myacomptes = this.state.acomptesFiltered;
     const myReloadCounter = this.state.myReloadCounter;
     return (
-      //tableau informations des créanciers
       <div className="acompte">
         <div className="fl w-60">
           <div className="title_créancier pl4">
@@ -138,7 +137,6 @@ class Acomptes extends Component {
               </tbody>
             </table>
 
-            {/* Button créer un créancier */}
             <div className="buttonacompte tc pt4">
               <NavLink
                 to="/dashboard/FormAcompte"
