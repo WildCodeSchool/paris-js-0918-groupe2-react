@@ -295,8 +295,6 @@ class Actions extends Component {
                           <td>
                             <NavLink
                               to="/dashboard/EditAction"
-                              className="f6 link dim
-                              br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                               onClick={() =>
                                 this.props.pageChangeSub("EditAction")
                               }
