@@ -113,14 +113,14 @@ class Factures extends Component {
                         <td>{facture.echeance_facture}</td>
 
                         <td>
-                          <NavLink to="/dashboard/formfacture">
+                          <NavLink to="/dashboard/formFacture">
                             <img
                               className="icone pointer"
                               src={modifier}
                               alt="modifier"
                               onClick={() =>
                                 this.props.pageChangeSub(
-                                  "Formfacture",
+                                  "FormFacture",
                                   `${facture.id}`
                                 )
                               }
@@ -143,9 +143,9 @@ class Factures extends Component {
 
             <div className="buttonfacture tc pt4">
               <NavLink
-                to="/dashboard/Formfacture"
+                to="/dashboard/formFacture"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                onClick={() => this.props.pageChangeSub("Formfacture")}
+                onClick={() => this.props.pageChangeSub("FormFacture")}
               >
                 Créer une facture
               </NavLink>

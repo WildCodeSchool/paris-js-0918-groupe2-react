@@ -46,8 +46,8 @@ class Formulairefacture extends Component {
       <div className="Factureimpayee ml4 mt4">
         <div className="title_créancier">
           <NavLink
-            to="/dashboard/actions"
-            onClick={() => this.props.pageChangeSub("Actions")}
+            to="/dashboard/EditAction"
+            onClick={() => this.props.pageChangeSub("EditAction")}
           >
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>

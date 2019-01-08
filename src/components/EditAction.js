@@ -5,9 +5,8 @@ import "./Facture.css";
 import Axios from "axios";
 import Acomptes from "./acompte";
 import Avoirs from "./avoirs";
-import Formulairefacture from "./formulairefacture";
-import Facture from "./Facture";
 import Factures from "./Facture";
+
 class EditAction extends Component {
   state = {
     factures: [],
@@ -55,7 +54,7 @@ class EditAction extends Component {
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>
         </div>
-        <Factures />
+        <Factures pageChangeSub={this.props.pageChangeSub} />
         {/* factures impayées */}
         <div className="fl w-60">
           <div className="StylishForm">
@@ -86,10 +85,10 @@ class EditAction extends Component {
           </div>
         </div>
         <div className="fl w-100">
-          <Acomptes />
+          <Acomptes pageChangeSub={this.props.pageChangeSub} />
         </div>
         <div className="fl w-100">
-          <Avoirs />
+          <Avoirs pageChangeSub={this.props.pageChangeSub} />
         </div>
       </div>
     );

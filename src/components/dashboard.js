@@ -6,10 +6,10 @@ import Historique from "./Historique";
 import Actions from "./actions";
 import Header from "./Header";
 import Nav from "./Nav";
-import Acomptes from "./acompte";
 import Formulairecreancier from "./formulairecreancier";
 import Formulairedebiteur from "./formulairedebiteur";
 import "./dashboard.css";
+import Formulairefacture from "./formulairefacture";
 import Formulairecompte from "./formulairecompte";
 import EditAction from "./EditAction";
 import Formulaireacompte from "./formulaireacompte";
@@ -19,17 +19,15 @@ class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
   state = {
     activePage: "Compte",
-    creancierId: undefined,
-    acompteId: undefined
+    creancierId: undefined
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = (activePage, creancierId, debiteurId, acompteId) => {
+  handlePageChange = (activePage, creancierId, debiteurId) => {
     this.setState({
       activePage: activePage,
       creancierId: creancierId,
-      debiteurId: debiteurId,
-      acompteId: acompteId
+      debiteurId: debiteurId
     });
   };
 
@@ -45,12 +43,15 @@ class Dashboard extends Component {
       return <Creanciers pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Actions") {
       return <Actions pageChangeSub={this.handlePageChange} />;
-    } else if (this.state.activePage === "editaction") {
-      return <EditAction pageChangeSub={this.handlePageChange} />;
     } else if (this.state.activePage === "Historique") {
       return <Historique pageChangeSub={this.handlePageChange} />;
-    } else if (this.state.activePage === "Acomptes") {
-      return <Acomptes pageChangeSub={this.handlePageChange} />;
+    } else if (this.state.activePage === "FormFacture") {
+      return (
+        <Formulairefacture
+          factureId={this.state.factureId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
     } else if (this.state.activePage === "FormAcompte") {
       return (
         <Formulaireacompte
@@ -80,7 +81,7 @@ class Dashboard extends Component {
         />
       );
     } else if (this.state.activePage === "EditAction") {
-      return <EditAction />;
+      return <EditAction pageChangeSub={this.handlePageChange} />;
     } else {
       return "Page non existante";
     }

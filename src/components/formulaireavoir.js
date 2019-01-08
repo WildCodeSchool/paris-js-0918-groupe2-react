@@ -100,8 +100,8 @@ class FormulaireAvoirs extends Component {
       return (
         <div>
           <NavLink
-            to="/dashboard/actions"
-            onClick={() => this.props.pageChangeSub("Actions")}
+            to="/dashboard/EditAction"
+            onClick={() => this.props.pageChangeSub("EditAction")}
           >
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>

@@ -36,8 +36,8 @@ class Formulaireacompte extends Component {
           onClick: () =>
             Axios.post("http://localhost:4848/api/acomptes", this.state)
               .then(response => {
-                this.props.pageChangeSub("Acomptes");
-                this.props.history.push("/dashboard/acomptes");
+                this.props.pageChangeSub("acompte");
+                this.props.history.push("/dashboard/acompte");
                 console.log(response);
               })
               .catch(error => {
@@ -64,7 +64,7 @@ class Formulaireacompte extends Component {
           onClick: () =>
             Axios.put(`http://localhost:4848/api/acomptes/${id}`, this.state)
               .then(response => {
-                this.props.pageChangeSub("Acomptes");
+                this.props.pageChangeSub("acomptes");
                 this.props.history.push("/dashboard/acomptes");
                 console.log(response);
               })
@@ -101,8 +101,8 @@ class Formulaireacompte extends Component {
       return (
         <div>
           <NavLink
-            to="/dashboard/actions"
-            onClick={() => this.props.pageChangeSub("Actions")}
+            to="/dashboard/EditAction"
+            onClick={() => this.props.pageChangeSub("EditAction")}
           >
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>
@@ -153,7 +153,7 @@ class Formulaireacompte extends Component {
               <a
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 href="#0"
-                onClick={this.handleSubmitChange}
+                onClick={this.handleSubmit}
               >
                 Sauvegarder
               </a>

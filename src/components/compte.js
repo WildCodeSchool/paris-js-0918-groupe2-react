@@ -10,7 +10,6 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 import { NavLink } from "react-router-dom";
 import valider from "./Icones_Arigoni/valider.svg";
 
-import EditAction from "./EditAction";
 
 class Compte extends Component {
   state = {
@@ -146,7 +145,7 @@ class Compte extends Component {
     const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
-        <EditAction />
+        
 
         {/* ce que le modèle va donner */}
         <div className="fl w-100 pt3 tc stylish-cab">
@@ -196,8 +195,8 @@ class Compte extends Component {
                 className="w-33-ns ml3 h3 signature"
                 src="http://localhost:4848/public/images/signature.jpeg"
                 alt="signature"
-              />{" "}
-              <br /> */}
+              />{" "} */}
+              <br />
               <div className="mt3">
                 <input
                   type="file"

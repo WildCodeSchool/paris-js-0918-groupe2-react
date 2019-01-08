@@ -109,14 +109,14 @@ class Avoirs extends Component {
                         <td>{avoir.montant_ht}</td>
                         <td>{avoir.montant_ttc}</td>
                         <td>
-                          <NavLink to="/dashboard/formavoir">
+                          <NavLink to="/dashboard/formAvoir">
                             <img
                               className="icone pointer"
                               src={modifier}
                               alt="modifier"
                               onClick={() =>
                                 this.props.pageChangeSub(
-                                  "Formavoir",
+                                  "FormAvoir",
                                   `${avoir.id}`
                                 )
                               }
@@ -139,7 +139,7 @@ class Avoirs extends Component {
 
             <div className="buttonavoir tc pt4">
               <NavLink
-                to="/dashboard/FormAvoir"
+                to="/dashboard/formAvoir"
                 className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
                 onClick={() => this.props.pageChangeSub("FormAvoir")}
               >
