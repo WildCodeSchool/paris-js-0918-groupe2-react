@@ -9,6 +9,7 @@ import modifier from "./Icones_Arigoni/icone_modifier.png";
 // import { NavLink } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import { NavLink } from "react-router-dom";
 // import { throws } from "assert";
 
 class Actions extends Component {
@@ -292,18 +293,27 @@ class Actions extends Component {
                           <td>{action.nom_action}</td>
                           <td>{action.createdAt}</td>
                           <td>
-                            <img
-                              className="icone pointer"
-                              src={modifier}
-                              alt="modifier"
-                              // onClick={() =>
-                              //   this.props.pageChangeSub(
-                              //     "FormDebiteur",
-                              //     0,
-                              //     `${debiteur.id}`
-                              //   )
-                              // }
-                            />
+                            <NavLink
+                              to="/dashboard/EditAction"
+                              className="f6 link dim
+                              br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                              onClick={() =>
+                                this.props.pageChangeSub("EditAction")
+                              }
+                            >
+                              <img
+                                className="icone pointer"
+                                src={modifier}
+                                alt="modifier"
+                                // onClick={() =>
+                                //   this.props.pageChangeSub(
+                                //     "FormDebiteur",
+                                //     0,
+                                //     `${debiteur.id}`
+                                //   )
+                                // }
+                              />
+                            </NavLink>
                           </td>
                           <td>
                             <img
