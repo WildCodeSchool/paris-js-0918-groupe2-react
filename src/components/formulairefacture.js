@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import previous from "./Icones_Arigoni/previous.svg";
 import "./Facture.css";
 import Axios from "axios";
+import { confirmAlert } from "react-confirm-alert";
 
 class Formulairefacture extends Component {
   state = {
@@ -19,12 +20,46 @@ class Formulairefacture extends Component {
     echeance_facture: "",
     taux_applicable: "",
     intérets_capitalises: "",
+    actionId: "",
     active: true
   };
 
-  handleMyUserInputs = e => {
-    this.setState({
-      [e.target.name]: e.target.value
+  reloadNow = id => {
+    this.setState(previousState => ({
+      factures: previousState.factures,
+      facturesFiltered: previousState.facturesFiltered.filter(
+        facture => facture.id !== id
+      ),
+      myReloadCounter: this.state.myReloadCounter + 1
+    }));
+    this.forceUpdate();
+  };
+
+  handleDelete = id => {
+    const myId = id;
+    confirmAlert({
+      title: "Merci de confirmer",
+      message: "Voulez-vous vraiment supprimer cette facture ?",
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.put(`http://localhost:4848/api/factures/${myId}`, {
+              active: "false"
+            })
+              .then(response => {
+                this.reloadNow(myId);
+                alert(`La facture a bien été supprimé.`);
+                console.log(response);
+              })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non"
+        }
+      ]
     });
   };
 
@@ -32,7 +67,9 @@ class Formulairefacture extends Component {
     Axios.get("http://localhost:4848/api/factures")
       .then(response => {
         this.setState({
+          // returns all factures
           factures: response.data,
+          // returns all factures whose active status is true
           facturesFiltered: response.data.filter(facture => facture.active)
         });
       })
@@ -40,7 +77,6 @@ class Formulairefacture extends Component {
         console.log(error);
       });
   }
-
   render() {
     return (
       <div>
@@ -63,6 +99,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -76,6 +113,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -89,6 +127,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -100,6 +139,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -111,6 +151,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -124,6 +165,7 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
@@ -135,10 +177,25 @@ class Formulairefacture extends Component {
                   type="text"
                   name="facture"
                   placeholder=""
+                  onChange={this.handleMyUserInputs}
                 />
               </div>
             </div>
           </form>
+          <div className="buttonsauvegarder tc pt1">
+            <NavLink
+              to="/dashboard/EditAction"
+              onClick={() => this.props.pageChangeSub("EditAction")}
+            >
+              <a
+                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                href="#0"
+                onClick={this.handleSubmit}
+              >
+                Sauvegarder
+              </a>
+            </NavLink>
+          </div>
         </div>
       </div>
     );
