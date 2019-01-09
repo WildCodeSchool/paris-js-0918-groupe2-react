@@ -252,7 +252,7 @@ class Historique extends React.Component {
                             <td>
                               <img
                                 className="icone pointer"
-                                src={modifier}
+                                src={supprimer}
                                 alt="Modifier le statut de l'action"
                                 onClick={() =>
                                   this.handleDelete(

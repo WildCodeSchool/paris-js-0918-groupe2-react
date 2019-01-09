@@ -89,11 +89,11 @@ class Formulairefacture extends Component {
           </NavLink>
         </div>
         <div className="fl w-100">
-          <h2 className="ml4">Facture</h2>
-          <form className="pa4">
-            <div className="">
+          <h2 className="ml5">Nouvelle facture</h2>
+          <form className="pa4 ml4 mt4">
+            <div>
               <div>
-                <div className="stripe-dark pa2 b">N° de commande</div>
+                <div className="pa2 b">N° de commande</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -105,9 +105,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">
-                  N° de confirmation de commande
-                </div>
+                <div className="pa2 b">N° de confirmation de commande</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -119,9 +117,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">
-                  N° document de transport
-                </div>
+                <div className=" pa2 b">N° document de transport</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -133,7 +129,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">N° facture</div>
+                <div className=" pa2 b">N° facture</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -145,7 +141,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">Date facture</div>
+                <div className=" pa2 b">Date facture</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -157,9 +153,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">
-                  Montant HT de la facture
-                </div>
+                <div className=" pa2 b">Montant HT de la facture</div>
                 <input
                   className="white-dark pa1"
                   type="text"
@@ -171,7 +165,7 @@ class Formulairefacture extends Component {
             </div>
             <div className="">
               <div>
-                <div className="stripe-dark pa2 b">Echeance de la facture</div>
+                <div className=" pa2 b">Echeance de la facture</div>
                 <input
                   className="white-dark pa1"
                   type="text"
