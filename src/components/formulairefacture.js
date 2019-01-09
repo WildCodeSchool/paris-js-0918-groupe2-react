@@ -43,8 +43,8 @@ class Formulairefacture extends Component {
 
   render() {
     return (
-      <div className="Factureimpayee ml4 mt4">
-        <div className="title_créancier">
+      <div>
+        <div className="ml4">
           <NavLink
             to="/dashboard/EditAction"
             onClick={() => this.props.pageChangeSub("EditAction")}
@@ -52,88 +52,94 @@ class Formulairefacture extends Component {
             <img className="previousbutton" src={previous} alt="previous" />
           </NavLink>
         </div>
-
-        <form>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">N° de commande</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
-            </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">
-                N° de confirmation de commande
+        <div className="fl w-100">
+          <h2 className="ml4">Facture</h2>
+          <form className="pa4">
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">N° de commande</div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
               </div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
             </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">N° document de transport</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">
+                  N° de confirmation de commande
+                </div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">N° facture</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">
+                  N° document de transport
+                </div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">Date facture</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">N° facture</div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">Montant HT de la facture</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">Date facture</div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
-          <div className="inputdiv">
-            <div>
-              <div className="stripe-dark pa2 b">Echeance de la facture</div>
-              <input
-                className="white-dark pa1"
-                type="text"
-                name="facture"
-                placeholder=""
-              />
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">
+                  Montant HT de la facture
+                </div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
             </div>
-          </div>
-        </form>
+            <div className="">
+              <div>
+                <div className="stripe-dark pa2 b">Echeance de la facture</div>
+                <input
+                  className="white-dark pa1"
+                  type="text"
+                  name="facture"
+                  placeholder=""
+                />
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }
