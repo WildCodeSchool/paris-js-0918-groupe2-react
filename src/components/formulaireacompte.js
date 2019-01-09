@@ -100,63 +100,71 @@ class Formulaireacompte extends Component {
     if (this.props.acompteId === undefined) {
       return (
         <div>
-          <NavLink
-            to="/dashboard/EditAction"
-            onClick={() => this.props.pageChangeSub("EditAction")}
-          >
-            <img className="previousbutton" src={previous} alt="previous" />
-          </NavLink>
-          <p>Nouvel acompte</p>
-          {/* Formulaire */}
-          <div className="fl w-100">
-            <article className="pa4 black-80">
-              <form action="submit" method="post" acceptCharset="utf-8">
-                <fieldset className="ba b--transparent ph0 mh0 mh2">
-                  <div className="mt3">
-                    <label className="db fw4 lh-copy f6">N° acompte</label>
-                    <input
-                      className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="num_acompte"
-                      onChange={this.handleMyUserInputs}
-                    />
-                  </div>
-                  <div className="mt3">
-                    <label className="db fw4 lh-copy f6">Date acompte</label>
-                    <input
-                      className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="date_acompte"
-                      onChange={this.handleMyUserInputs}
-                    />
-                  </div>
-                  <div className="mt3">
-                    <label className="db fw4 lh-copy f6">Montant HT</label>
-                    <input
-                      className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="montant_ht"
-                      onChange={this.handleMyUserInputs}
-                    />
-                  </div>
-                  <div className="mt3">
-                    <label className="db fw4 lh-copy f6">Montant TTC</label>
-                    <input
-                      className="pa2 input-reset ba bg-transparent w-100 measure"
-                      name="montant_ttc"
-                      onChange={this.handleMyUserInputs}
-                    />
-                  </div>
-                </fieldset>
-              </form>
-            </article>
+          <div className="ml4">
+            <NavLink
+              to="/dashboard/EditAction"
+              onClick={() => this.props.pageChangeSub("EditAction")}
+            >
+              <img className="previousbutton" src={previous} alt="previous" />
+            </NavLink>
 
-            {/* Bouton sauvegarder */}
-            <div className="buttonsauvegarder tc pt1">
-              <a
-                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
-                onClick={this.handleSubmit}
-              >
-                Sauvegarder
-              </a>
+            {/* Formulaire */}
+            <div className="fl w-100">
+              {" "}
+              <h2 className="ml4">Nouvel acompte</h2>
+              <article className="pa4 black-80">
+                <form action="submit" method="post" acceptCharset="utf-8">
+                  <fieldset className="ba b--transparent ph0 mh0 mh2">
+                    <div className="mt3">
+                      <label className="db fw4 lh-copy f6">N° acompte</label>
+                      <input
+                        className="pa2 input-reset ba bg-transparent w-100 measure"
+                        name="num_acompte"
+                        onChange={this.handleMyUserInputs}
+                      />
+                    </div>
+                    <div className="mt3">
+                      <label className="db fw4 lh-copy f6">Date acompte</label>
+                      <input
+                        className="pa2 input-reset ba bg-transparent w-100 measure"
+                        name="date_acompte"
+                        onChange={this.handleMyUserInputs}
+                      />
+                    </div>
+                    <div className="mt3">
+                      <label className="db fw4 lh-copy f6">Montant HT</label>
+                      <input
+                        className="pa2 input-reset ba bg-transparent w-100 measure"
+                        name="montant_ht"
+                        onChange={this.handleMyUserInputs}
+                      />
+                    </div>
+                    <div className="mt3">
+                      <label className="db fw4 lh-copy f6">Montant TTC</label>
+                      <input
+                        className="pa2 input-reset ba bg-transparent w-100 measure"
+                        name="montant_ttc"
+                        onChange={this.handleMyUserInputs}
+                      />
+                    </div>
+                  </fieldset>
+                </form>
+              </article>
+              {/* Bouton sauvegarder */}
+              <div className="buttonsauvegarder tc pt1">
+                <NavLink
+                  to="/dashboard/EditAction"
+                  onClick={() => this.props.pageChangeSub("EditAction")}
+                >
+                  <a
+                    className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                    href="#0"
+                    onClick={this.handleSubmit}
+                  >
+                    Sauvegarder
+                  </a>
+                </NavLink>
+              </div>
             </div>
           </div>
         </div>
