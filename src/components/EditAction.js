@@ -62,11 +62,11 @@ class EditAction extends Component {
 
             {/* checkbox */}
 
-            <div className="fl w-100">
+            <div className="fl w-100 ml4">
               {" "}
-              <p className="titre">
+              <h2 className="pt2 f4 lh-copy">
                 Taux de pénalitées de retard applicables :
-              </p>
+              </h2>
               <span>BCE +10 points</span>
               <input type="checkbox" name="produitsV" value="produitsV" />
               <br />
