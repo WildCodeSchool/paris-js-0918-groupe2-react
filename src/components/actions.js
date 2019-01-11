@@ -95,42 +95,6 @@ class Actions extends Component {
     }
   }
 
-  // handleTabSwitch() {
-  //   return this.state.checkboxFacture ? (
-  //     <Tabfacture pageChangeSub={this.props.pageChangeSub} />
-  //   ) : (
-  //     <Tabavoir pageChangeSub={this.props.pageChangeSub} />
-  //   );
-  // }
-
-  // handleCheckbox() {
-  //   this.setState({
-  //     checkboxFacture: !this.state.checkboxFacture
-  //   });
-  // }
-
-  // handleCheckboxDisplay() {
-  //   return this.state.checkboxFacture ? "factures" : "avoirs";
-  // }
-
-  // handleProduits() {
-  //   this.setState({
-  //     checkboxProduits: !this.state.checkboxProduits
-  //   });
-  // }
-
-  // handleServices() {
-  //   this.setState({
-  //     checkboxServices: !this.state.checkboxServices
-  //   });
-  // }
-
-  // handleHonoraires = e => {
-  //   this.setState({
-  //     honoraires: e.target.value
-  //   });
-  // };
-
   handleNomAction = e => {
     this.setState({
       nomNouvelleAction: e.target.value
@@ -156,9 +120,8 @@ class Actions extends Component {
               debiteurId
             })
               .then(response => {
-                this.props.pageChangeSub("EditAction");
+                this.props.pageChangeSub("EditAction", 0, 0, response.data.id);
                 this.props.history.push("/dashboard/EditAction");
-                console.log(response);
               })
               .catch(error => {
                 console.log(error);
@@ -296,7 +259,12 @@ class Actions extends Component {
                             <NavLink
                               to="/dashboard/EditAction"
                               onClick={() =>
-                                this.props.pageChangeSub("EditAction")
+                                this.props.pageChangeSub(
+                                  "EditAction",
+                                  0,
+                                  0,
+                                  action.id
+                                )
                               }
                             >
                               <img

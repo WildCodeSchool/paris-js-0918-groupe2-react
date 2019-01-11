@@ -19,15 +19,18 @@ class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
   state = {
     activePage: "Compte",
-    creancierId: undefined
+    creancierId: undefined,
+    debiteurId: undefined,
+    actionId: undefined
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = (activePage, creancierId, debiteurId) => {
+  handlePageChange = (activePage, creancierId, debiteurId, actionId) => {
     this.setState({
       activePage: activePage,
       creancierId: creancierId,
-      debiteurId: debiteurId
+      debiteurId: debiteurId,
+      actionId: actionId
     });
   };
 
@@ -81,7 +84,12 @@ class Dashboard extends Component {
         />
       );
     } else if (this.state.activePage === "EditAction") {
-      return <EditAction pageChangeSub={this.handlePageChange} />;
+      return (
+        <EditAction
+          actionId={this.state.actionId}
+          pageChangeSub={this.handlePageChange}
+        />
+      );
     } else {
       return "Page non existante";
     }
