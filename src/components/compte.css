@@ -8,6 +8,8 @@
 
 .firstBorder {
   margin-left: 20%;
+  text-align: justify;
+  list-style-position: inside;
 }
 
 .job {
@@ -20,6 +22,10 @@
 
 .otherBorder .signature {
   margin-top: -60%;
+}
+
+ul li {
+  margin-left: 30%;
 }
 
 @media only screen and (max-width: 768px) {
