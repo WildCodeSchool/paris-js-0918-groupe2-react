@@ -146,36 +146,46 @@ class Compte extends Component {
     return (
       <div className="fl w-100 pt3">
         {/* ce que le modèle va donner */}
-        <div className="fl w-100 pt3 tc stylish-cab">
-          <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
-          <div className="ba br4 mt4 w-60-ns nested-copy-line-height tc b--gray firstBorder size-think">
-            <p className="b black">
-              {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
-            </p>
-            <p className="b black">
-              {infosCompte.num_rue} {infosCompte.libelle_rue}
-              {infosCompte.code_postal} {infosCompte.ville}
-            </p>
-            <p className="b black">Tel: {infosCompte.tel}</p>
-            <p className="b black">Fax: {infosCompte.fax}</p>
-            <p className="b black">Email: {infosCompte.mail}</p>
-            <p className="b black">Nº TVA: {infosCompte.num_TVA}</p>
-            <NavLink
-              to="/dashboard/formulairecompte"
-              onClick={() => this.props.pageChangeSub("formulairecompte")}
-            >
-              <img
-                className="icone pointer ml2 mb2"
-                src={modifier}
-                alt="modifier"
-              />
-            </NavLink>
+        <div className="fl w-100 pt3 stylish-cab mt4">
+          <div className="tc">
+            <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
+          </div>
+          <div className="ba br4 mt5 w-50-ns b--gray firstBorder size-think">
+            <h2 className="title-firstBorder"> Informations de mon cabinet : </h2>
+            <ul className="b black ">
+              <li className="b black">
+                {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
+              </li>
+
+              <li className="b black">
+                {infosCompte.num_rue} {infosCompte.libelle_rue}{" "}
+                {infosCompte.code_postal} {infosCompte.ville}
+              </li>
+
+              <li className="b black">Tel: {infosCompte.tel}</li>
+              <li className="b black">Fax: {infosCompte.fax}</li>
+              <li className="b black">Email: {infosCompte.mail}</li>
+              <li className="b black">Nº TVA: {infosCompte.num_TVA}</li>
+            </ul>
+            <div className="tc">
+              <NavLink
+                to="/dashboard/formulairecompte"
+                onClick={() => this.props.pageChangeSub("formulairecompte")}
+              >
+                <img
+                  className="icone pointer mt2 ml2 mb2"
+                  src={modifier}
+                  alt="modifier"
+                />
+              </NavLink>
+            </div>
           </div>
 
-          <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+          <div className="ba br4 mt5 w-50-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
             <p className="b black tl ml4">
               {" "}
-              En-tête: <img className="w-40 ml6" src={entete} alt="entete" />
+              En-tête: <br />{" "}
+              <img className="w-40 entete" src={entete} alt="entete" />
             </p>{" "}
           </div>
         </div>
