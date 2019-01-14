@@ -19,16 +19,27 @@ class Dashboard extends Component {
   // la page d'origine c'est "Compte" on la défini dans une state
   state = {
     activePage: "Compte",
+    activeCreancier: "",
     creancierId: undefined,
+    activeDebiteur: "",
     debiteurId: undefined,
     actionId: undefined
   };
 
   //on va changer la state pour changer la page active vers la page demandée
-  handlePageChange = (activePage, creancierId, debiteurId, actionId) => {
+  handlePageChange = (
+    activePage,
+    creancierId,
+    debiteurId,
+    actionId,
+    creancier,
+    debiteur
+  ) => {
     this.setState({
       activePage: activePage,
+      activeCreancier: creancier,
       creancierId: creancierId,
+      activeDebiteur: debiteur,
       debiteurId: debiteurId,
       actionId: actionId
     });
@@ -87,6 +98,8 @@ class Dashboard extends Component {
       return (
         <EditAction
           actionId={this.state.actionId}
+          creancier={this.state.activeCreancier}
+          debiteur={this.state.activeDebiteur}
           pageChangeSub={this.handlePageChange}
         />
       );

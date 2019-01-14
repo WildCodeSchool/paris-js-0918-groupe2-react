@@ -263,7 +263,9 @@ class Actions extends Component {
                                   "EditAction",
                                   0,
                                   0,
-                                  action.id
+                                  action.id,
+                                  this.state.nomCreancierSelected,
+                                  this.state.nomDebiteurSelected
                                 )
                               }
                             >
