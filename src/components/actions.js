@@ -11,6 +11,7 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import { NavLink } from "react-router-dom";
 // import { throws } from "assert";
+import download from "./Icones_Arigoni/icone_upload.png";
 
 class Actions extends Component {
   state = {
@@ -170,6 +171,7 @@ class Actions extends Component {
   };
 
   render() {
+    const myregex = /\d{4}-\d{2}-\d{2}/g;
     if (this.state.isLoaded === false) {
       return (
         <div className="fl w-100">
@@ -249,8 +251,8 @@ class Actions extends Component {
                     <th>Débiteur</th>
                     <th>Nom de l'action</th>
                     <th>Créée le</th>
-                    <th>Sélectionner</th>
-                    <th>Supprimer</th>
+                    <th>Modifier</th>
+                    <th>Télécharger</th>
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
@@ -263,7 +265,7 @@ class Actions extends Component {
                           <td>{this.state.nomCreancierSelected}</td>
                           <td>{this.state.nomDebiteurSelected}</td>
                           <td>{action.nom_action}</td>
-                          <td>{action.createdAt}</td>
+                          <td>{action.createdAt.match(myregex)}</td>
                           <td>
                             <NavLink
                               to="/dashboard/EditAction"
@@ -282,27 +284,14 @@ class Actions extends Component {
                                 className="icone pointer"
                                 src={modifier}
                                 alt="modifier"
-                                // onClick={() =>
-                                //   this.props.pageChangeSub(
-                                //     "FormDebiteur",
-                                //     0,
-                                //     `${debiteur.id}`
-                                //   )
-                                // }
                               />
                             </NavLink>
                           </td>
                           <td>
                             <img
-                              className="icone pointer"
-                              src={supprimer}
-                              alt="supprimer"
-                              // onClick={() =>
-                              //   this.handleDelete(
-                              //     debiteur.id,
-                              //     debiteur.denomination_sociale
-                              //   )
-                              // }
+                              className="icone download pointer"
+                              src={download}
+                              alt="download"
                             />
                           </td>
                         </tr>
