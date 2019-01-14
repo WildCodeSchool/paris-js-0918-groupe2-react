@@ -192,15 +192,7 @@ class Historique extends React.Component {
             <div className="title_débiteur pl4">
               <h1 className="f2 tc lh-copy"> Historique des actions </h1>
             </div>
-
             <div className="fl w-100 ">
-              {/* checkbox */}
-              {/* <div className="fl w-100 tc">
-              <span className="pr2"> Actions en cours </span>
-              <input type="checkbox" name="MED" value="MED" />
-              <span className="pr2 pl4"> Actions cloturées </span>
-              <input type="checkbox" name="injonction" value="injonction" />
-            </div> */}
               <div className="fl w-100 tc">
                 <div className="checkbox-wrap custom style-2">
                   <input
@@ -305,90 +297,6 @@ class Historique extends React.Component {
                           </tr>
                         );
                       })}
-                    {/* <tr className="stripe-dark">
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">
-                      <button className="button">cloturer</button>
-                    </td>
-
-                    <td className="pa3">
-                      <img
-                        className="icone download pointer"
-                        src={download}
-                        alt="download"
-                      />
-                    </td>
-                  </tr>
-                  <tr className="stripe-white">
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-
-                    <td className="pa3">
-                      <button className="button">cloturer</button>
-                    </td>
-
-                    <td className="pa3">
-                      <img
-                        className="icone download pointer"
-                        src={download}
-                        alt="download"
-                      />
-                    </td>
-                  </tr>
-                  <tr className="stripe-dark">
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-
-                    <td className="pa3">
-                      <button className="button">cloturer</button>
-                    </td>
-
-                    <td className="pa3">
-                      <img
-                        className="icone download pointer"
-                        src={download}
-                        alt="download"
-                      />
-                    </td>
-                  </tr>
-                  <tr className="stripe-dark">
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-
-                    <td className="pa3">
-                      <button className="button">cloturer</button>
-                    </td>
-
-                    <td className="pa3">
-                      <img
-                        className="icone download pointer"
-                        src={download}
-                        alt="download"
-                      />
-                    </td>
-                  </tr>
-                  <tr className="stripe-dark">
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-                    <td className="pa3">xxxxxx</td>
-
-                    <td className="pa3">
-                      <button className="button">cloturer</button>
-                    </td>
-
-                    <td className="pa3">
-                      <img
-                        className="icone download pointer"
-                        src={download}
-                        alt="download"
-                      />
-                    </td>
-                  </tr> */}
                   </tbody>
                 </table>
               </div>
@@ -396,7 +304,13 @@ class Historique extends React.Component {
           </div>
         </div>
       );
-    } else return null;
+    } else
+      return (
+        <h1 className="f2 tc lh-copy">
+          {" "}
+          Il n'y a pas encore d'actions dans l'historique.{" "}
+        </h1>
+      );
   }
 }
 
