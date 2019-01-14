@@ -9,7 +9,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 // import Formulairecompte from "./formulairecompte";
 import { NavLink } from "react-router-dom";
 import valider from "./Icones_Arigoni/valider.svg";
-
+import entete from "./images/entete.png";
 
 class Compte extends Component {
   state = {
@@ -145,8 +145,6 @@ class Compte extends Component {
     const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
-        
-
         {/* ce que le modèle va donner */}
         <div className="fl w-100 pt3 tc stylish-cab">
           <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
@@ -175,50 +173,10 @@ class Compte extends Component {
           </div>
 
           <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
-            <p className="b black tl ml3">
+            <p className="b black tl ml4">
               {" "}
-              En-tête:{" "}
-              {/* <span className="athelas navy f4 ml2">Alexandra Arigoni </span>
-              <br /> <span className="athelas navy f4 job"> AVOCAT</span> */}
+              En-tête: <img className="w-40 ml6" src={entete} alt="entete" />
             </p>{" "}
-            <img className="icone pointer ml3" src={upload} alt="upload" />{" "}
-            <img
-              className="valider icone pointer ml3"
-              src={valider}
-              alt="valider"
-            />
-          </div>
-          <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
-            <p className="b black tl ml3"> Signature: </p>
-            <form onSubmit={this.onFormSubmitSignature}>
-              {/* <img
-                className="w-33-ns ml3 h3 signature"
-                src="http://localhost:4848/public/images/signature.jpeg"
-                alt="signature"
-              />{" "} */}
-              <br />
-              <div className="mt3">
-                <input
-                  type="file"
-                  name="file"
-                  id="file"
-                  className="inputfile"
-                  onChange={this.onChange}
-                />
-                <label htmlFor="file">
-                  <img
-                    className="icone pointer ml3"
-                    src={upload}
-                    alt="upload"
-                  />
-                </label>
-                <img
-                  className="icone pointer ml3"
-                  src={valider}
-                  alt="valider"
-                />
-              </div>
-            </form>
           </div>
         </div>
       </div>
