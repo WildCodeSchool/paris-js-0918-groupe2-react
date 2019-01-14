@@ -180,7 +180,14 @@ class EditAction extends Component {
                   <NavLink
                     to="/dashboard/formFacture"
                     className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                    onClick={() => this.props.pageChangeSub("FormFacture")}
+                    onClick={() =>
+                      this.props.pageChangeSub(
+                        "FormFacture",
+                        0,
+                        0,
+                        this.props.actionId
+                      )
+                    }
                   >
                     Créer une facture
                   </NavLink>
