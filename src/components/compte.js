@@ -151,8 +151,11 @@ class Compte extends Component {
             <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
           </div>
           <div className="ba br4 mt5 w-50-ns b--gray firstBorder size-think">
-            <h2 className="title-firstBorder"> Informations de mon cabinet : </h2>
-            <ul className="b black ">
+            <h2 className="title-firstBorder">
+              {" "}
+              Informations de mon cabinet :{" "}
+            </h2>
+            <ul className="b black moveInfoRight">
               <li className="b black">
                 {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
               </li>
