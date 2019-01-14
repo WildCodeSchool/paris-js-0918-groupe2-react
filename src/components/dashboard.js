@@ -64,6 +64,8 @@ class Dashboard extends Component {
         <Formulairefacture
           actionId={this.state.actionId}
           pageChangeSub={this.handlePageChange}
+          creancier={this.state.activeCreancier}
+          debiteur={this.state.activeDebiteur}
         />
       );
     } else if (this.state.activePage === "FormAcompte") {

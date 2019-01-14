@@ -185,7 +185,9 @@ class EditAction extends Component {
                         "FormFacture",
                         0,
                         0,
-                        this.props.actionId
+                        this.props.actionId,
+                        this.props.creancier,
+                        this.props.debiteur
                       )
                     }
                   >
