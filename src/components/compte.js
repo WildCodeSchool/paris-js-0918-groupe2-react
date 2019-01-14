@@ -9,6 +9,7 @@ import "react-confirm-alert/src/react-confirm-alert.css";
 // import Formulairecompte from "./formulairecompte";
 import { NavLink } from "react-router-dom";
 import valider from "./Icones_Arigoni/valider.svg";
+import entete from "./images/entete.png";
 
 class Compte extends Component {
   state = {
@@ -145,11 +146,12 @@ class Compte extends Component {
     return (
       <div className="fl w-100 pt3">
         {/* ce que le modèle va donner */}
-        <div className="fl w-100 pt3 stylish-cab">
+        <div className="fl w-100 pt3 stylish-cab mt4">
           <div className="tc">
             <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
           </div>
-          <div className="ba br4 mt4 w-60-ns nested-copy-line-height b--gray firstBorder size-think">
+          <div className="ba br4 mt5 w-50-ns b--gray firstBorder size-think">
+            <h2 className="title-firstBorder"> Informations de mon cabinet : </h2>
             <ul className="b black ">
               <li className="b black">
                 {infosCompte.titre} {infosCompte.nom} {infosCompte.prenom}
@@ -157,8 +159,6 @@ class Compte extends Component {
 
               <li className="b black">
                 {infosCompte.num_rue} {infosCompte.libelle_rue}{" "}
-              </li>
-              <li>
                 {infosCompte.code_postal} {infosCompte.ville}
               </li>
 
@@ -173,7 +173,7 @@ class Compte extends Component {
                 onClick={() => this.props.pageChangeSub("formulairecompte")}
               >
                 <img
-                  className="icone pointer ml2 mb2"
+                  className="icone pointer mt2 ml2 mb2"
                   src={modifier}
                   alt="modifier"
                 />
@@ -181,14 +181,12 @@ class Compte extends Component {
             </div>
           </div>
 
-          <div className="ba br4 mt3 w-60-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
-            <p className="b black tl ml3"> En-tête: </p>{" "}
-            <img className="icone pointer ml3" src={upload} alt="upload" />{" "}
-            <img
-              className="valider icone pointer ml3"
-              src={valider}
-              alt="valider"
-            />
+          <div className="ba br4 mt5 w-50-ns nested-copy-line-height tc pb2 h4 b--gray otherBorder">
+            <p className="b black tl ml4">
+              {" "}
+              En-tête: <br />{" "}
+              <img className="w-40 entete" src={entete} alt="entete" />
+            </p>{" "}
           </div>
         </div>
       </div>

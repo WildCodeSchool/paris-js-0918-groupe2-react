@@ -7,9 +7,17 @@
 }
 
 .firstBorder {
-  margin-left: 20%;
+  margin-left: 26%;
   text-align: justify;
   list-style-position: inside;
+  line-height: 200%;
+}
+
+.title-firstBorder {
+  margin-left: 25%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-decoration: underline;
 }
 
 .job {
@@ -17,7 +25,7 @@
 }
 
 .otherBorder {
-  margin-left: 20%;
+  margin-left: 26%;
 }
 
 .otherBorder .signature {
@@ -25,7 +33,16 @@
 }
 
 ul li {
-  margin-left: 30%;
+  margin-left: 25%;
+}
+
+.title-seysey {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.entete {
+  margin-left: 28%;
 }
 
 @media only screen and (max-width: 768px) {
