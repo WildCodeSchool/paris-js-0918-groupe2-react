@@ -5,12 +5,11 @@ import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import "./Facture.css";
 import Axios from "axios";
-import Acomptes from "./acompte";
-import Avoirs from "./avoirs";
-// import Factures from "./Facture";
 
 class EditAction extends Component {
   state = {
+    selectedFacture: undefined,
+    isSelected: false,
     isLoaded: false,
     actionFiltered: [],
     facturesFiltered: [],
@@ -34,6 +33,30 @@ class EditAction extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  };
+
+  handleSelectFacture = (event, id) => {
+    if (this.state.isSelected === true && this.state.selectedFacture !== id) {
+      alert("Vous ne pouvez sélectionner qu'une facture à la fois.");
+      event.stopPropagation();
+      event.preventDefault();
+    } else {
+      if (this.state.selectedFacture === undefined) {
+        this.setState({
+          selectedFacture: id,
+          isSelected: !this.state.isSelected
+        });
+      } else {
+        this.setState({
+          selectedFacture: undefined,
+          isSelected: !this.state.isSelected
+        });
+      }
+    }
+  };
+
+  handleAcomptesAvoirs = () => {
+    if (this.state.isSelected === true) return <h1>poueeeeeet</h1>;
   };
 
   componentDidMount() {
@@ -101,7 +124,7 @@ class EditAction extends Component {
       return (
         <div className="Factureimpayee ml4">
           <div className="fl w-100 tc">
-            <p className="f1 mt4 mb4">Centre de contrôle des actions</p>
+            <p className="f1 mt4 mb4">Centre de gestion des actions</p>
             <p className="f2 mt3 mb2 lh-title">
               {this.state.actionFiltered[0].nom_action}: {this.props.creancier}{" "}
               vs. {this.props.debiteur}
@@ -111,24 +134,26 @@ class EditAction extends Component {
           <div className="facture">
             <div className="fl w-60">
               <div className="title_créancier pl4">
-                <h2 className="pt2 f4 lh-copy">Liste des factures</h2>
+                <h2 className="pt4 f4 lh-copy">Liste des factures</h2>
               </div>
             </div>
 
             {/* tableau */}
             <div className=" tableau fl w-100 pa4 ">
               <div className="overflow-auto">
-                <table className="f6 w-100 center" cellSpacing="0">
+                <table className="f6 w-100 center tc" cellSpacing="0">
                   <thead>
                     <tr className="stripe-dark">
-                      <th>N° facture </th>
-                      <th>Date de facture </th>
+                      <th className="tc">N° facture </th>
+                      <th className="tc">Date de facture </th>
 
-                      <th>Montant TTC </th>
-                      <th>Echéance facture </th>
+                      <th className="tc">Montant TTC </th>
+                      <th className="tc">Echéance facture </th>
 
-                      <th>Modifier</th>
-                      <th>Supprimer</th>
+                      <th className="tc">Modifier</th>
+                      <th className="tc">Supprimer</th>
+
+                      <th className="tc">Sélectionner</th>
                     </tr>
                   </thead>
                   <tbody className="lh-copy">
@@ -170,6 +195,20 @@ class EditAction extends Component {
                                 onClick={() => this.handleDelete(facture.id)}
                               />
                             </td>
+                            <td>
+                              {/* <form> */}
+                              <input
+                                type="checkbox"
+                                onClick={e =>
+                                  this.handleSelectFacture(e, facture.id)
+                                }
+                                // name="selectFacture"
+                                // value="selectFacture"
+                                // id="selectFacture"
+                              />
+                              {/* <label for="selectFacture" /> */}
+                              {/* </form> */}
+                            </td>
                           </tr>
                         );
                       })}
@@ -197,18 +236,13 @@ class EditAction extends Component {
               </div>
             </div>
           </div>
-          {/* factures impayées */}
-          <div className="fl w-60">
-            <div className="StylishForm">
-              {/* Formulaire en input */}
 
-              {/* checkbox */}
-
-              <div className="fl w-60 pt4 tr ml4" />
-            </div>
-          </div>
           <div className="fl w-100">
-            {" "}
+            {this.handleAcomptesAvoirs()}
+
+            <p className="f2 mt3 mb2 lh-title tc">
+              Liste des acomptes et avoirs liés à cette facture
+            </p>
             <div className="acompte">
               <div className="fl w-60">
                 <div className="title_créancier pl4">

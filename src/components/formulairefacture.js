@@ -59,7 +59,6 @@ class Formulairefacture extends Component {
         },
         {
           label: "Non"
-          // onClick: () => alert("Le créancier n'a pas été supprimé.")
         }
       ]
     });
@@ -201,18 +200,13 @@ class Formulairefacture extends Component {
             </div>
           </form>
           <div className="buttonsauvegarder tc pt1">
-            <NavLink
-              to="/dashboard/EditAction"
-              onClick={() => this.props.pageChangeSub("EditAction")}
+            <a
+              className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+              href="#0"
+              onClick={this.handleSubmit}
             >
-              <a
-                className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                href="#0"
-                onClick={this.handleSubmit}
-              >
-                Sauvegarder
-              </a>
-            </NavLink>
+              Sauvegarder
+            </a>
           </div>
         </div>
       </div>
