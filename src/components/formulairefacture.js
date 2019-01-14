@@ -24,45 +24,6 @@ class Formulairefacture extends Component {
     active: true
   };
 
-  reloadNow = id => {
-    this.setState(previousState => ({
-      factures: previousState.factures,
-      facturesFiltered: previousState.facturesFiltered.filter(
-        facture => facture.id !== id
-      ),
-      myReloadCounter: this.state.myReloadCounter + 1
-    }));
-    this.forceUpdate();
-  };
-
-  handleDelete = id => {
-    const myId = id;
-    confirmAlert({
-      title: "Merci de confirmer",
-      message: "Voulez-vous vraiment supprimer cette facture ?",
-      buttons: [
-        {
-          label: "Oui",
-          onClick: () =>
-            Axios.put(`http://localhost:4848/api/factures/${myId}`, {
-              active: "false"
-            })
-              .then(response => {
-                this.reloadNow(myId);
-                alert(`La facture a bien été supprimé.`);
-                console.log(response);
-              })
-              .catch(error => {
-                console.log(error);
-              })
-        },
-        {
-          label: "Non"
-        }
-      ]
-    });
-  };
-
   componentDidMount() {
     Axios.get("http://localhost:4848/api/factures")
       .then(response => {

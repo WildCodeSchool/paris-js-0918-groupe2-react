@@ -105,6 +105,7 @@ class Actions extends Component {
     const nom_action = this.state.nomNouvelleAction;
     const creancierId = this.state.idCreancierSelected;
     const debiteurId = this.state.idDebiteurSelected;
+    const active = true;
     confirmAlert({
       title: "Merci de confirmer",
       message: `Voulez-vous vraiment créer une action nommée ${
@@ -117,10 +118,18 @@ class Actions extends Component {
             Axios.post("http://localhost:4848/api/actions", {
               nom_action,
               creancierId,
-              debiteurId
+              debiteurId,
+              active
             })
               .then(response => {
-                this.props.pageChangeSub("EditAction", 0, 0, response.data.id);
+                this.props.pageChangeSub(
+                  "EditAction",
+                  0,
+                  0,
+                  response.data.id,
+                  this.state.nomCreancierSelected,
+                  this.state.nomDebiteurSelected
+                );
                 this.props.history.push("/dashboard/EditAction");
               })
               .catch(error => {
