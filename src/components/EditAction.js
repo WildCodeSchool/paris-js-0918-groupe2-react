@@ -4,7 +4,9 @@ import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
+import tick from "./Icones_Arigoni/tick.png";
 import "./Facture.css";
+import "./editaction.css";
 import Axios from "axios";
 
 class EditAction extends Component {
@@ -25,8 +27,13 @@ class EditAction extends Component {
     montant_ht: "",
     montant_ttc: "",
     echeance_facture: "",
-    taux_applicable: "",
     intérets_capitalises: "",
+    HTouTTC: undefined,
+    HT: false,
+    TTC: false,
+    huit: false,
+    dix: false,
+    points: "",
     active: true
   };
 
@@ -51,6 +58,84 @@ class EditAction extends Component {
         this.setState({
           selectedFacture: undefined,
           isSelected: !this.state.isSelected
+        });
+      }
+    }
+  };
+
+  handleHTouTTC = (event, typeDeCalcul) => {
+    if (
+      (typeDeCalcul === "HT" && this.state.HTouTTC === "TTC") ||
+      (typeDeCalcul === "TTC" && this.state.HTouTTC === "HT")
+    ) {
+      alert(
+        "Vous pouvez sélectionner uniquement HT ou TTC pour le calcul des intérêts."
+      );
+      event.stopPropagation();
+      event.preventDefault();
+    } else {
+      if (typeDeCalcul === "HT" && this.state.HT === false) {
+        this.setState({
+          HTouTTC: "HT",
+          HT: true,
+          TTC: false
+        });
+      } else if (typeDeCalcul === "HT" && this.state.HT === true) {
+        this.setState({
+          HTouTTC: "",
+          HT: false,
+          TTC: false
+        });
+      } else if (typeDeCalcul === "TTC" && this.state.TTC === false) {
+        this.setState({
+          HTouTTC: "TTC",
+          HT: false,
+          TTC: true
+        });
+      } else {
+        this.setState({
+          HTouTTC: "",
+          HT: false,
+          TTC: false
+        });
+      }
+    }
+  };
+
+  handlePoints = (event, myPoints) => {
+    if (
+      (myPoints === "8" && this.state.points === "10") ||
+      (myPoints === "10" && this.state.points === "8")
+    ) {
+      alert(
+        "Vous pouvez sélectionner uniquement 8 ou 10 points pour le calcul des intérêts. Sinon, merci d'entrer la valeur manuellement."
+      );
+      event.stopPropagation();
+      event.preventDefault();
+    } else {
+      if (myPoints === "8" && this.state.huit === false) {
+        this.setState({
+          points: "8",
+          huit: true,
+          dix: false
+        });
+      } else if (myPoints === "8" && this.state.huit === true) {
+        this.setState({
+          points: "",
+          huit: false,
+          dix: false
+        });
+      } else if (myPoints === "10" && this.state.dix === false) {
+        this.setState({
+          points: "10",
+          huit: false,
+          dix: true
+        });
+      } else {
+        this.setState({
+          points: "",
+          huit: false,
+          dix: false
         });
       }
     }
@@ -118,8 +203,8 @@ class EditAction extends Component {
     if (this.state.isSelected !== true) {
       return (
         <p className="f2 lh-title tc">
-          Merci de sélectionner une facture pour les voir les acomptes et avoirs
-          associés
+          Merci de sélectionner une facture pour visualiser les acomptes et
+          avoirs associés
         </p>
       );
     } else {
@@ -389,6 +474,22 @@ class EditAction extends Component {
       });
   }
 
+  tick = () => {
+    if (this.state.points !== "") {
+      return <img className="icone pl2" src={tick} alt="ok" />;
+    } else {
+      return null;
+    }
+  };
+
+  tick2 = () => {
+    if (this.state.HTouTTC === "HT" || this.state.HTouTTC === "TTC") {
+      return <img className="icone pl2 pt4" src={tick} alt="ok" />;
+    } else {
+      return null;
+    }
+  };
+
   componentDidUpdate() {
     if (
       this.state.isUpdated === false &&
@@ -535,6 +636,7 @@ class EditAction extends Component {
                               {/* <form> */}
                               <input
                                 type="checkbox"
+                                className="autreInput"
                                 onClick={e =>
                                   this.handleSelectFacture(e, facture.id)
                                 }
@@ -574,39 +676,98 @@ class EditAction extends Component {
           </div>
 
           <div className="fl w-100">{this.handleAcomptesAvoirs()}</div>
-          <div className="fl w-100 ml4 tc">
-            {" "}
-            <h2 className="f4 lh-copy">
-              Taux de pénalitées de retard applicables :
-            </h2>
-            <span>BCE +10 points</span>
-            <input type="checkbox" name="produitsV" value="produitsV" />
-            <br />
-            <span>BCE +8 points </span>
-            <input type="checkbox" name="servicesF" value="servicesF" />
-            <div className="buttonSave">
-              <span
-                className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
-                href="#0"
-              >
-                Générer mise en demeure
-              </span>
+          <div className="fl w-100 bt">
+            <p className="f2 lh-title tc">Options supplémentaires</p>
+            <div className="fl w-50 pa2 tc">
+              <p className="f3">Choisir le taux d'intérêt appliqué:</p>
+              <div className="pt4">
+                <input
+                  type="checkbox"
+                  name="8points"
+                  className="autreInput"
+                  onClick={e => this.handlePoints(e, "8")}
+                />
+                <label for="8points">BCE + 8 points</label>
+              </div>
+              <div className="pt4">
+                <input
+                  type="checkbox"
+                  name="10points"
+                  className="autreInput"
+                  onClick={e => this.handlePoints(e, "10")}
+                />
+                <label for="10points">BCE + 10 points</label>
+              </div>
+              <div className="pl3 pt4">
+                <span className="pr2">
+                  Le taux retenu sera de celui de la BCE +
+                </span>
+                <input
+                  type="text"
+                  className="autreInput2"
+                  name="points"
+                  onChange={this.handleMyUserInputs}
+                  value={this.state.points}
+                />
+                <span className="pl2"> points</span>
+                {this.tick()}
+              </div>
             </div>
-            <div className="buttonSave">
-              <span
-                className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
-                href="#0"
-              >
-                Générer injonction de payer
-              </span>
+            <div className="fl w-50 pa2 tc">
+              <p className="f3">Choisir le montant appliqué au calcul:</p>
+              <div className="pt4">
+                <input
+                  type="checkbox"
+                  name="ht"
+                  className="autreInput"
+                  onClick={e => this.handleHTouTTC(e, "HT")}
+                />
+                <label for="8points">HT</label>
+              </div>
+              <div className="pt4">
+                <input
+                  type="checkbox"
+                  name="ttc"
+                  className="autreInput"
+                  onClick={e => this.handleHTouTTC(e, "TTC")}
+                />
+                <label for="10points">TTC</label>
+              </div>
+              {this.tick2()}
             </div>
-            <div className="buttonSave">
-              <span
-                className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
-                href="#0"
-              >
-                Générer tableau récapitulatif
-              </span>
+
+            <div className="fl w-100 pt4 pb4">
+              <p className="f2 lh-title tc bt pt4 ">Génération des documents</p>
+              <div className="fl w-third pa2 tc">
+                <div className="">
+                  <span
+                    className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                    href="#0"
+                  >
+                    Générer mise en demeure
+                  </span>
+                </div>
+              </div>
+              <div className="fl w-third pa2 tc">
+                <div className="">
+                  <span
+                    className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                    href="#0"
+                  >
+                    Générer injonction de payer
+                  </span>
+                </div>
+              </div>
+              <div className="fl w-third pa2 tc">
+                <div className="">
+                  <span
+                    className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                    href="#0"
+                  >
+                    Générer tableau récapitulatif
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
