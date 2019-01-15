@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import previous from "./Icones_Arigoni/previous.svg";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import supprimer from "./Icones_Arigoni/icone_supprimer.png";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
 import "./Facture.css";
@@ -55,6 +56,58 @@ class EditAction extends Component {
     }
   };
 
+  handleDelete = (id, denomination, type) => {
+    const typeMessageInitial = whatType => {
+      if (whatType === "factures") {
+        return `Voulez-vous vraiment supprimer cette facture ?`;
+      } else if (whatType === "acomptes") {
+        return `Voulez-vous vraiment supprimer cet acompte ?`;
+      } else if (whatType === "avoirs") {
+        return `Voulez-vous vraiment supprimer cet avoir ?`;
+      }
+    };
+
+    const typeMessageConfirm = whatType => {
+      if (whatType === "factures") {
+        return `La facture ${denomination} a bien été supprimée.`;
+      } else if (whatType === "acomptes") {
+        return `L'acompte ${denomination} a bien été supprimé.`;
+      } else if (whatType === "avoirs") {
+        return `L'avoir ${denomination} a bien été supprimé.`;
+      }
+    };
+
+    const myMessageInitial = typeMessageInitial(type);
+    const myMessageConfirm = typeMessageConfirm(type);
+
+    confirmAlert({
+      title: "Merci de confirmer",
+      message: myMessageInitial,
+      buttons: [
+        {
+          label: "Oui",
+          onClick: () =>
+            Axios.put(`http://localhost:4848/api/${type}/${id}`, {
+              active: "false"
+            })
+              .then(response => {
+                alert(myMessageConfirm);
+                console.log(response);
+                this.setState({
+                  isUpdated: false
+                });
+              })
+              .catch(error => {
+                console.log(error);
+              })
+        },
+        {
+          label: "Non"
+        }
+      ]
+    });
+  };
+
   handleAcomptesAvoirs = () => {
     const myAcomptes = this.state.acomptesFiltered.filter(
       ac => ac.factureId === this.state.selectedFacture
@@ -83,17 +136,17 @@ class EditAction extends Component {
             </div>
 
             {/* tableau */}
-            <div className=" tableau fl w-100 pa4 ">
+            <div className=" tableau fl w-100 pa4 tc">
               <div className="overflow-auto">
-                <table className="f6 w-100 center" cellSpacing="0">
+                <table className="f6 w-100 center tc" cellSpacing="0">
                   <thead>
                     <tr className="stripe-dark">
-                      <th>N° acompte</th>
-                      <th>Date</th>
-                      <th>montant HT</th>
-                      <th>montant TTC</th>
-                      <th>Modifier</th>
-                      <th>Supprimer</th>
+                      <th className="tc">N° acompte</th>
+                      <th className="tc">Date</th>
+                      <th className="tc">montant HT</th>
+                      <th className="tc">montant TTC</th>
+                      <th className="tc">Modifier</th>
+                      <th className="tc">Supprimer</th>
                     </tr>
                   </thead>
                   <tbody className="lh-copy">
@@ -136,7 +189,13 @@ class EditAction extends Component {
                                 className="icone pointer"
                                 src={supprimer}
                                 alt="supprimer"
-                                onClick={() => this.handleDelete(acompte.id)}
+                                onClick={() =>
+                                  this.handleDelete(
+                                    acompte.id,
+                                    acompte.num_acompte,
+                                    "acomptes"
+                                  )
+                                }
                               />
                             </td>
                           </tr>
@@ -177,17 +236,17 @@ class EditAction extends Component {
               </div>
 
               {/* tableau */}
-              <div className=" tableau fl w-100 pa4 ">
+              <div className=" tableau fl w-100 pa4 tc">
                 <div className="overflow-auto">
-                  <table className="f6 w-100 center" cellSpacing="0">
+                  <table className="f6 w-100 center tc" cellSpacing="0">
                     <thead>
                       <tr className="stripe-dark">
-                        <th>N° avoir</th>
-                        <th>Date</th>
-                        <th>montant HT</th>
-                        <th>montant TTC</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
+                        <th className="tc">N° avoir</th>
+                        <th className="tc">Date</th>
+                        <th className="tc">montant HT</th>
+                        <th className="tc">montant TTC</th>
+                        <th className="tc">Modifier</th>
+                        <th className="tc">Supprimer</th>
                       </tr>
                     </thead>
                     <tbody className="lh-copy">
@@ -231,7 +290,13 @@ class EditAction extends Component {
                                   className="icone pointer"
                                   src={supprimer}
                                   alt="supprimer"
-                                  onClick={() => this.handleDelete(avoir.id)}
+                                  onClick={() =>
+                                    this.handleDelete(
+                                      avoir.id,
+                                      avoir.num_avoir,
+                                      "avoirs"
+                                    )
+                                  }
                                 />
                               </td>
                             </tr>
@@ -323,6 +388,60 @@ class EditAction extends Component {
         console.log(error);
       });
   }
+
+  componentDidUpdate() {
+    if (
+      this.state.isUpdated === false &&
+      this.state.actionFiltered !== undefined
+    ) {
+      Axios.get("http://localhost:4848/api/factures")
+        .then(response => {
+          this.setState({
+            facturesFiltered: response.data
+              .filter(facture => facture.active)
+              .filter(facture => facture.actionId === this.props.actionId),
+            isUpdated: true
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      // const filterByID = item => {
+      //   let length = this.state.facturesFiltered.length;
+      //   for (let i = 0; i < length; i++) {
+      //     if (item.factureId === this.state.facturesFiltered[i].id) {
+      //       return true;
+      //     } else {
+      //       return false;
+      //     }
+      //   }
+      // };
+      Axios.get("http://localhost:4848/api/acomptes")
+        .then(response => {
+          this.setState({
+            acomptesFiltered: response.data.filter(acompte => acompte.active),
+            isUpdated: true
+            // .filter(filterByID)
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      Axios.get("http://localhost:4848/api/avoirs")
+        .then(response => {
+          this.setState({
+            avoirsFiltered: response.data.filter(avoir => avoir.active),
+            // .filter(filterByID),
+            isUpdated: true,
+            isLoaded: true
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
+
   render() {
     const myFactures = this.state.facturesFiltered;
 
@@ -345,7 +464,7 @@ class EditAction extends Component {
             </div>
 
             {/* tableau */}
-            <div className=" tableau fl w-100 pa4 ">
+            <div className=" tableau fl w-100 pa4 tc">
               <div className="overflow-auto">
                 <table className="f6 w-100 center tc" cellSpacing="0">
                   <thead>
@@ -403,7 +522,13 @@ class EditAction extends Component {
                                 className="icone pointer"
                                 src={supprimer}
                                 alt="supprimer"
-                                onClick={() => this.handleDelete(facture.id)}
+                                onClick={() =>
+                                  this.handleDelete(
+                                    facture.id,
+                                    facture.num_facture,
+                                    "factures"
+                                  )
+                                }
                               />
                             </td>
                             <td>

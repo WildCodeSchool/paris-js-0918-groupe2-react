@@ -242,17 +242,17 @@ class Actions extends Component {
               </form>
             </div>
           </div>
-          <div className=" tableau fl w-100 pa4 ">
+          <div className=" tableau fl w-100 pa4 tc">
             <div className="overflow-auto">
               <table className="f6 w-100 center" cellSpacing="0">
                 <thead>
-                  <tr className="stripe-dark">
-                    <th>Créancier</th>
-                    <th>Débiteur</th>
-                    <th>Nom de l'action</th>
-                    <th>Créée le</th>
-                    <th>Modifier</th>
-                    <th>Télécharger</th>
+                  <tr className="stripe-dark tc">
+                    <th className="tc">Créancier</th>
+                    <th className="tc">Débiteur</th>
+                    <th className="tc">Nom de l'action</th>
+                    <th className="tc">Créée le</th>
+                    <th className="tc">Gérer l'action</th>
+                    <th className="tc">Télécharger</th>
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
