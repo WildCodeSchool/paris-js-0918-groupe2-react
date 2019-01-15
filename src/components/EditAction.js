@@ -119,7 +119,13 @@ class EditAction extends Component {
                                   onClick={() =>
                                     this.props.pageChangeSub(
                                       "FormAcompte",
-                                      `${acompte.id}`
+                                      0,
+                                      0,
+                                      this.props.actionId,
+                                      this.props.creancier,
+                                      this.props.debiteur,
+                                      this.state.selectedFacture,
+                                      acompte.id
                                     )
                                   }
                                 />
@@ -207,7 +213,14 @@ class EditAction extends Component {
                                     onClick={() =>
                                       this.props.pageChangeSub(
                                         "FormAvoir",
-                                        `${avoir.id}`
+                                        0,
+                                        0,
+                                        this.props.actionId,
+                                        this.props.creancier,
+                                        this.props.debiteur,
+                                        this.state.selectedFacture,
+                                        0,
+                                        avoir.id
                                       )
                                     }
                                   />
@@ -231,7 +244,17 @@ class EditAction extends Component {
                     <NavLink
                       to="/dashboard/formAvoir"
                       className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                      onClick={() => this.props.pageChangeSub("FormAvoir")}
+                      onClick={() =>
+                        this.props.pageChangeSub(
+                          "FormAvoir",
+                          0,
+                          0,
+                          this.props.actionId,
+                          this.props.creancier,
+                          this.props.debiteur,
+                          this.state.selectedFacture
+                        )
+                      }
                     >
                       Créer un avoir
                     </NavLink>
@@ -364,7 +387,12 @@ class EditAction extends Component {
                                   onClick={() =>
                                     this.props.pageChangeSub(
                                       "FormFacture",
-                                      `${facture.id}`
+                                      0,
+                                      0,
+                                      this.props.actionId,
+                                      this.props.creancier,
+                                      this.props.debiteur,
+                                      facture.id
                                     )
                                   }
                                 />

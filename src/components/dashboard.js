@@ -34,7 +34,9 @@ class Dashboard extends Component {
     actionId,
     creancier,
     debiteur,
-    facture
+    facture,
+    acompte,
+    avoir
   ) => {
     this.setState({
       activePage: activePage,
@@ -43,7 +45,9 @@ class Dashboard extends Component {
       activeDebiteur: debiteur,
       debiteurId: debiteurId,
       actionId: actionId,
-      factureId: facture
+      factureId: facture,
+      acompteId: acompte,
+      avoirId: avoir
     });
   };
 
@@ -68,20 +72,29 @@ class Dashboard extends Component {
           pageChangeSub={this.handlePageChange}
           creancier={this.state.activeCreancier}
           debiteur={this.state.activeDebiteur}
+          facture={this.state.factureId}
         />
       );
     } else if (this.state.activePage === "FormAcompte") {
       return (
         <Formulaireacompte
+          actionId={this.state.actionId}
           acompteId={this.state.acompteId}
           pageChangeSub={this.handlePageChange}
+          creancier={this.state.activeCreancier}
+          debiteur={this.state.activeDebiteur}
+          facture={this.state.factureId}
         />
       );
     } else if (this.state.activePage === "FormAvoir") {
       return (
         <FormulaireAvoirs
+          actionId={this.state.actionId}
           avoirId={this.state.avoirId}
           pageChangeSub={this.handlePageChange}
+          creancier={this.state.activeCreancier}
+          debiteur={this.state.activeDebiteur}
+          facture={this.state.factureId}
         />
       );
     } else if (this.state.activePage === "FormCreancier") {
