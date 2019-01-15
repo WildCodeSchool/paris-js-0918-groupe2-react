@@ -33,7 +33,8 @@ class Dashboard extends Component {
     debiteurId,
     actionId,
     creancier,
-    debiteur
+    debiteur,
+    facture
   ) => {
     this.setState({
       activePage: activePage,
@@ -41,7 +42,8 @@ class Dashboard extends Component {
       creancierId: creancierId,
       activeDebiteur: debiteur,
       debiteurId: debiteurId,
-      actionId: actionId
+      actionId: actionId,
+      factureId: facture
     });
   };
 

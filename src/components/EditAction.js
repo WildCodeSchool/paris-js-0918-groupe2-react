@@ -56,7 +56,193 @@ class EditAction extends Component {
   };
 
   handleAcomptesAvoirs = () => {
-    if (this.state.isSelected === true) return <h1>poueeeeeet</h1>;
+    const myAcomptes = this.state.acomptesFiltered.filter(
+      ac => ac.factureId === this.state.selectedFacture
+    );
+    const myAvoirs = this.state.avoirsFiltered.filter(
+      av => av.factureId === this.state.selectedFacture
+    );
+    if (this.state.isSelected !== true) {
+      return (
+        <p className="f2 lh-title tc">
+          Merci de sélectionner une facture pour les voir les acomptes et avoirs
+          associés
+        </p>
+      );
+    } else {
+      return (
+        <div>
+          <p className="f2 mt3 mb2 lh-title tc">
+            Liste des acomptes et avoirs liés à cette facture
+          </p>
+          <div className="acompte">
+            <div className="fl w-60">
+              <div className="title_créancier pl4">
+                <h2 className="pt2 f4 lh-copy">Liste des acomptes</h2>
+              </div>
+            </div>
+
+            {/* tableau */}
+            <div className=" tableau fl w-100 pa4 ">
+              <div className="overflow-auto">
+                <table className="f6 w-100 center" cellSpacing="0">
+                  <thead>
+                    <tr className="stripe-dark">
+                      <th>N° acompte</th>
+                      <th>Date</th>
+                      <th>montant HT</th>
+                      <th>montant TTC</th>
+                      <th>Modifier</th>
+                      <th>Supprimer</th>
+                    </tr>
+                  </thead>
+                  <tbody className="lh-copy">
+                    {myAcomptes
+                      .sort((a, b) => b.id - a.id)
+                      .slice(0, 50)
+                      .map(acompte => {
+                        return (
+                          <tr
+                            className="stripe-dark"
+                            key={`${acompte.num_acompte}`}
+                          >
+                            <td>{acompte.num_acompte}</td>
+                            <td>{acompte.date_acompte}</td>
+                            <td>{acompte.montant_ht}</td>
+                            <td>{acompte.montant_ttc}</td>
+                            <td>
+                              <NavLink to="/dashboard/formAcompte">
+                                <img
+                                  className="icone pointer"
+                                  src={modifier}
+                                  alt="modifier"
+                                  onClick={() =>
+                                    this.props.pageChangeSub(
+                                      "FormAcompte",
+                                      `${acompte.id}`
+                                    )
+                                  }
+                                />
+                              </NavLink>
+                            </td>
+                            <td>
+                              <img
+                                className="icone pointer"
+                                src={supprimer}
+                                alt="supprimer"
+                                onClick={() => this.handleDelete(acompte.id)}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                  </tbody>
+                </table>
+
+                <div className="buttonacompte tc pt4">
+                  <NavLink
+                    to="/dashboard/formAcompte"
+                    className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                    onClick={() =>
+                      this.props.pageChangeSub(
+                        "FormAcompte",
+                        0,
+                        0,
+                        this.props.actionId,
+                        this.props.creancier,
+                        this.props.debiteur,
+                        this.state.selectedFacture
+                      )
+                    }
+                  >
+                    Créer un acompte
+                  </NavLink>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="fl w-100">
+            <div className="avoir">
+              <div className="fl w-60">
+                <div className="title_créancier pl4">
+                  <h2 className="pt2 f4 lh-copy">Liste des avoirs</h2>
+                </div>
+              </div>
+
+              {/* tableau */}
+              <div className=" tableau fl w-100 pa4 ">
+                <div className="overflow-auto">
+                  <table className="f6 w-100 center" cellSpacing="0">
+                    <thead>
+                      <tr className="stripe-dark">
+                        <th>N° avoir</th>
+                        <th>Date</th>
+                        <th>montant HT</th>
+                        <th>montant TTC</th>
+                        <th>Modifier</th>
+                        <th>Supprimer</th>
+                      </tr>
+                    </thead>
+                    <tbody className="lh-copy">
+                      {myAvoirs
+                        .sort((a, b) => b.id - a.id)
+                        .slice(0, 10)
+                        .map(avoir => {
+                          return (
+                            <tr
+                              className="stripe-dark"
+                              key={`${avoir.num_avoir}`}
+                            >
+                              <td>{avoir.num_avoir}</td>
+                              <td>{avoir.date_avoir}</td>
+                              <td>{avoir.montant_ht}</td>
+                              <td>{avoir.montant_ttc}</td>
+                              <td>
+                                <NavLink to="/dashboard/formAvoir">
+                                  <img
+                                    className="icone pointer"
+                                    src={modifier}
+                                    alt="modifier"
+                                    onClick={() =>
+                                      this.props.pageChangeSub(
+                                        "FormAvoir",
+                                        `${avoir.id}`
+                                      )
+                                    }
+                                  />
+                                </NavLink>
+                              </td>
+                              <td>
+                                <img
+                                  className="icone pointer"
+                                  src={supprimer}
+                                  alt="supprimer"
+                                  onClick={() => this.handleDelete(avoir.id)}
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+
+                  <div className="buttonavoir tc pt4">
+                    <NavLink
+                      to="/dashboard/formAvoir"
+                      className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                      onClick={() => this.props.pageChangeSub("FormAvoir")}
+                    >
+                      Créer un avoir
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
   };
 
   componentDidMount() {
@@ -82,22 +268,21 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    const filterByID = item => {
-      let length = this.state.facturesFiltered.length;
-      for (let i = 0; i < length; i++) {
-        if (item.factureId === this.state.facturesFiltered[i].id) {
-          return true;
-        } else {
-          return false;
-        }
-      }
-    };
+    // const filterByID = item => {
+    //   let length = this.state.facturesFiltered.length;
+    //   for (let i = 0; i < length; i++) {
+    //     if (item.factureId === this.state.facturesFiltered[i].id) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   }
+    // };
     Axios.get("http://localhost:4848/api/acomptes")
       .then(response => {
         this.setState({
-          acomptesFiltered: response.data
-            .filter(acompte => acompte.active)
-            .filter(filterByID)
+          acomptesFiltered: response.data.filter(acompte => acompte.active)
+          // .filter(filterByID)
         });
       })
       .catch(error => {
@@ -106,9 +291,8 @@ class EditAction extends Component {
     Axios.get("http://localhost:4848/api/avoirs")
       .then(response => {
         this.setState({
-          avoirsFiltered: response.data
-            .filter(avoir => avoir.active)
-            .filter(filterByID),
+          avoirsFiltered: response.data.filter(avoir => avoir.active),
+          // .filter(filterByID),
           isLoaded: true
         });
       })
@@ -118,8 +302,7 @@ class EditAction extends Component {
   }
   render() {
     const myFactures = this.state.facturesFiltered;
-    const myAcomptes = this.state.acomptesFiltered;
-    const myAvoirs = this.state.avoirsFiltered;
+
     if (this.state.isLoaded === true) {
       return (
         <div className="Factureimpayee ml4">
@@ -218,7 +401,7 @@ class EditAction extends Component {
                 <div className="buttonfacture tc pt4">
                   <NavLink
                     to="/dashboard/formFacture"
-                    className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                    className="f6 link dim br1 ph3 pv2 mt2 dib white bg-dark-blue "
                     onClick={() =>
                       this.props.pageChangeSub(
                         "FormFacture",
@@ -237,170 +420,10 @@ class EditAction extends Component {
             </div>
           </div>
 
-          <div className="fl w-100">
-            {this.handleAcomptesAvoirs()}
-
-            <p className="f2 mt3 mb2 lh-title tc">
-              Liste des acomptes et avoirs liés à cette facture
-            </p>
-            <div className="acompte">
-              <div className="fl w-60">
-                <div className="title_créancier pl4">
-                  <h2 className="pt2 f4 lh-copy">Liste des acomptes</h2>
-                </div>
-              </div>
-
-              {/* tableau */}
-              <div className=" tableau fl w-100 pa4 ">
-                <div className="overflow-auto">
-                  <table className="f6 w-100 center" cellSpacing="0">
-                    <thead>
-                      <tr className="stripe-dark">
-                        <th>N° acompte</th>
-                        <th>Date</th>
-                        <th>montant HT</th>
-                        <th>montant TTC</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
-                      </tr>
-                    </thead>
-                    <tbody className="lh-copy">
-                      {myAcomptes
-                        .sort((a, b) => b.id - a.id)
-                        .slice(0, 50)
-                        .map(acompte => {
-                          return (
-                            <tr
-                              className="stripe-dark"
-                              key={`${acompte.num_acompte}`}
-                            >
-                              <td>{acompte.num_acompte}</td>
-                              <td>{acompte.date_acompte}</td>
-                              <td>{acompte.montant_ht}</td>
-                              <td>{acompte.montant_ttc}</td>
-                              <td>
-                                <NavLink to="/dashboard/formAcompte">
-                                  <img
-                                    className="icone pointer"
-                                    src={modifier}
-                                    alt="modifier"
-                                    onClick={() =>
-                                      this.props.pageChangeSub(
-                                        "FormAcompte",
-                                        `${acompte.id}`
-                                      )
-                                    }
-                                  />
-                                </NavLink>
-                              </td>
-                              <td>
-                                <img
-                                  className="icone pointer"
-                                  src={supprimer}
-                                  alt="supprimer"
-                                  onClick={() => this.handleDelete(acompte.id)}
-                                />
-                              </td>
-                            </tr>
-                          );
-                        })}
-                    </tbody>
-                  </table>
-
-                  <div className="buttonacompte tc pt4">
-                    <NavLink
-                      to="/dashboard/formAcompte"
-                      className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                      onClick={() => this.props.pageChangeSub("FormAcompte")}
-                    >
-                      Créer un acompte
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="fl w-100">
-            <div className="avoir">
-              <div className="fl w-60">
-                <div className="title_créancier pl4">
-                  <h2 className="pt2 f4 lh-copy">Liste des avoirs</h2>
-                </div>
-              </div>
-
-              {/* tableau */}
-              <div className=" tableau fl w-100 pa4 ">
-                <div className="overflow-auto">
-                  <table className="f6 w-100 center" cellSpacing="0">
-                    <thead>
-                      <tr className="stripe-dark">
-                        <th>N° avoir</th>
-                        <th>Date</th>
-                        <th>montant HT</th>
-                        <th>montant TTC</th>
-                        <th>Modifier</th>
-                        <th>Supprimer</th>
-                      </tr>
-                    </thead>
-                    <tbody className="lh-copy">
-                      {myAvoirs
-                        .sort((a, b) => b.id - a.id)
-                        .slice(0, 10)
-                        .map(avoir => {
-                          return (
-                            <tr
-                              className="stripe-dark"
-                              key={`${avoir.num_avoir}`}
-                            >
-                              <td>{avoir.num_avoir}</td>
-                              <td>{avoir.date_avoir}</td>
-                              <td>{avoir.montant_ht}</td>
-                              <td>{avoir.montant_ttc}</td>
-                              <td>
-                                <NavLink to="/dashboard/formAvoir">
-                                  <img
-                                    className="icone pointer"
-                                    src={modifier}
-                                    alt="modifier"
-                                    onClick={() =>
-                                      this.props.pageChangeSub(
-                                        "FormAvoir",
-                                        `${avoir.id}`
-                                      )
-                                    }
-                                  />
-                                </NavLink>
-                              </td>
-                              <td>
-                                <img
-                                  className="icone pointer"
-                                  src={supprimer}
-                                  alt="supprimer"
-                                  onClick={() => this.handleDelete(avoir.id)}
-                                />
-                              </td>
-                            </tr>
-                          );
-                        })}
-                    </tbody>
-                  </table>
-
-                  <div className="buttonavoir tc pt4">
-                    <NavLink
-                      to="/dashboard/formAvoir"
-                      className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
-                      onClick={() => this.props.pageChangeSub("FormAvoir")}
-                    >
-                      Créer un avoir
-                    </NavLink>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="fl w-100 ml4">
+          <div className="fl w-100">{this.handleAcomptesAvoirs()}</div>
+          <div className="fl w-100 ml4 tc">
             {" "}
-            <h2 className="pt2 f4 lh-copy">
+            <h2 className="f4 lh-copy">
               Taux de pénalitées de retard applicables :
             </h2>
             <span>BCE +10 points</span>
@@ -408,21 +431,29 @@ class EditAction extends Component {
             <br />
             <span>BCE +8 points </span>
             <input type="checkbox" name="servicesF" value="servicesF" />
-            <div className="buttonSave ">
+            <div className="buttonSave">
               <span
                 className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
                 href="#0"
               >
-                Sauvegarder
+                Générer mise en demeure
               </span>
             </div>
-            <div className="title_créancier">
-              <NavLink
-                to="/dashboard/actions"
-                onClick={() => this.props.pageChangeSub("Actions")}
+            <div className="buttonSave">
+              <span
+                className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                href="#0"
               >
-                <img className="previousbutton" src={previous} alt="previous" />
-              </NavLink>
+                Générer injonction de payer
+              </span>
+            </div>
+            <div className="buttonSave">
+              <span
+                className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
+                href="#0"
+              >
+                Générer tableau récapitulatif
+              </span>
             </div>
           </div>
         </div>
