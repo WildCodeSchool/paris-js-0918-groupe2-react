@@ -28,6 +28,9 @@ class EditAction extends Component {
     montant_ttc: "",
     echeance_facture: "",
     intérets_capitalises: "",
+    HTouTTCHono: undefined,
+    HTHono: false,
+    TTCHono: false,
     HTouTTC: undefined,
     HT: false,
     TTC: false,
@@ -36,7 +39,7 @@ class EditAction extends Component {
     points: "",
     produits: false,
     services: false,
-    honoraires: "",
+    honoraires: "0",
     active: true
   };
 
@@ -100,6 +103,45 @@ class EditAction extends Component {
           HTouTTC: "",
           HT: false,
           TTC: false
+        });
+      }
+    }
+  };
+
+  handleHTouTTCHono = (event, typeDeCalcul) => {
+    if (
+      (typeDeCalcul === "HT" && this.state.HTouTTCHono === "TTC") ||
+      (typeDeCalcul === "TTC" && this.state.HTouTTCHono === "HT")
+    ) {
+      alert(
+        "Vous pouvez sélectionner uniquement HT ou TTC pour le montant de vos honoraires."
+      );
+      event.stopPropagation();
+      event.preventDefault();
+    } else {
+      if (typeDeCalcul === "HT" && this.state.HTHono === false) {
+        this.setState({
+          HTouTTCHono: "HT",
+          HTHono: true,
+          TTCHono: false
+        });
+      } else if (typeDeCalcul === "HT" && this.state.HTHono === true) {
+        this.setState({
+          HTouTTCHono: "",
+          HTHono: false,
+          TTCHono: false
+        });
+      } else if (typeDeCalcul === "TTC" && this.state.TTCHono === false) {
+        this.setState({
+          HTouTTCHono: "TTC",
+          HTHono: false,
+          TTCHono: true
+        });
+      } else {
+        this.setState({
+          HTouTTCHono: "",
+          HTHono: false,
+          TTCHono: false
         });
       }
     }
@@ -532,8 +574,7 @@ class EditAction extends Component {
       return (
         <div>
           <span>
-            Le type de transaction concerne des produits vendus et des services
-            fournis
+            La transaction concerne des produits vendus et des services fournis
           </span>
           <img className="icone pl2 pt4" src={tick} alt="ok" />
         </div>
@@ -541,14 +582,42 @@ class EditAction extends Component {
     } else if (this.state.services === true) {
       return (
         <div>
-          <span>Le type de transaction concerne des services fournis</span>
+          <span>La transaction concerne des services fournis</span>
           <img className="icone pl2 pt4" src={tick} alt="ok" />
         </div>
       );
     } else if (this.state.produits === true) {
       return (
         <div>
-          <span>Le type de transaction concerne des produits vendus</span>
+          <span>La transaction concerne des produits vendus</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else
+      return (
+        <p className="pt4">
+          La transaction concerne-t-elle des produits vendus, des services
+          fournis, ou les deux ?
+        </p>
+      );
+  };
+
+  tick4 = () => {
+    if (this.state.HTouTTCHono === "HT") {
+      return (
+        <div>
+          <span>
+            Le montant de vos honoraires est de {this.state.honoraires} € HT
+          </span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else if (this.state.HTouTTCHono === "TTC") {
+      return (
+        <div>
+          <span>
+            Le montant de vos honoraires est de {this.state.honoraires} € TTC
+          </span>
           <img className="icone pl2 pt4" src={tick} alt="ok" />
         </div>
       );
@@ -824,16 +893,35 @@ class EditAction extends Component {
                 {this.tick3()}
               </div>
               <div className="fl w-50 pa2 tc">
-                <p className="f3">Choisir le montant des honoraires</p>
-                <div className="pt4">
+                <p className="f3">Choisir le montant de mes honoraires:</p>
+                <div className="pt4 pl3">
                   <input
                     type="text"
                     name="honoraires"
                     onChange={this.handleMyUserInputs}
+                    className="autreInput3"
                   />
-                  <label for="honoraires"> Euros (TTC/HT ?)</label>
+                  <label for="honoraires"> Euros.</label>
                 </div>
-                {/* {this.tick4()} */}
+                <div className="dib pt3">
+                  <input
+                    type="checkbox"
+                    name="ht"
+                    className="autreInput"
+                    onClick={e => this.handleHTouTTCHono(e, "HT")}
+                  />
+                  <label for="ht">HT</label>
+                </div>
+                <div className="dib">
+                  <input
+                    type="checkbox"
+                    name="ttc"
+                    className="autreInput"
+                    onClick={e => this.handleHTouTTCHono(e, "TTC")}
+                  />
+                  <label for="ttc">TTC</label>
+                </div>
+                {this.tick4()}
               </div>
             </div>
             <div className="fl w-100 pt4 pb4">

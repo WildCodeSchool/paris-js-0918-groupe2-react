@@ -89,7 +89,7 @@ class Creanciers extends Component {
       .then(response => {
         this.setState({
           // returns all creanciers
-          creanciers: response.data,
+          creanciers: response.data.filter(creancier => creancier.active),
           // returns all creanciers whose active status is true
           creanciersFiltered: response.data.filter(
             creancier => creancier.active
@@ -104,7 +104,7 @@ class Creanciers extends Component {
   render() {
     const myCreanciers = this.state.creanciersFiltered;
     const myReloadCounter = this.state.myReloadCounter;
-    if (this.state.creanciersFiltered[0] === undefined) {
+    if (this.state.creanciers[0] === undefined) {
       return (
         <div className="creancier">
           <div className="fl w-60">

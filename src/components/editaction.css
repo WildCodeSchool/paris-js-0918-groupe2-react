@@ -12,3 +12,9 @@
 .borderOptions {
   border: 1px solid black;
 }
+
+.autreInput3 {
+  border: 1px solid #999;
+  text-align: right;
+  width: 90px;
+}
