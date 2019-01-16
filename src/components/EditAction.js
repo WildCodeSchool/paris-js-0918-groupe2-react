@@ -34,6 +34,9 @@ class EditAction extends Component {
     huit: false,
     dix: false,
     points: "",
+    produits: false,
+    services: false,
+    honoraires: "",
     active: true
   };
 
@@ -99,6 +102,30 @@ class EditAction extends Component {
           TTC: false
         });
       }
+    }
+  };
+
+  handleType = (event, type) => {
+    if (type === "produits" && this.state.produits === false) {
+      this.setState({
+        type: "produits",
+        produits: true
+      });
+    } else if (type === "produits" && this.state.produits === true) {
+      this.setState({
+        type: "",
+        produits: false
+      });
+    } else if (type === "services" && this.state.services === false) {
+      this.setState({
+        type: "services",
+        services: true
+      });
+    } else {
+      this.setState({
+        type: "",
+        services: false
+      });
     }
   };
 
@@ -497,8 +524,35 @@ class EditAction extends Component {
           <img className="icone pl2 pt4" src={tick} alt="ok" />
         </div>
       );
-      return null;
-    }
+    } else return null;
+  };
+
+  tick3 = () => {
+    if (this.state.produits === true && this.state.services === true) {
+      return (
+        <div>
+          <span>
+            Le type de transaction concerne des produits vendus et des services
+            fournis
+          </span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else if (this.state.services === true) {
+      return (
+        <div>
+          <span>Le type de transaction concerne des services fournis</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else if (this.state.produits === true) {
+      return (
+        <div>
+          <span>Le type de transaction concerne des produits vendus</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else return null;
   };
 
   componentDidUpdate() {
@@ -746,7 +800,42 @@ class EditAction extends Component {
               </div>
               {this.tick2()}
             </div>
-
+            <div className="fl w-100 pt3">
+              <div className="fl w-50 pa2 tc">
+                <p className="f3">Choisir le type de transaction concerné:</p>
+                <div className="pt4">
+                  <input
+                    type="checkbox"
+                    name="produits"
+                    className="autreInput"
+                    onClick={e => this.handleType(e, "produits")}
+                  />
+                  <label for="produits">Produits vendus</label>
+                </div>
+                <div className="pt4">
+                  <input
+                    type="checkbox"
+                    name="services"
+                    className="autreInput"
+                    onClick={e => this.handleType(e, "services")}
+                  />
+                  <label for="services">Services fournis</label>
+                </div>
+                {this.tick3()}
+              </div>
+              <div className="fl w-50 pa2 tc">
+                <p className="f3">Choisir le montant des honoraires</p>
+                <div className="pt4">
+                  <input
+                    type="text"
+                    name="honoraires"
+                    onChange={this.handleMyUserInputs}
+                  />
+                  <label for="honoraires"> Euros (TTC/HT ?)</label>
+                </div>
+                {/* {this.tick4()} */}
+              </div>
+            </div>
             <div className="fl w-100 pt4 pb4">
               <p className="f2 lh-title tc bt pt4 ">Génération des documents</p>
               <div className="fl w-third pa2 tc">
