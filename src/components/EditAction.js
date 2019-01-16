@@ -483,9 +483,20 @@ class EditAction extends Component {
   };
 
   tick2 = () => {
-    if (this.state.HTouTTC === "HT" || this.state.HTouTTC === "TTC") {
-      return <img className="icone pl2 pt4" src={tick} alt="ok" />;
-    } else {
+    if (this.state.HTouTTC === "HT") {
+      return (
+        <div>
+          <span>Les calculs seront effectués sur les montants HT</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else if (this.state.HTouTTC === "TTC") {
+      return (
+        <div>
+          <span>Les calculs seront effectués sur les montants TTC</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
       return null;
     }
   };
