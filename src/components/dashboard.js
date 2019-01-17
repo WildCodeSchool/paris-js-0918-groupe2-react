@@ -13,6 +13,7 @@ import Formulairefacture from "./formulairefacture";
 import Formulairecompte from "./formulairecompte";
 import EditAction from "./EditAction";
 import Formulaireacompte from "./formulaireacompte";
+import Formulairepartiel from "./formulairepartiel";
 import FormulaireAvoirs from "./formulaireavoir";
 
 class Dashboard extends Component {
@@ -36,7 +37,8 @@ class Dashboard extends Component {
     debiteur,
     facture,
     acompte,
-    avoir
+    avoir,
+    partiel
   ) => {
     this.setState({
       activePage: activePage,
@@ -47,7 +49,8 @@ class Dashboard extends Component {
       actionId: actionId,
       factureId: facture,
       acompteId: acompte,
-      avoirId: avoir
+      avoirId: avoir,
+      partielId: partiel
     });
   };
 
@@ -80,6 +83,17 @@ class Dashboard extends Component {
         <Formulaireacompte
           actionId={this.state.actionId}
           acompteId={this.state.acompteId}
+          pageChangeSub={this.handlePageChange}
+          creancier={this.state.activeCreancier}
+          debiteur={this.state.activeDebiteur}
+          facture={this.state.factureId}
+        />
+      );
+    } else if (this.state.activePage === "FormPartiel") {
+      return (
+        <Formulairepartiel
+          actionId={this.state.actionId}
+          partielId={this.state.partielId}
           pageChangeSub={this.handlePageChange}
           creancier={this.state.activeCreancier}
           debiteur={this.state.activeDebiteur}

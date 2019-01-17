@@ -18,6 +18,7 @@ class EditAction extends Component {
     facturesFiltered: [],
     acomptesFiltered: [],
     avoirsFiltered: [],
+    partielsFiltered: [],
     myReloadCounter: 0,
     num_commande: "",
     num_confirmation_commande: "",
@@ -218,6 +219,8 @@ class EditAction extends Component {
         return `Voulez-vous vraiment supprimer cet acompte ?`;
       } else if (whatType === "avoirs") {
         return `Voulez-vous vraiment supprimer cet avoir ?`;
+      } else if (whatType === "partiels") {
+        return `Voulez-vous vraiment supprimer ce paiement partiel ?`;
       }
     };
 
@@ -228,6 +231,8 @@ class EditAction extends Component {
         return `L'acompte ${denomination} a bien été supprimé.`;
       } else if (whatType === "avoirs") {
         return `L'avoir ${denomination} a bien été supprimé.`;
+      } else if (whatType === "partiels") {
+        return `Le paiement partiel ${denomination} a bien été supprimé.`;
       }
     };
 
@@ -269,18 +274,21 @@ class EditAction extends Component {
     const myAvoirs = this.state.avoirsFiltered.filter(
       av => av.factureId === this.state.selectedFacture
     );
+    const myPartiels = this.state.partielsFiltered.filter(
+      pa => pa.factureId === this.state.selectedFacture
+    );
     if (this.state.isSelected !== true) {
       return (
         <p className="f2 lh-title tc">
-          Merci de sélectionner une facture pour visualiser les acomptes et
-          avoirs associés
+          Merci de sélectionner une facture pour visualiser les paiements
+          associés
         </p>
       );
     } else {
       return (
         <div>
           <p className="f2 mt3 mb2 lh-title tc">
-            Liste des acomptes et avoirs liés à cette facture
+            Liste des paiements liés à cette facture
           </p>
           <div className="acompte">
             <div className="fl w-60">
@@ -482,6 +490,111 @@ class EditAction extends Component {
               </div>
             </div>
           </div>
+
+          <div className="fl w-100">
+            <div className="avoir">
+              <div className="fl w-60">
+                <div className="title_créancier pl4">
+                  <h2 className="pt2 f4 lh-copy">
+                    Liste des autres paiements partiels
+                  </h2>
+                </div>
+              </div>
+
+              {/* tableau */}
+              <div className=" tableau fl w-100 pa4 tc">
+                <div className="overflow-auto">
+                  <table className="f6 w-100 center tc" cellSpacing="0">
+                    <thead>
+                      <tr className="stripe-dark">
+                        <th className="tc">N° paiement</th>
+                        <th className="tc">Date</th>
+                        <th className="tc">montant HT</th>
+                        <th className="tc">montant TTC</th>
+                        <th className="tc">Modifier</th>
+                        <th className="tc">Supprimer</th>
+                      </tr>
+                    </thead>
+                    <tbody className="lh-copy">
+                      {myPartiels
+                        .sort((a, b) => b.id - a.id)
+                        .slice(0, 10)
+                        .map(partiel => {
+                          return (
+                            <tr
+                              className="stripe-dark"
+                              key={`${partiel.num_partiel}`}
+                            >
+                              <td>{partiel.num_partiel}</td>
+                              <td>{partiel.date_partiel}</td>
+                              <td>{partiel.montant_ht}</td>
+                              <td>{partiel.montant_ttc}</td>
+                              <td>
+                                <NavLink to="/dashboard/formPartiel">
+                                  <img
+                                    className="icone pointer"
+                                    src={modifier}
+                                    alt="modifier"
+                                    onClick={() =>
+                                      this.props.pageChangeSub(
+                                        "FormPartiel",
+                                        0,
+                                        0,
+                                        this.props.actionId,
+                                        this.props.creancier,
+                                        this.props.debiteur,
+                                        this.state.selectedFacture,
+                                        0,
+                                        0,
+                                        partiel.id
+                                      )
+                                    }
+                                  />
+                                </NavLink>
+                              </td>
+                              <td>
+                                <img
+                                  className="icone pointer"
+                                  src={supprimer}
+                                  alt="supprimer"
+                                  onClick={() =>
+                                    this.handleDelete(
+                                      partiel.id,
+                                      partiel.num_partiel,
+                                      "partiels"
+                                    )
+                                  }
+                                />
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </table>
+
+                  <div className="buttonavoir tc pt4">
+                    <NavLink
+                      to="/dashboard/formPartiel"
+                      className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue "
+                      onClick={() =>
+                        this.props.pageChangeSub(
+                          "FormPartiel",
+                          0,
+                          0,
+                          this.props.actionId,
+                          this.props.creancier,
+                          this.props.debiteur,
+                          this.state.selectedFacture
+                        )
+                      }
+                    >
+                      Créer un paiement partiel
+                    </NavLink>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       );
     }
@@ -536,6 +649,16 @@ class EditAction extends Component {
           avoirsFiltered: response.data.filter(avoir => avoir.active),
           // .filter(filterByID),
           isLoaded: true
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    Axios.get("http://localhost:4848/api/partiels")
+      .then(response => {
+        this.setState({
+          partielsFiltered: response.data.filter(partiel => partiel.active)
+          // .filter(filterByID)
         });
       })
       .catch(error => {
@@ -669,6 +792,16 @@ class EditAction extends Component {
             // .filter(filterByID),
             isUpdated: true,
             isLoaded: true
+          });
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      Axios.get("http://localhost:4848/api/partiels")
+        .then(response => {
+          this.setState({
+            partielsFiltered: response.data.filter(partiel => partiel.active)
+            // .filter(filterByID)
           });
         })
         .catch(error => {

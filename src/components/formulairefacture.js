@@ -22,6 +22,11 @@ class Formulairefacture extends Component {
     taux_applicable: 0,
     intérets_capitalises: 0,
     actionId: this.props.actionId,
+    paiement_echeance: false,
+    paiement_livraison: false,
+    EcheanceOuLivraison: "",
+    Echeance: false,
+    Livraison: false,
     active: true
   };
 
@@ -29,6 +34,48 @@ class Formulairefacture extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  };
+
+  handleEcheanceOuLivraison = (event, typeDeCalcul) => {
+    if (
+      (typeDeCalcul === "Echeance" && this.state.Livraison === true) ||
+      (typeDeCalcul === "Livraison" && this.state.Echeance === true)
+    ) {
+      alert(
+        "Vous pouvez sélectionner uniquement à la livraison ou à l'échéance de la facture"
+      );
+      event.stopPropagation();
+      event.preventDefault();
+    } else {
+      if (typeDeCalcul === "Echeance" && this.state.Echeance === false) {
+        this.setState({
+          paiement_echeance: true,
+          Echeance: true,
+          Livraison: false
+        });
+      } else if (typeDeCalcul === "Echeance" && this.state.Echeance === true) {
+        this.setState({
+          paiement_echeance: false,
+          Echeance: false,
+          Livraison: false
+        });
+      } else if (
+        typeDeCalcul === "Livraison" &&
+        this.state.Livraison === false
+      ) {
+        this.setState({
+          paiement_livraison: true,
+          Echeance: false,
+          Livraison: true
+        });
+      } else {
+        this.setState({
+          paiement_livraison: false,
+          Echeance: false,
+          Livraison: false
+        });
+      }
+    }
   };
 
   handleSubmit = () => {
@@ -235,6 +282,35 @@ class Formulairefacture extends Component {
                   />
                 </div>
               </div>
+
+              <div>
+                {/* <div className=" pa2 b pt3">
+                  Choisir l'échéance de la facture
+                </div> */}
+
+                <div className="dib pt3">
+                  <input
+                    type="checkbox"
+                    name="paiement_echeance"
+                    className="autreInput"
+                    onClick={e => this.handleEcheanceOuLivraison(e, "Echeance")}
+                  />
+                  <label for="paiement_echeance">
+                    Paiement à l'échéance de la facture
+                  </label>
+                </div>
+                <div className="dib">
+                  <input
+                    type="checkbox"
+                    name="paiement_livraison"
+                    className="autreInput"
+                    onClick={e =>
+                      this.handleEcheanceOuLivraison(e, "Livraison")
+                    }
+                  />
+                  <label for="ttc">Paiement à la livraison</label>
+                </div>
+              </div>
             </form>
             <div className="buttonsauvegarder tc pt1 ml4">
               <a
@@ -397,6 +473,34 @@ class Formulairefacture extends Component {
                     }
                     onChange={this.handleMyUserInputs}
                   />
+                </div>
+              </div>
+              <div>
+                {/* <div className=" pa2 b pt3">
+                  Choisir l'échéance de la facture
+                </div> */}
+
+                <div className="dib pt3">
+                  <input
+                    type="checkbox"
+                    name="paiement_echeance"
+                    className="autreInput"
+                    onClick={e => this.handleEcheanceOuLivraison(e, "Echeance")}
+                  />
+                  <label for="paiement_echeance">
+                    Paiement à l'échéance de la facture
+                  </label>
+                </div>
+                <div className="dib">
+                  <input
+                    type="checkbox"
+                    name="paiement_livraison"
+                    className="autreInput"
+                    onClick={e =>
+                      this.handleEcheanceOuLivraison(e, "Livraison")
+                    }
+                  />
+                  <label for="ttc">Paiement à la livraison</label>
                 </div>
               </div>
             </form>
