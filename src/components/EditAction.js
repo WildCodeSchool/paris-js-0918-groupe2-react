@@ -212,6 +212,18 @@ class EditAction extends Component {
     }
   };
 
+  handleMed = () => {
+    let nom =
+      "18-01-2019 - Mise en demeure - RATP contre L'association des fraudeurs du métro.docx";
+    Axios.get(
+      `http://localhost:4848/api/documents/createMed/${this.props.actionId}`
+    ).then(data =>
+      window.open(
+        "file:///Users/deydi/Documents/Documents%20-%20MacBook%20Pro%20de%20Deydi/WCS/Projets/Projet3/paris-js-0918-groupe2-node/public/documents/18-01-2019%20-%20Mise%20en%20demeure%20-%20RATP%20contre%20L'association%20des%20fraudeurs%20du%20me%CC%81tro.docx"
+      )
+    );
+  };
+
   handleDelete = (id, denomination, type) => {
     const typeMessageInitial = whatType => {
       if (whatType === "factures") {
@@ -1076,6 +1088,7 @@ class EditAction extends Component {
                   <span
                     className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
                     href="#0"
+                    onClick={() => this.handleMed()}
                   >
                     Générer mise en demeure
                   </span>
