@@ -41,6 +41,7 @@ class EditAction extends Component {
     produits: false,
     services: false,
     honoraires: "0",
+    subtitle: false,
     active: true
   };
 
@@ -606,7 +607,8 @@ class EditAction extends Component {
         this.setState({
           actionFiltered: response.data.filter(
             action => action.id === this.props.actionId
-          )
+          ),
+          subtitle: true
         });
       })
       .catch(error => {
@@ -665,6 +667,19 @@ class EditAction extends Component {
         console.log(error);
       });
   }
+
+  handleSubTitle = () => {
+    if (this.state.subtitle === true) {
+      let nom_action = this.state.actionFiltered[0].nom_action;
+      let creancier = this.props.creancier;
+      let debiteur = this.props.debiteur;
+      return (
+        <div>
+          {nom_action}: {creancier} vs. {debiteur}
+        </div>
+      );
+    } else return null;
+  };
 
   tick = () => {
     if (this.state.points !== "") {
@@ -813,15 +828,12 @@ class EditAction extends Component {
   render() {
     const myFactures = this.state.facturesFiltered;
 
-    if (this.state.isLoaded === true) {
+    if (this.state.isLoaded === true && this.state.subtitle === true) {
       return (
         <div className="Factureimpayee ml4">
           <div className="fl w-100 tc">
             <p className="f1 mt4 mb4">Centre de gestion des actions</p>
-            <p className="f2 mt3 mb2 lh-title">
-              {this.state.actionFiltered[0].nom_action}: {this.props.creancier}{" "}
-              vs. {this.props.debiteur}
-            </p>
+            <p className="f2 mt3 mb2 lh-title">{this.handleSubTitle()}</p>
           </div>
 
           <div className="facture">
