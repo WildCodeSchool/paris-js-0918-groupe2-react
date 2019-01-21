@@ -18,3 +18,13 @@
   text-align: right;
   width: 90px;
 }
+
+.autreInput4 {
+  border: 1px solid #999;
+  text-align: right;
+  width: 120px;
+}
+
+.noStyleForLists {
+  list-style: none;
+}

@@ -37,11 +37,12 @@ class EditAction extends Component {
     TTC: false,
     huit: false,
     dix: false,
-    points: "",
+    points: undefined,
     produits: false,
     services: false,
-    honoraires: "0",
+    honoraires: undefined,
     subtitle: false,
+    date_fin: undefined,
     active: true
   };
 
@@ -274,6 +275,55 @@ class EditAction extends Component {
         }
       ]
     });
+  };
+
+  handleSaveOptions = () => {
+    let myActionId = this.props.actionId;
+
+    if (
+      this.state.honoraires !== undefined &&
+      this.state.honoraires !== "" &&
+      this.state.points !== undefined &&
+      (this.state.TTC === true || this.state.HT === true) &&
+      (this.state.HTHono === true || this.state.TTCHono === true) &&
+      (this.state.produits === true || this.state.services === true) &&
+      this.state.date_fin !== undefined
+    ) {
+      confirmAlert({
+        title: "Merci de confirmer",
+        message: "Etes vous sûr de vouloir sauvegarder ces options ?",
+        buttons: [
+          {
+            label: "Oui",
+            onClick: () =>
+              Axios.put(`http://localhost:4848/api/actions/${myActionId}`, {
+                honoraires: this.state.honoraires,
+                option_ttc_hono: this.state.TTCHono,
+                option_ttc_factures: this.state.TTC,
+                produits: this.state.produits,
+                services: this.state.services,
+                taux_interets: this.state.points,
+                date: this.state.date_fin
+              })
+                .then(response => {
+                  alert("Vos options ont bien été sauvegardées.");
+                  console.log(response);
+                  // this.setState({
+                  // isUpdated: false
+                  // });
+                })
+                .catch(error => {
+                  console.log(error);
+                })
+          },
+          {
+            label: "Non"
+          }
+        ]
+      });
+    } else {
+      alert("Merci de cocher toutes les options pour poursuivre.");
+    }
   };
 
   handleAcomptesAvoirs = () => {
@@ -690,7 +740,7 @@ class EditAction extends Component {
   };
 
   tick = () => {
-    if (this.state.points !== "") {
+    if (this.state.points !== undefined) {
       return <img className="icone pl2" src={tick} alt="ok" />;
     } else {
       return null;
@@ -749,7 +799,11 @@ class EditAction extends Component {
   };
 
   tick4 = () => {
-    if (this.state.HTouTTCHono === "HT") {
+    if (
+      this.state.HTouTTCHono === "HT" &&
+      this.state.honoraires !== undefined &&
+      this.state.honoraires !== ""
+    ) {
       return (
         <div>
           <span>
@@ -758,7 +812,11 @@ class EditAction extends Component {
           <img className="icone pl2 pt4" src={tick} alt="ok" />
         </div>
       );
-    } else if (this.state.HTouTTCHono === "TTC") {
+    } else if (
+      this.state.HTouTTCHono === "TTC" &&
+      this.state.honoraires !== undefined &&
+      this.state.honoraires !== ""
+    ) {
       return (
         <div>
           <span>
@@ -768,6 +826,101 @@ class EditAction extends Component {
         </div>
       );
     } else return null;
+  };
+
+  tick5 = () => {
+    if (this.state.date_fin === undefined || this.state.date_fin === "") {
+      return (
+        <div>
+          <p className="pt4">
+            Merci de rentrer une date au format (JJ/MM/AAAA) ex: 20/12/2018
+          </p>
+        </div>
+      );
+    } else if (this.state.date_fin !== undefined) {
+      return (
+        <div>
+          <span>
+            La date de fin de calcul des intérêts est le {this.state.date_fin}.
+          </span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else return null;
+  };
+
+  tick6 = () => {
+    if (
+      this.state.honoraires !== undefined &&
+      this.state.honoraires !== "" &&
+      this.state.points !== undefined &&
+      (this.state.TTC === true || this.state.HT === true) &&
+      (this.state.HTHono === true || this.state.TTCHono === true) &&
+      (this.state.produits === true || this.state.services === true) &&
+      this.state.date_fin !== undefined
+    ) {
+      return (
+        <div>
+          <span>Toutes les options sont bien sélectionnées.</span>
+          <img className="icone pl2 pt4" src={tick} alt="ok" />
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <p className="pt4">
+            Veuillez sélectionner toutes les options avant de sauvegarder.
+          </p>
+        </div>
+      );
+    }
+  };
+
+  handlePreviousInfo = () => {
+    if (this.state.actionFiltered[0].honoraires !== null) {
+      let hono =
+        this.state.actionFiltered[0].option_ttc_hono === true ? "TTC" : "HT";
+      let calcul =
+        this.state.actionFiltered[0].option_ttc_factures === true
+          ? "TTC"
+          : "HT";
+      let produits =
+        this.state.actionFiltered[0].produits === true
+          ? "- produits vendus"
+          : null;
+      let services =
+        this.state.actionFiltered[0].services === true
+          ? "- services fournis"
+          : null;
+      return (
+        <div className="fl w-100 pt3 tc">
+          <p className="f4 underline">
+            Les options préalablement sauvegardées pour cette action sont les
+            suivantes:
+          </p>
+          <ul>
+            <li className="noStyleForLists">
+              - Intérêts calculés avec le taux de la BCE +{" "}
+              {this.state.actionFiltered[0].taux_interets} points.
+            </li>
+            <li className="noStyleForLists">
+              - Intérêts calculés sur les montants {calcul} des documents.
+            </li>
+            <li className="noStyleForLists">
+              - Transaction concernant des: {produits} {services}.
+            </li>
+            <li className="noStyleForLists">
+              - Honoraires de mon cabinet pour cette action:{" "}
+              {this.state.actionFiltered[0].honoraires} € {hono}.
+            </li>
+            <li className="noStyleForLists">
+              - Date de fin de calcul des intérêts:{" "}
+              {this.state.actionFiltered[0].date}.
+            </li>
+          </ul>
+        </div>
+      );
+    }
   };
 
   componentDidUpdate() {
@@ -1077,7 +1230,41 @@ class EditAction extends Component {
                 {this.tick4()}
               </div>
             </div>
-            <div className="fl w-100 pt4 pb4">
+
+            <div className="fl w-100 pt3">
+              <div className="fl w-50 pa2 tc">
+                <p className="f3">
+                  Choisir la date finale de calcul des intérêts:
+                </p>
+                <div className="pt4 pl3">
+                  <input
+                    type="text"
+                    name="date_fin"
+                    onChange={this.handleMyUserInputs}
+                    className="autreInput4"
+                  />
+                  <label for="date_fin" />
+                  {this.tick5()}
+                </div>
+              </div>
+              <div className="fl w-50 pa2 tc">
+                <p className="f3">Sauvegarder mes options:</p>
+                <div className="fl w-100 pt2 tc">
+                  <span
+                    className="f6 link dim br1 ph3 pv2 mt4 dib white bg-dark-blue"
+                    href="#0"
+                    onClick={() => this.handleSaveOptions()}
+                  >
+                    Sauvegarder
+                  </span>
+                  {this.tick6()}
+                </div>
+              </div>
+
+              {this.handlePreviousInfo()}
+            </div>
+
+            <div className="fl w-100 pt3 pb4">
               <p className="f2 lh-title tc bt pt4 ">Génération des documents</p>
               <div className="fl w-third pa2 tc">
                 <div className="">
