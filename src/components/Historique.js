@@ -53,11 +53,91 @@ class Historique extends React.Component {
       });
   }
 
-  handleTabSwitch() {
+  handleTabSwitch = () => {
     return this.state.checkboxActive
       ? this.state.actionsActive
       : this.state.actionsNotActive;
-  }
+  };
+
+  downloadDoc = (doc, id) => {
+    if (this.state.checkboxActive === true) {
+      if (doc === "med") {
+        let myAction = this.state.actionsActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_1;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      } else if (doc === "idp") {
+        let myAction = this.state.actionsActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_2;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      } else if (doc === "tr") {
+        let myAction = this.state.actionsActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_3;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      }
+    } else {
+      if (doc === "med") {
+        let myAction = this.state.actionsNotActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_1;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      } else if (doc === "idp") {
+        let myAction = this.state.actionsNotActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_2;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      } else if (doc === "tr") {
+        let myAction = this.state.actionsNotActive.filter(
+          action => action.id === id
+        );
+        let url = myAction[0].option_3;
+        if (url !== null) {
+          window.open(url);
+        } else {
+          alert(
+            "Vous n'avez pas encore géréné ce document. Vous pouvez le faire dans la section action."
+          );
+        }
+      }
+    }
+  };
 
   handleDelete = (id, denomination) => {
     if (this.state.checkboxActive === false) {
@@ -259,13 +339,9 @@ class Historique extends React.Component {
                                 className="icone download pointer"
                                 src={download}
                                 alt="download"
-                                // onClick={() =>
-                                //   this.props.pageChangeSub(
-                                //     "FormDebiteur",
-                                //     0,
-                                //     `${debiteur.id}`
-                                //   )
-                                // }
+                                onClick={() =>
+                                  this.downloadDoc("med", action.id)
+                                }
                               />
                             </td>
                             <td>
@@ -273,12 +349,9 @@ class Historique extends React.Component {
                                 className="icone download pointer"
                                 src={download}
                                 alt="download"
-                                // onClick={() =>
-                                //   this.handleDelete(
-                                //     debiteur.id,
-                                //     debiteur.denomination_sociale
-                                //   )
-                                // }
+                                onClick={() =>
+                                  this.downloadDoc("idp", action.id)
+                                }
                               />
                             </td>
                             <td>
@@ -286,12 +359,9 @@ class Historique extends React.Component {
                                 className="icone download pointer"
                                 src={download}
                                 alt="download"
-                                // onClick={() =>
-                                //   this.handleDelete(
-                                //     debiteur.id,
-                                //     debiteur.denomination_sociale
-                                //   )
-                                // }
+                                onClick={() =>
+                                  this.downloadDoc("tr", action.id)
+                                }
                               />
                             </td>
                           </tr>
