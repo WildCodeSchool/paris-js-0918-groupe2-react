@@ -241,6 +241,18 @@ class EditAction extends Component {
     });
   };
 
+  handleInjonction = () => {
+    Axios.get(
+      `http://localhost:4848/api/documents/createInjonction/${this.props.actionId}`
+    );
+  };
+
+  handleRecap = () => {
+    Axios.get(
+      `http://localhost:4848/api/documents/createRecap/${this.props.actionId}`
+    )
+  };
+
   handleDelete = (id, denomination, type) => {
     const typeMessageInitial = whatType => {
       if (whatType === "factures") {
@@ -1438,6 +1450,7 @@ class EditAction extends Component {
                   <span
                     className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
                     href="#0"
+                    onClick={() => this.handleInjonction()}
                   >
                     Générer injonction de payer
                   </span>
@@ -1448,6 +1461,7 @@ class EditAction extends Component {
                   <span
                     className="f6 link dim br1 ph3 pv2 mt4 mb4 mr6 dib white bg-dark-blue"
                     href="#0"
+                    onClick={() => this.handleRecap()}
                   >
                     Générer tableau récapitulatif
                   </span>
