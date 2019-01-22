@@ -19,6 +19,7 @@ class EditAction extends Component {
     acomptesFiltered: [],
     avoirsFiltered: [],
     partielsFiltered: [],
+    currentActionWithAllInfo: [],
     myReloadCounter: 0,
     num_commande: "",
     num_confirmation_commande: "",
@@ -308,6 +309,124 @@ class EditAction extends Component {
       (this.state.produits === true || this.state.services === true) &&
       this.state.date_fin !== undefined
     ) {
+      const getFullCreanceTTC = () => {
+        let result = this.state.currentActionWithAllInfo;
+        let getSum = (total, num) => {
+          return total + num;
+        };
+        let totalCreanceTTC = [];
+
+        for (let i = 0; i < result.factures.length; i++) {
+          let maFacture = [];
+
+          maFacture.push(result.factures[i].montant_ttc);
+
+          let mesAcomptes = [];
+
+          for (let j = 0; j < result.factures[i].acomptes.length; j++) {
+            mesAcomptes.push(result.factures[i].acomptes[j].montant_ttc);
+          }
+
+          let mesAvoirs = [];
+
+          for (let k = 0; k < result.factures[i].avoirs.length; k++) {
+            mesAvoirs.push(result.factures[i].avoirs[k].montant_ttc);
+          }
+
+          let mesPaiementsPartiels = [];
+
+          for (let l = 0; l < result.factures[i].partiels.length; l++) {
+            mesPaiementsPartiels.push(
+              result.factures[i].partiels[l].montant_ttc
+            );
+          }
+
+          let totalAcomptes = mesAcomptes.reduce(getSum);
+          let totalAvoirs = mesAvoirs.reduce(getSum);
+          let totalPartiels = mesPaiementsPartiels.reduce(getSum);
+
+          // console.log(
+          //   result.factures[i].montant_ttc,
+          //   totalAcomptes,
+          //   totalAvoirs,
+          //   totalPartiels
+          // );
+
+          totalCreanceTTC.push(
+            result.factures[i].montant_ttc -
+              totalAcomptes -
+              totalAvoirs -
+              totalPartiels
+          );
+        }
+        let finalTotalResultCreanceTTC = totalCreanceTTC.reduce(getSum);
+        if (
+          finalTotalResultCreanceTTC === null ||
+          finalTotalResultCreanceTTC === isNaN ||
+          finalTotalResultCreanceTTC === undefined
+        ) {
+          return 0;
+        } else return finalTotalResultCreanceTTC;
+      };
+
+      const getFullCreanceHT = () => {
+        let result = this.state.currentActionWithAllInfo;
+        let getSum = (total, num) => {
+          return total + num;
+        };
+        let totalCreanceHT = [];
+
+        for (let i = 0; i < result.factures.length; i++) {
+          let maFacture = [];
+
+          maFacture.push(result.factures[i].montant_ht);
+
+          let mesAcomptes = [];
+
+          for (let j = 0; j < result.factures[i].acomptes.length; j++) {
+            mesAcomptes.push(result.factures[i].acomptes[j].montant_ht);
+          }
+
+          let mesAvoirs = [];
+
+          for (let k = 0; k < result.factures[i].avoirs.length; k++) {
+            mesAvoirs.push(result.factures[i].avoirs[k].montant_ht);
+          }
+
+          let mesPaiementsPartiels = [];
+
+          for (let l = 0; l < result.factures[i].partiels.length; l++) {
+            mesPaiementsPartiels.push(
+              result.factures[i].partiels[l].montant_ht
+            );
+          }
+
+          let totalAcomptes = mesAcomptes.reduce(getSum);
+          let totalAvoirs = mesAvoirs.reduce(getSum);
+          let totalPartiels = mesPaiementsPartiels.reduce(getSum);
+
+          totalCreanceHT.push(
+            result.factures[i].montant_ht -
+              totalAcomptes -
+              totalAvoirs -
+              totalPartiels
+          );
+        }
+        let finalTotalResultCreanceHT = totalCreanceHT.reduce(getSum);
+        if (
+          finalTotalResultCreanceHT === null ||
+          finalTotalResultCreanceHT === isNaN ||
+          finalTotalResultCreanceHT === undefined
+        ) {
+          return 0;
+        } else return finalTotalResultCreanceHT;
+      };
+
+      let myFullCreanceTTC = getFullCreanceTTC();
+      let myFullCreanceHT = getFullCreanceHT();
+
+      // console.log(myFullCreanceTTC, myFullCreanceHT);
+
       confirmAlert({
         title: "Merci de confirmer",
         message: "Etes vous sûr de vouloir sauvegarder ces options ?",
@@ -322,7 +441,9 @@ class EditAction extends Component {
                 produits: this.state.produits,
                 services: this.state.services,
                 taux_interets: this.state.points,
-                date: this.state.date_fin
+                date: this.state.date_fin,
+                calcul_solde_du: myFullCreanceHT, // full creance en HT
+                calcul_total_creance: myFullCreanceTTC // full creance en TTC
               })
                 .then(response => {
                   alert("Vos options ont bien été sauvegardées.");
@@ -743,6 +864,15 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
+    Axios.get(`http://localhost:4848/api/actions/${this.props.actionId}`)
+      .then(response => {
+        this.setState({
+          currentActionWithAllInfo: response.data
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleSubTitle = () => {
@@ -1002,6 +1132,13 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
+      Axios.get(
+        `http://localhost:4848/api/actions/${this.props.actionId}`
+      ).then(response => {
+        this.setState({
+          currentActionWithAllInfo: response.data
+        });
+      });
     }
   }
 
