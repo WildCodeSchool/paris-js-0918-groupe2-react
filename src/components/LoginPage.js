@@ -68,10 +68,10 @@ class LoginPage extends React.Component {
 
         <div className="fl w-60 pa2 nt1" />
         <div className="fl w-40 pa2 nt1">
-          <p className="pointer f6"> Mot de passe oublié? </p>
+          {/* <p className="pointer f6"> Mot de passe oublié? </p> */}
         </div>
 
-        <div className="fl w-100 tc">
+        <div className="fl w-100 tc pt3">
           {/* <NavLink to="/dashboard/moncompte"> */}
           <span
             className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue"

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Header.css";
+import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,9 +12,9 @@ const Header = () => {
           className="avatar"
           alt="avatar"
         />
-        <a className="deconnexion" href="http://www.google.com">
+        <NavLink to="/" className="deconnexion">
           Déconnexion
-        </a>
+        </NavLink>
       </header>
     </div>
   );
