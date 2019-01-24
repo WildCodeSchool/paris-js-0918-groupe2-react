@@ -8,6 +8,7 @@ import tick from "./Icones_Arigoni/tick.png";
 import "./Facture.css";
 import "./editaction.css";
 import Axios from "axios";
+import { cpus } from "os";
 
 class EditAction extends Component {
   state = {
@@ -436,25 +437,25 @@ class EditAction extends Component {
           return facture.active === true;
         });
 
-        // console.log(factures);
+        console.log(factures);
         let acomptes = factures.map(facture => {
           return facture.acomptes.filter(acompte => {
             return acompte.active === true;
           });
         });
-        // console.log(acomptes);
+        console.log(acomptes);
         let avoirs = factures.map(facture => {
           return facture.avoirs.filter(avoir => {
             return avoir.active === true;
           });
         });
-        // console.log(avoirs);
+        console.log(avoirs);
         let partiels = factures.map(facture => {
           return facture.partiels.filter(partiel => {
             return partiel.active === true;
           });
         });
-        // console.log(partiels);
+        console.log(partiels);
 
         let getSum = (total, num) => {
           return total + num;
@@ -466,20 +467,28 @@ class EditAction extends Component {
           mesFactures.push(factures[i].montant_ttc);
         }
 
+        console.log(mesFactures);
+
         let mesAcomptes = [];
         for (let j = 0; j < acomptes.length; j++) {
-          mesAcomptes.push(acomptes[j].montant_ttc);
+          mesAcomptes.push(acomptes[0][j].montant_ttc);
         }
+
+        console.log(mesAcomptes);
 
         let mesAvoirs = [];
         for (let k = 0; k < avoirs.length; k++) {
-          mesAvoirs.push(avoirs[k].montant_ttc);
+          mesAvoirs.push(avoirs[0][k].montant_ttc);
         }
+
+        console.log(mesAvoirs);
 
         let mesPaiementsPartiels = [];
         for (let l = 0; l < partiels.length; l++) {
-          mesPaiementsPartiels.push(partiels[l].montant_ttc);
+          mesPaiementsPartiels.push(partiels[0][l].montant_ttc);
         }
+
+        console.log(mesPaiementsPartiels);
 
         let totalFactures =
           mesFactures[0] === undefined ? 0 : mesFactures.reduce(getSum);
