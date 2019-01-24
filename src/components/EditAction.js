@@ -242,11 +242,32 @@ class EditAction extends Component {
   };
 
   handleInjonction = () => {
+    //set today's date
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1; // january is 0
+    let yyyy = today.getFullYear();
+
+    if (dd < 10) {
+      dd = "0" + dd;
+    }
+    if (mm < 10) {
+      mm = "0" + mm;
+    }
+
+    today = dd + "/" + mm + "/" + yyyy; // date for the word document
+    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    let creancier_filename = this.props.creancier;
+    let debiteur_filename = this.props.debiteur;
+    let nom = `${today_file} - Injonction de payer - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
       `http://localhost:4848/api/documents/createInjonction/${
         this.props.actionId
       }`
-    );
+    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
+    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
+      option_2: `http://localhost:4848/documents/${nom}`
+    });
   };
 
   handleRecap = () => {
