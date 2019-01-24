@@ -365,117 +365,221 @@ class EditAction extends Component {
       (this.state.produits === true || this.state.services === true) &&
       this.state.date_fin !== undefined
     ) {
+      // const getFullCreanceTTC = () => {
+      //   let result = this.state.currentActionWithAllInfo;
+      //   let getSum = (total, num) => {
+      //     return total + num;
+      //   };
+      //   let totalCreanceTTC = [];
+
+      //   for (let i = 0; i < result.factures.length; i++) {
+      //     let maFacture = [];
+
+      //     maFacture.push(result.factures[i].montant_ttc);
+
+      //     let mesAcomptes = [];
+
+      //     for (let j = 0; j < result.factures[i].acomptes.length; j++) {
+      //       mesAcomptes.push(result.factures[i].acomptes[j].montant_ttc);
+      //     }
+
+      //     let mesAvoirs = [];
+
+      //     for (let k = 0; k < result.factures[i].avoirs.length; k++) {
+      //       mesAvoirs.push(result.factures[i].avoirs[k].montant_ttc);
+      //     }
+
+      //     let mesPaiementsPartiels = [];
+
+      //     for (let l = 0; l < result.factures[i].partiels.length; l++) {
+      //       mesPaiementsPartiels.push(
+      //         result.factures[i].partiels[l].montant_ttc
+      //       );
+      //     }
+
+      //     let totalAcomptes =
+      //       mesAcomptes[0] === undefined ? 0 : mesAcomptes.reduce(getSum);
+      //     let totalAvoirs =
+      //       mesAvoirs[0] === undefined ? 0 : mesAvoirs.reduce(getSum);
+      //     let totalPartiels =
+      //       mesPaiementsPartiels[0] === undefined
+      //         ? 0
+      //         : mesPaiementsPartiels.reduce(getSum);
+
+      //     // console.log(
+      //     //   result.factures[i].montant_ttc,
+      //     //   totalAcomptes,
+      //     //   totalAvoirs,
+      //     //   totalPartiels
+      //     // );
+
+      //     totalCreanceTTC.push(
+      //       result.factures[i].montant_ttc -
+      //         totalAcomptes -
+      //         totalAvoirs -
+      //         totalPartiels
+      //     );
+      //   }
+      //   let finalTotalResultCreanceTTC = totalCreanceTTC.reduce(getSum);
+      //   if (
+      //     finalTotalResultCreanceTTC === null ||
+      //     finalTotalResultCreanceTTC === isNaN ||
+      //     finalTotalResultCreanceTTC === undefined
+      //   ) {
+      //     return 0;
+      //   } else return finalTotalResultCreanceTTC;
+      // };
+
       const getFullCreanceTTC = () => {
         let result = this.state.currentActionWithAllInfo;
+        let factures = result.factures.filter(facture => {
+          return facture.active === true;
+        });
+
+        // console.log(factures);
+        let acomptes = factures.map(facture => {
+          return facture.acomptes.filter(acompte => {
+            return acompte.active === true;
+          });
+        });
+        // console.log(acomptes);
+        let avoirs = factures.map(facture => {
+          return facture.avoirs.filter(avoir => {
+            return avoir.active === true;
+          });
+        });
+        // console.log(avoirs);
+        let partiels = factures.map(facture => {
+          return facture.partiels.filter(partiel => {
+            return partiel.active === true;
+          });
+        });
+        // console.log(partiels);
+
         let getSum = (total, num) => {
           return total + num;
         };
         let totalCreanceTTC = [];
 
-        for (let i = 0; i < result.factures.length; i++) {
-          let maFacture = [];
-
-          maFacture.push(result.factures[i].montant_ttc);
-
-          let mesAcomptes = [];
-
-          for (let j = 0; j < result.factures[i].acomptes.length; j++) {
-            mesAcomptes.push(result.factures[i].acomptes[j].montant_ttc);
-          }
-
-          let mesAvoirs = [];
-
-          for (let k = 0; k < result.factures[i].avoirs.length; k++) {
-            mesAvoirs.push(result.factures[i].avoirs[k].montant_ttc);
-          }
-
-          let mesPaiementsPartiels = [];
-
-          for (let l = 0; l < result.factures[i].partiels.length; l++) {
-            mesPaiementsPartiels.push(
-              result.factures[i].partiels[l].montant_ttc
-            );
-          }
-
-          let totalAcomptes = mesAcomptes.reduce(getSum);
-          let totalAvoirs = mesAvoirs.reduce(getSum);
-          let totalPartiels = mesPaiementsPartiels.reduce(getSum);
-
-          // console.log(
-          //   result.factures[i].montant_ttc,
-          //   totalAcomptes,
-          //   totalAvoirs,
-          //   totalPartiels
-          // );
-
-          totalCreanceTTC.push(
-            result.factures[i].montant_ttc -
-              totalAcomptes -
-              totalAvoirs -
-              totalPartiels
-          );
+        let mesFactures = [];
+        for (let i = 0; i < factures.length; i++) {
+          mesFactures.push(factures[i].montant_ttc);
         }
-        let finalTotalResultCreanceTTC = totalCreanceTTC.reduce(getSum);
+
+        let mesAcomptes = [];
+        for (let j = 0; j < acomptes.length; j++) {
+          mesAcomptes.push(acomptes[j].montant_ttc);
+        }
+
+        let mesAvoirs = [];
+        for (let k = 0; k < avoirs.length; k++) {
+          mesAvoirs.push(avoirs[k].montant_ttc);
+        }
+
+        let mesPaiementsPartiels = [];
+        for (let l = 0; l < partiels.length; l++) {
+          mesPaiementsPartiels.push(partiels[l].montant_ttc);
+        }
+
+        let totalFactures =
+          mesFactures[0] === undefined ? 0 : mesFactures.reduce(getSum);
+        let totalAcomptes =
+          mesAcomptes[0] === undefined ? 0 : mesAcomptes.reduce(getSum);
+        let totalAvoirs =
+          mesAvoirs[0] === undefined ? 0 : mesAvoirs.reduce(getSum);
+        let totalPartiels =
+          mesPaiementsPartiels[0] === undefined
+            ? 0
+            : mesPaiementsPartiels.reduce(getSum);
+
+        totalCreanceTTC =
+          totalFactures - totalAcomptes - totalAvoirs - totalPartiels;
+        // console.log(totalCreanceTTC);
+
+        // let finalTotalResultCreanceHT = totalCreanceTTC.reduce(getSum);
         if (
-          finalTotalResultCreanceTTC === null ||
-          finalTotalResultCreanceTTC === isNaN ||
-          finalTotalResultCreanceTTC === undefined
+          totalCreanceTTC === null ||
+          totalCreanceTTC === isNaN ||
+          totalCreanceTTC === undefined
         ) {
           return 0;
-        } else return finalTotalResultCreanceTTC;
+        } else return totalCreanceTTC;
       };
 
       const getFullCreanceHT = () => {
         let result = this.state.currentActionWithAllInfo;
+        let factures = result.factures.filter(facture => {
+          return facture.active === true;
+        });
+
+        // console.log(factures);
+        let acomptes = factures.map(facture => {
+          return facture.acomptes.filter(acompte => {
+            return acompte.active === true;
+          });
+        });
+        // console.log(acomptes);
+        let avoirs = factures.map(facture => {
+          return facture.avoirs.filter(avoir => {
+            return avoir.active === true;
+          });
+        });
+        // console.log(avoirs);
+        let partiels = factures.map(facture => {
+          return facture.partiels.filter(partiel => {
+            return partiel.active === true;
+          });
+        });
+        // console.log(partiels);
+
         let getSum = (total, num) => {
           return total + num;
         };
         let totalCreanceHT = [];
 
-        for (let i = 0; i < result.factures.length; i++) {
-          let maFacture = [];
-
-          maFacture.push(result.factures[i].montant_ht);
-
-          let mesAcomptes = [];
-
-          for (let j = 0; j < result.factures[i].acomptes.length; j++) {
-            mesAcomptes.push(result.factures[i].acomptes[j].montant_ht);
-          }
-
-          let mesAvoirs = [];
-
-          for (let k = 0; k < result.factures[i].avoirs.length; k++) {
-            mesAvoirs.push(result.factures[i].avoirs[k].montant_ht);
-          }
-
-          let mesPaiementsPartiels = [];
-
-          for (let l = 0; l < result.factures[i].partiels.length; l++) {
-            mesPaiementsPartiels.push(
-              result.factures[i].partiels[l].montant_ht
-            );
-          }
-
-          let totalAcomptes = mesAcomptes.reduce(getSum);
-          let totalAvoirs = mesAvoirs.reduce(getSum);
-          let totalPartiels = mesPaiementsPartiels.reduce(getSum);
-
-          totalCreanceHT.push(
-            result.factures[i].montant_ht -
-              totalAcomptes -
-              totalAvoirs -
-              totalPartiels
-          );
+        let mesFactures = [];
+        for (let i = 0; i < factures.length; i++) {
+          mesFactures.push(factures[i].montant_ht);
         }
-        let finalTotalResultCreanceHT = totalCreanceHT.reduce(getSum);
+
+        let mesAcomptes = [];
+        for (let j = 0; j < acomptes.length; j++) {
+          mesAcomptes.push(acomptes[j].montant_ht);
+        }
+
+        let mesAvoirs = [];
+        for (let k = 0; k < avoirs.length; k++) {
+          mesAvoirs.push(avoirs[k].montant_ht);
+        }
+
+        let mesPaiementsPartiels = [];
+        for (let l = 0; l < partiels.length; l++) {
+          mesPaiementsPartiels.push(partiels[l].montant_ht);
+        }
+
+        let totalFactures =
+          mesFactures[0] === undefined ? 0 : mesFactures.reduce(getSum);
+        let totalAcomptes =
+          mesAcomptes[0] === undefined ? 0 : mesAcomptes.reduce(getSum);
+        let totalAvoirs =
+          mesAvoirs[0] === undefined ? 0 : mesAvoirs.reduce(getSum);
+        let totalPartiels =
+          mesPaiementsPartiels[0] === undefined
+            ? 0
+            : mesPaiementsPartiels.reduce(getSum);
+
+        totalCreanceHT =
+          totalFactures - totalAcomptes - totalAvoirs - totalPartiels;
+        // console.log(totalCreanceHT);
+
+        // let finalTotalResultCreanceHT = totalCreanceHT.reduce(getSum);
         if (
-          finalTotalResultCreanceHT === null ||
-          finalTotalResultCreanceHT === isNaN ||
-          finalTotalResultCreanceHT === undefined
+          totalCreanceHT === null ||
+          totalCreanceHT === isNaN ||
+          totalCreanceHT === undefined
         ) {
           return 0;
-        } else return finalTotalResultCreanceHT;
+        } else return totalCreanceHT;
       };
 
       let myFullCreanceTTC = getFullCreanceTTC();
