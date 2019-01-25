@@ -437,25 +437,23 @@ class EditAction extends Component {
           return facture.active === true;
         });
 
-        console.log(factures);
         let acomptes = factures.map(facture => {
           return facture.acomptes.filter(acompte => {
             return acompte.active === true;
           });
         });
-        console.log(acomptes);
+
         let avoirs = factures.map(facture => {
           return facture.avoirs.filter(avoir => {
             return avoir.active === true;
           });
         });
-        console.log(avoirs);
+
         let partiels = factures.map(facture => {
           return facture.partiels.filter(partiel => {
             return partiel.active === true;
           });
         });
-        console.log(partiels);
 
         let getSum = (total, num) => {
           return total + num;
@@ -467,28 +465,26 @@ class EditAction extends Component {
           mesFactures.push(factures[i].montant_ttc);
         }
 
-        console.log(mesFactures);
-
         let mesAcomptes = [];
-        for (let j = 0; j < acomptes.length; j++) {
-          mesAcomptes.push(acomptes[0][j].montant_ttc);
+        if (acomptes[0][0] !== undefined) {
+          for (let j = 0; j < acomptes[0].length; j++) {
+            mesAcomptes.push(acomptes[0][j].montant_ttc);
+          }
         }
-
-        console.log(mesAcomptes);
 
         let mesAvoirs = [];
-        for (let k = 0; k < avoirs.length; k++) {
-          mesAvoirs.push(avoirs[0][k].montant_ttc);
+        if (avoirs[0][0] !== undefined) {
+          for (let k = 0; k < avoirs[0].length; k++) {
+            mesAvoirs.push(avoirs[0][k].montant_ttc);
+          }
         }
-
-        console.log(mesAvoirs);
 
         let mesPaiementsPartiels = [];
-        for (let l = 0; l < partiels.length; l++) {
-          mesPaiementsPartiels.push(partiels[0][l].montant_ttc);
+        if (partiels[0][0] !== undefined) {
+          for (let l = 0; l < partiels[0].length; l++) {
+            mesPaiementsPartiels.push(partiels[0][l].montant_ttc);
+          }
         }
-
-        console.log(mesPaiementsPartiels);
 
         let totalFactures =
           mesFactures[0] === undefined ? 0 : mesFactures.reduce(getSum);
@@ -521,25 +517,23 @@ class EditAction extends Component {
           return facture.active === true;
         });
 
-        // console.log(factures);
         let acomptes = factures.map(facture => {
           return facture.acomptes.filter(acompte => {
             return acompte.active === true;
           });
         });
-        // console.log(acomptes);
+
         let avoirs = factures.map(facture => {
           return facture.avoirs.filter(avoir => {
             return avoir.active === true;
           });
         });
-        // console.log(avoirs);
+
         let partiels = factures.map(facture => {
           return facture.partiels.filter(partiel => {
             return partiel.active === true;
           });
         });
-        // console.log(partiels);
 
         let getSum = (total, num) => {
           return total + num;
@@ -552,18 +546,24 @@ class EditAction extends Component {
         }
 
         let mesAcomptes = [];
-        for (let j = 0; j < acomptes.length; j++) {
-          mesAcomptes.push(acomptes[j].montant_ht);
+        if (acomptes[0][0] !== undefined) {
+          for (let j = 0; j < acomptes[0].length; j++) {
+            mesAcomptes.push(acomptes[0][j].montant_ht);
+          }
         }
 
         let mesAvoirs = [];
-        for (let k = 0; k < avoirs.length; k++) {
-          mesAvoirs.push(avoirs[k].montant_ht);
+        if (avoirs[0][0] !== undefined) {
+          for (let k = 0; k < avoirs[0].length; k++) {
+            mesAvoirs.push(avoirs[0][k].montant_ht);
+          }
         }
 
         let mesPaiementsPartiels = [];
-        for (let l = 0; l < partiels.length; l++) {
-          mesPaiementsPartiels.push(partiels[l].montant_ht);
+        if (partiels[0][0] !== undefined) {
+          for (let l = 0; l < partiels[0].length; l++) {
+            mesPaiementsPartiels.push(partiels[0][l].montant_ht);
+          }
         }
 
         let totalFactures =
