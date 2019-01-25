@@ -29,7 +29,6 @@ Pour l'activer avec les conventions `Airbnb` il faut modifier le fichier `packag
 
 ```
 {
-
   ...
 
   "eslintConfig": {
