@@ -782,7 +782,7 @@ class EditAction extends Component {
                     <tbody className="lh-copy">
                       {myAvoirs
                         .sort((a, b) => b.id - a.id)
-                        .slice(0, 10)
+                        .slice(0, 50)
                         .map(avoir => {
                           return (
                             <tr
@@ -886,7 +886,7 @@ class EditAction extends Component {
                     <tbody className="lh-copy">
                       {myPartiels
                         .sort((a, b) => b.id - a.id)
-                        .slice(0, 10)
+                        .slice(0, 50)
                         .map(partiel => {
                           return (
                             <tr

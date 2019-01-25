@@ -252,7 +252,7 @@ class Actions extends Component {
                     <th className="tc">Nom de l'action</th>
                     <th className="tc">Créée le</th>
                     <th className="tc">Gérer l'action</th>
-                    <th className="tc">Télécharger</th>
+                    {/* <th className="tc">Télécharger</th> */}
                   </tr>
                 </thead>
                 <tbody className="lh-copy">
@@ -287,13 +287,13 @@ class Actions extends Component {
                               />
                             </NavLink>
                           </td>
-                          <td>
+                          {/* <td>
                             <img
                               className="icone download pointer"
                               src={download}
                               alt="download"
                             />
-                          </td>
+                          </td> */}
                         </tr>
                       );
                     })}

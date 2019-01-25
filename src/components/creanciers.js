@@ -173,7 +173,7 @@ class Creanciers extends Component {
                 <tbody className="lh-copy">
                   {myCreanciers
                     .sort((a, b) => b.id - a.id)
-                    .slice(0, 10)
+                    .slice(0, 200)
                     .map(creancier => {
                       return (
                         <tr

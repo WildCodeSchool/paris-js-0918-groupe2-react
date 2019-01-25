@@ -314,7 +314,7 @@ class Historique extends React.Component {
                   <tbody className="lh-copy">
                     {actionsActive
                       .sort((a, b) => b.id - a.id)
-                      .slice(0, 200)
+                      .slice(0, 500)
                       .map(action => {
                         return (
                           <tr className="stripe-dark tc" key={`${action.id}`}>
