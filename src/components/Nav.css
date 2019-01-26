@@ -1,0 +1,66 @@
+.allNav {
+  background-color: #45445d;
+  min-height: 100vh;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.topNav {
+  background-color: #3e3d54;
+  display: flex;
+}
+
+.navPage a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.iconeNav {
+  width: 5%;
+  height: 5%;
+  margin-right: 2%;
+}
+
+/* Sur tous types d'écran, quand la largeur de la fenêtre est inférieure à 990px */
+@media only screen and (max-width: 990px) {
+  .topNav h1 {
+    font-size: 50%;
+    position: relative;
+    padding-top: 8%;
+    right: 20%;
+  }
+
+  .navPage {
+    margin-left: 4%;
+  }
+
+  .navPage a {
+    margin-bottom: 3%;
+    font-size: 0.9em;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .navPage a {
+    margin-bottom: 35%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mglft {
+    margin-left: 22%;
+  }
+  .topNav {
+    font-size: 155%;
+  }
+  .topNav h1 {
+    margin-left: 40%;
+  }
+  .navPage p {
+    font-size: 100%;
+  }
+  .navPage img {
+    width: 12%;
+  }
+}

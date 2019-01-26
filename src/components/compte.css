@@ -1,0 +1,96 @@
+.boutonSave {
+  background-color: #6978fc;
+}
+
+.sauvegarderbouton {
+  padding-left: 62%;
+}
+
+.firstBorder {
+  margin-left: 26%;
+  text-align: justify;
+  list-style-position: inside;
+  line-height: 200%;
+}
+
+.title-firstBorder {
+  margin-left: 25%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-decoration: underline;
+}
+
+.job {
+  margin-left: 40%;
+}
+
+.otherBorder {
+  margin-left: 26%;
+}
+
+.otherBorder .signature {
+  margin-top: -60%;
+}
+
+.moveInfoRight {
+  margin-left: 25%;
+}
+
+.title-seysey {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.entete {
+  margin-left: 28%;
+}
+
+@media only screen and (max-width: 768px) {
+  .title-seysey {
+    font-size: 20px !important;
+  }
+  .stylish-cab {
+    display: inline-block;
+    min-width: 100%;
+  }
+  .size-think {
+    width: 60%;
+    height: 20vh;
+    font-size: 55%;
+  }
+  .enlarge {
+    width: 100%;
+  }
+}
+
+.icone pointer {
+  border: none;
+}
+
+.button_border {
+  border: none;
+  background-color: transparent;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+/* .inputfile + label {
+  font-size: 1.25em;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+} */
+
+/* 
+.inputfile + label {
+  cursor: pointer; /* "hand" cursor */
+
+.bg-dark-blue {
+  background-color: #45445d;
+}

@@ -1,0 +1,9 @@
+.button {
+  background-color: transparent;
+  border-radius: 30px;
+  padding: 2%;
+}
+
+.download {
+  transform: rotate(180deg);
+}

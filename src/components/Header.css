@@ -1,0 +1,17 @@
+img.avatar {
+  border-radius: 50%;
+  width: 3%;
+  max-height: 3em;
+  margin-left: 80%;
+}
+
+.header {
+  background-color: #f7f4f4;
+  padding: 2rem;
+}
+
+.deconnexion {
+  position: absolute;
+  margin-left: 1%;
+  margin-top: 1%;
+}

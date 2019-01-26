@@ -1,0 +1,30 @@
+.autreInput {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  width: 50px;
+}
+
+.autreInput2 {
+  border: 1px solid #999;
+  width: 40px;
+}
+
+.borderOptions {
+  border: 1px solid black;
+}
+
+.autreInput3 {
+  border: 1px solid #999;
+  text-align: right;
+  width: 90px;
+}
+
+.autreInput4 {
+  border: 1px solid #999;
+  text-align: right;
+  width: 120px;
+}
+
+.noStyleForLists {
+  list-style: none;
+}
